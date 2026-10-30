@@ -117,7 +117,7 @@ return {
                 ["id"] = "network",
                 ["anchor"] = "bottom-right",
                 ["margin"] = {
-                    48,
+                    16,
                     312
                 }
             },
@@ -125,7 +125,7 @@ return {
                 ["id"] = "sysstats",
                 ["anchor"] = "bottom-right",
                 ["margin"] = {
-                    48,
+                    16,
                     572
                 }
             },

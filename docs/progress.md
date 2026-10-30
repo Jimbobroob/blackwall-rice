@@ -81,3 +81,4 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P6.21 (user request) side clock has its background back; both bars now use the same plain translucent style as the cards (Settings.panelAlpha); GlassPanel and the bar blur rule removed.
 - [x] P6.22 (user request) side-bar tray icons (Spotify, Steam, Discord) forced into the palette: light grey, red on hover (MultiEffect colorization).
 - [x] P6.23 (user request) side bar: groups separated by red_dim dividers (status | tray apps | controls | bell+power); GPU temp bigger (12px, white, red icon); labels use text colour.
+- [x] P6.24 (user request) system + network moved right (margin 16, flush with the notification toasts).

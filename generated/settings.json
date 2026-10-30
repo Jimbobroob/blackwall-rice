@@ -116,7 +116,7 @@
         "id": "network",
         "anchor": "bottom-right",
         "margin": [
-          48,
+          16,
           312
         ]
       },
@@ -124,7 +124,7 @@
         "id": "sysstats",
         "anchor": "bottom-right",
         "margin": [
-          48,
+          16,
           572
         ]
       },
