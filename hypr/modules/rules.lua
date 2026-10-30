@@ -13,11 +13,11 @@ return function(rice)
     })
 
     -- Liquid-glass terminals: translucent (kitty background_opacity) over strong blur,
-    -- with a pale thin edge instead of the red/grey border.
+    -- with a soft red edge, and a red-tinted background (look.glass.tint).
     hl.window_rule({
         name  = "glass-kitty",
         match = { class = "^kitty$" },
-        border_color = rice.rgb("text", "55"),
+        border_color = rice.rgb("red", "88"),
         no_shadow = true,
     })
 

@@ -55,11 +55,18 @@ def gen_lua(name, c, ansi, settings):
     (OUT / "settings.lua").write_text(f"-- {HEADER}\nreturn {lua_value(settings)}\n")
 
 
+def mix(a, b, t):
+    """Blend hex colour a toward b by t (0..1)."""
+    pa, pb = [[int(h[i:i + 2], 16) for i in (1, 3, 5)] for h in (a, b)]
+    return "#" + "".join(f"{round(x + (y - x) * t):02X}" for x, y in zip(pa, pb))
+
+
 def gen_kitty(name, c, ansi, settings):
+    tint = settings["look"]["glass"]["tint"]
     lines = [
         f"# {HEADER}",
         f"foreground {c['text']}",
-        f"background {c['base']}",
+        f"background {mix(c['base'], c['red'], tint)}",  # red-tinted glass
         f"selection_foreground {c['base']}",
         f"selection_background {c['red']}",
         f"cursor {c['red']}",
