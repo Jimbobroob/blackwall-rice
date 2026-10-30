@@ -1,6 +1,7 @@
 import QtQuick
 import "../theme"
 import "../services"
+import "../fx"
 
 // Framed panel used by the side-monitor widgets: surface fill, thin red-dim border,
 // small techy title, angled (cut) top-right corner marker.
@@ -27,6 +28,7 @@ Rectangle {
         color: Theme.red_dim
         font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 10; font.letterSpacing: 2
     }
+    Scanlines {}
     Item {
         id: holder
         x: root.pad

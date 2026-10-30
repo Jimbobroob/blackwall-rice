@@ -5,6 +5,7 @@ import Quickshell.Wayland
 import Quickshell.Hyprland
 import "../theme"
 import "../services"
+import "../fx"
 
 // Compact power menu on the side monitor, next to the bar's power button.
 // Up/Down + Enter, or click. Esc / click outside closes.
@@ -37,6 +38,11 @@ PanelWindow {
     ]
     property int index: 0
     onVisibleChanged: if (visible) index = 0
+    Connections {
+        target: UiState
+        function onPowerOpenChanged() { if (UiState.powerOpen) pop.play(0) }
+    }
+    GlitchIn { id: pop; target: card; z: 1 }
 
     Process { id: runner }
     function activate(i) {
@@ -65,6 +71,8 @@ PanelWindow {
             else return
             e.accepted = true
         }
+
+        Scanlines {}
 
         Column {
             id: col

@@ -11,7 +11,7 @@ Claude updates this file during every phase. If a phase stops partway, the note 
 | 3. Side monitor dashboard | ✅ | Finished 2026-10-30. Awaiting user visual check. |
 | 4. Spotify + Discord widgets | ✅ | Finished 2026-10-30. User confirmed working (voice panel, mute/deafen, Spotify, snip). Discord grid capped at 20. |
 | 5. App theming + lock | ✅ | Finished 2026-10-30. Lock tested by user; Vesktop, Spotify (Spicetify) and Firefox confirmed. |
-| 6. Polish | ⬜ | |
+| 6. Polish | ✅ | Finished 2026-10-30. Awaiting user visual check of glitch effects. |
 
 ## Step log
 _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollback.sh`)_
@@ -58,3 +58,7 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P5.7b Spotify dir chmod done by user; Spicetify applied after copying jsHelper + css-map.json from the v2.46.4 release next to the binary; header tint pinned to red
 - [x] P5.8 Firefox themed (seen); Vesktop theme overrides Discord's current brand variables (checked live: no blue left on Friends); user confirmed. `Super + B` opens Firefox.
 
+- [x] P6.1 Glitch shaders (`quickshell/fx`: pop-in, scanlines, workspace tear), levels subtle/medium/heavy in settings.json; pop-in on widgets, launcher, power menu; scanlines on cards/launcher/power menu. Tear checked live; pop-in loads without errors, not caught mid-animation. Heavy/subtle not visually compared.
+- [x] P6.2 Wallpapers (user chose different per monitor): hyprpaper from settings.json, autostart; widgets moved to Bottom layer. Checked on both screens.
+- [x] P6.3 Review: no Hyprland config errors, both monitors/modes/positions right, qs/hypridle/hyprpaper running, links in place, fonts installed. Not re-tested this phase: lock, game mode, KVM unplug.
+- [x] P6.4 README.md

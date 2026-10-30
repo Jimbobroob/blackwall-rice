@@ -9,6 +9,7 @@ import "widgets"
 import "side"
 import "menus"
 import "services"
+import "fx"
 
 // Rice shell. One scope per monitor, keyed by role (main/side) not port name,
 // so a KVM switch just removes and re-adds that monitor's windows.
@@ -23,6 +24,7 @@ ShellRoot {
             // toasts go to the side monitor; main takes over only when side is away
             readonly property bool notifHost: role === "side" || (role === "main" && !Settings.hasRole("side"))
 
+            LazyLoader { active: scope.role !== ""; WorkspaceGlitch { screen: scope.modelData; role: scope.role } }
             LazyLoader { active: scope.role === "main"; MainBar { screen: scope.modelData } }
             LazyLoader { active: scope.role === "main"; Launcher { screen: scope.modelData } }
             LazyLoader { active: scope.role === "main"; VolumeOsd { screen: scope.modelData } }

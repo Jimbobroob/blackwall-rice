@@ -7,6 +7,7 @@ return function(rice)
         hl.exec_cmd("systemctl --user start hyprpolkitagent")
         hl.exec_cmd("hyprctl setcursor " .. rice.settings.look.cursor.theme .. " " .. rice.settings.look.cursor.size)
         hl.exec_cmd("hypridle")
+        hl.exec_cmd("hyprpaper -c " .. rice.dir .. "/generated/hyprpaper.conf")
         hl.exec_cmd("qs")
         hl.exec_cmd("wl-paste --watch cliphist store")
 

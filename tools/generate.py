@@ -93,6 +93,15 @@ def gen_css(c, ansi):
     (OUT / "palette.css").write_text(f"/* {HEADER} */\n:root {{\n{body}\n}}\n")
 
 
+def gen_hyprpaper(settings):
+    wp = settings["wallpaper"]
+    blocks = [f"# {HEADER}", "splash = false", "ipc = true"]
+    for role in ("main", "side"):
+        path = str(Path(wp[role]).expanduser())
+        blocks.append(f"\nwallpaper {{\n    monitor = desc:{settings['monitors'][role]['desc']}\n    path = {path}\n    fit_mode = {wp['fit']}\n}}")
+    (OUT / "hyprpaper.conf").write_text("\n".join(blocks) + "\n")
+
+
 def gen_qml(c, ansi):
     props = "\n".join(f'    readonly property color {k}: "{v}"' for k, v in {**c, **ansi}.items())
     (OUT / "Theme.qml").write_text(
@@ -149,6 +158,7 @@ def main():
     OUT.mkdir(exist_ok=True)
     name, c, ansi, settings = load()
     gen_lua(name, c, ansi, settings)
+    gen_hyprpaper(settings)
     gen_kitty(name, c, ansi, settings)
     gen_css(c, ansi)
     gen_qml(c, ansi)

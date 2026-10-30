@@ -3,6 +3,7 @@ import Quickshell
 import Quickshell.Wayland
 import "../theme"
 import "../services"
+import "../fx"
 
 // One passive desktop widget. Anchor and margin come from settings.json:
 //   { "id": "clock", "anchor": "top-right", "margin": [horizontal, vertical] }
@@ -31,7 +32,7 @@ PanelWindow {
     // passive widgets are click-through; interactive ones (Card.interactive) take input
     mask: Region { item: loader.item && loader.item.interactive ? loader.item : null }
     exclusionMode: ExclusionMode.Ignore
-    WlrLayershell.layer: WlrLayer.Background
+    WlrLayershell.layer: WlrLayer.Bottom
     WlrLayershell.namespace: "rice-widget-" + spec.id
 
     // widget id -> file, per monitor role
@@ -47,5 +48,7 @@ PanelWindow {
     Loader {
         id: loader
         source: (win.role === "side" ? files.sideFiles : files.mainFiles)[win.spec.id] || ""
+        onLoaded: pop.play(Math.random() * 300)
     }
+    GlitchIn { id: pop; target: loader }
 }

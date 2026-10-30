@@ -10,6 +10,7 @@ Singleton {
 
     property var data: ({
         glitch_level: "medium",
+        glitch_levels: { medium: { pop_ms: 260, strength: 0.045, scan_alpha: 0.10, scan_pitch: 3, ws_ms: 200, ws_intensity: 0.8 } },
         clock: { format: "24h", main_style: "digital", side_style: "analog" },
         weather: { latitude: 51.5, longitude: -0.13, temperature_unit: "C", wind_unit: "mph", refresh_minutes: 15 },
         monitors: { main: { desc: "", output: "HDMI-A-1", workspaces: [1, 2, 3, 4, 5] },
@@ -25,6 +26,8 @@ Singleton {
     readonly property var clock: data.clock
     readonly property var monitors: data.monitors
     readonly property var bar: data.bar
+    // active glitch profile (settings.json -> glitch_level picks one of glitch_levels)
+    readonly property var glitch: (data.glitch_levels && data.glitch_levels[data.glitch_level]) || ({ pop_ms: 0, strength: 0, scan_alpha: 0, scan_pitch: 3, ws_ms: 0, ws_intensity: 0 })
     // corner radius for everything (settings.json -> look.radius); small = chips, buttons, bars
     readonly property int radius: data.look ? data.look.radius : 12
     readonly property int radiusSmall: Math.round(radius / 2)

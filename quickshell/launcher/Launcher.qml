@@ -5,6 +5,7 @@ import Quickshell.Wayland
 import Quickshell.Hyprland
 import "../theme"
 import "../services"
+import "../fx"
 
 // Search launcher, centred on the main monitor. Super+Space -> `qs ipc call launcher toggle`.
 PanelWindow {
@@ -50,7 +51,7 @@ PanelWindow {
     Connections {
         target: LauncherState
         function onOpenChanged() {
-            if (LauncherState.open) { win.query = ""; win.index = 0; input.text = ""; input.forceActiveFocus() }
+            if (LauncherState.open) { pop.play(0); win.query = ""; win.index = 0; input.text = ""; input.forceActiveFocus() }
         }
     }
 
@@ -59,6 +60,8 @@ PanelWindow {
         LauncherState.close()
         entry.execute()
     }
+
+    GlitchIn { id: pop; target: card; z: 1 }
 
     Rectangle {
         id: card
@@ -74,6 +77,7 @@ PanelWindow {
 
         // red corner tick
         Rectangle { x: Settings.radius; width: 28; height: 3; color: Theme.red }
+        Scanlines {}
 
         ColumnLayout {
             anchors { fill: parent; margins: 12 }

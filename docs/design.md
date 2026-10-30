@@ -265,6 +265,10 @@ All components read colours from ONE palette file. Never hardcode hex values els
 - hyprlock: main monitor gets clock + date + weather + password field; the side monitor shows only a quiet clock. hypridle locks via `loginctl lock-session`; fullscreen windows (games, video) inhibit it via a Hyprland window rule, and browsers' video inhibitors count too.
 - Vesktop's theme is *copied* (not linked) because the Flatpak sandbox can't see `~/rice`: run `tools/install-vesktop-theme.sh`.
 
+### Phase 6 build decisions (2026-10-30)
+- **Wallpaper differs per monitor** (user choice, overrides "same on both"): main = kimono (1920x1080), side = dark red cyberpunk (2560x1440). Files in `~/Pictures/Wallpapers`, paths in `settings.json` → `wallpaper`; drawn by hyprpaper from `generated/hyprpaper.conf`. Desktop widgets moved to the Bottom layer so they sit above it.
+- Glitch effects are Quickshell shaders (`quickshell/fx/`, built by `tools/build-shaders.sh`): widget/launcher/power-menu pop-in (slice shift + RGB split), scanlines on cards, and a red/magenta tear overlay on workspace change (skipped in game mode on main). Levels come from `settings.json` → `glitch_levels`.
+
 ## Afterthoughts (2026-10-30, after phase 3)
 Changes the user decided after seeing the rice running. These **override** earlier sections where they conflict.
 - **Everything is rounded** (replaces "sharp corners / sharp or angled corners"). One setting, `settings.json` → `look.radius` (default **12px**); chips, buttons and small items use half of it. Applies to:
