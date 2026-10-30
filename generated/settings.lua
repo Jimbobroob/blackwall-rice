@@ -118,7 +118,7 @@ return {
                 ["anchor"] = "bottom-right",
                 ["margin"] = {
                     48,
-                    232
+                    312
                 }
             },
             {
@@ -126,7 +126,7 @@ return {
                 ["anchor"] = "bottom-right",
                 ["margin"] = {
                     48,
-                    492
+                    572
                 }
             },
             {

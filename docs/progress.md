@@ -74,3 +74,4 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P6.14 (user requests) Spotify moved to top middle (top-left [1020,48]); side clock now digital 24h (clock.side_style = digital) with a tightened layout.
 - [x] P6.15 (user request) system stats moved above network (bottom-right [48,492]).
 - [x] P6.16 (user request) calendar and weather moved to bottom-left (where system stats was): calendar [92,48], weather [426,48].
+- [x] P6.17 (user request) system + network nudged up 80px (margins 572 / 312).
