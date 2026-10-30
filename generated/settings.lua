@@ -84,7 +84,7 @@ return {
                 ["anchor"] = "top-right",
                 ["margin"] = {
                     48,
-                    150
+                    212
                 }
             }
         },

@@ -8,7 +8,7 @@ Item {
     implicitWidth: col.implicitWidth
     implicitHeight: col.implicitHeight
 
-    SystemClock { id: clock; precision: SystemClock.Seconds }
+    SystemClock { id: clock; precision: SystemClock.Minutes }
     readonly property bool h12: Settings.clock.format === "12h"
 
     Column {
@@ -17,16 +17,9 @@ Item {
         Row {
             spacing: 6
             Text {
-                text: Qt.formatTime(clock.date, parent.parent.parent.h12 ? "h:mm" : "HH:mm")
+                text: Qt.formatTime(clock.date, parent.parent.parent.h12 ? "h:mm AP" : "HH:mm")
                 color: Theme.text
                 font.family: "Rajdhani"; font.pixelSize: 96; font.weight: Font.DemiBold
-            }
-            Text {
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 22
-                text: Qt.formatTime(clock.date, parent.parent.parent.h12 ? "ss AP" : "ss")
-                color: Theme.red
-                font.family: "Rajdhani"; font.pixelSize: 28; font.weight: Font.DemiBold
             }
         }
         Rectangle { width: 120; height: 2; color: Theme.red }
