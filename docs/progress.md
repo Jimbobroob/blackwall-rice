@@ -6,7 +6,7 @@ Claude updates this file during every phase. If a phase stops partway, the note 
 | Phase | Status | Notes |
 |---|---|---|
 | 0. Design (grilling) | ✅ | Finished 2026-10-30 |
-| 1. Foundation | 🟡 | All steps done and verified. Only the user's visual check (both monitors, kitty/fish/starship look, Super+S/D keys) remains; then mark ✅. |
+| 1. Foundation | ✅ | Finished 2026-10-30. User visual check passed. |
 | 2. Main monitor UI | ⬜ | |
 | 3. Side monitor dashboard | ⬜ | |
 | 4. Spotify + Discord widgets | ⬜ | |
@@ -24,4 +24,4 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P1.7 kitty
 - [x] P1.8 fish + starship (starship installed via COPR, login shell is fish)
 - [x] P1.9 Rajdhani (tools/install-fonts.sh)
-- [x] P1.10 install + verify (hypr/kitty/fish/starship linked, no config errors; S/D toggles tested via rice.toggle_app: open/close on DP-2, windows in special workspaces). User visual check pending.
+- [x] P1.10 install + verify (hypr/kitty/fish/starship linked, no config errors; S/D toggles tested via rice.toggle_app: open/close on DP-2, windows in special workspaces). User visual check passed.
