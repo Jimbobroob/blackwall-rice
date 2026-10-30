@@ -192,6 +192,6 @@ return {
         ["_note"] = "per-monitor image path (~ allowed); fit is cover/contain/tile",
         ["fit"] = "cover",
         ["main"] = "~/Pictures/Wallpapers/kimono-1920x1080.png",
-        ["side"] = "~/Pictures/Wallpapers/cyberpunk-red-2560x1440.png"
+        ["side"] = "~/Pictures/Wallpapers/wallhaven-5gj5j8-2560x1440.png"
     }
 }
