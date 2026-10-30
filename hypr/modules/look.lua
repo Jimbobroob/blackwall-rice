@@ -1,4 +1,4 @@
--- Look and feel: sharp corners, 2px red/grey borders, 6px gaps, quick animations.
+-- Look and feel: rounded corners (settings.look.radius), 2px red/grey borders, 6px gaps, quick animations.
 return function(rice)
     hl.config({
         general = {
@@ -14,15 +14,18 @@ return function(rice)
         },
 
         decoration = {
-            rounding = 0,
+            rounding = rice.settings.look.radius,
+            rounding_power = 2.5, -- squircle-ish curve
             active_opacity   = 1.0,
             inactive_opacity = 1.0,
             shadow = { enabled = false },
             blur = {
                 enabled  = true,
-                size     = 4,
-                passes   = 2,
-                vibrancy = 0.15,
+                size     = rice.settings.look.glass.blur_size,
+                passes   = rice.settings.look.glass.blur_passes,
+                vibrancy = 0.3,
+                brightness = 1.1,
+                noise    = 0.01,
             },
         },
 

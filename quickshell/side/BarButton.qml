@@ -16,6 +16,7 @@ Rectangle {
 
     implicitWidth: 44
     implicitHeight: label === "" ? 36 : 46
+    radius: Settings.radiusSmall
     color: lit ? Theme.red : (hover.hovered ? Theme.overlay : "transparent")
     Behavior on color { ColorAnimation { duration: 80 } }
 

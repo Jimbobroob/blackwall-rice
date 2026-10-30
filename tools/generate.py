@@ -55,7 +55,7 @@ def gen_lua(name, c, ansi, settings):
     (OUT / "settings.lua").write_text(f"-- {HEADER}\nreturn {lua_value(settings)}\n")
 
 
-def gen_kitty(name, c, ansi):
+def gen_kitty(name, c, ansi, settings):
     lines = [
         f"# {HEADER}",
         f"foreground {c['text']}",
@@ -75,6 +75,7 @@ def gen_kitty(name, c, ansi):
         f"tab_bar_background {c['base']}",
         f"mark1_background {c['red']}",
         f"mark2_background {c['magenta']}",
+        f"background_opacity {settings['look']['glass']['terminal_opacity']}",
     ]
     lines += [f"color{i} {col}" for i, col in enumerate(terminal_colors(c, ansi))]
     (OUT / "kitty-colors.conf").write_text("\n".join(lines) + "\n")
@@ -141,7 +142,7 @@ def main():
     OUT.mkdir(exist_ok=True)
     name, c, ansi, settings = load()
     gen_lua(name, c, ansi, settings)
-    gen_kitty(name, c, ansi)
+    gen_kitty(name, c, ansi, settings)
     gen_css(c, ansi)
     gen_qml(c, ansi)
     gen_qml_extras(settings)

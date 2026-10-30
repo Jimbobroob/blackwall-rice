@@ -12,7 +12,7 @@ PanelWindow {
 
     visible: UiState.historyOpen || card.opacity > 0
     anchors { left: true; bottom: true }
-    margins { left: 52; bottom: 8 }
+    margins { left: 58; bottom: 6 }
     implicitWidth: 380
     implicitHeight: 520
     color: "transparent"
@@ -45,6 +45,7 @@ PanelWindow {
         color: Theme.surface
         border.width: 1
         border.color: Theme.red_dim
+        radius: Settings.radius
         opacity: UiState.historyOpen ? 1 : 0
         x: UiState.historyOpen ? 0 : -16
         Behavior on opacity { NumberAnimation { duration: 100 } }
@@ -67,6 +68,7 @@ PanelWindow {
             Rectangle {
                 anchors { right: parent.right; rightMargin: 12; verticalCenter: parent.verticalCenter }
                 width: clearText.implicitWidth + 20; height: 24
+                radius: Settings.radiusSmall
                 color: clearHover.hovered ? Theme.red : "transparent"
                 border.width: 1; border.color: Theme.red_dim
                 Text {
@@ -92,7 +94,7 @@ PanelWindow {
         }
 
         ListView {
-            anchors { left: parent.left; right: parent.right; top: head.bottom; bottom: parent.bottom; margins: 1 }
+            anchors { left: parent.left; right: parent.right; top: head.bottom; bottom: parent.bottom; leftMargin: 1; rightMargin: 1; bottomMargin: Settings.radius }
             clip: true
             model: Notifs.history
             boundsBehavior: Flickable.StopAtBounds

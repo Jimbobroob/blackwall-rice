@@ -142,5 +142,13 @@ return {
     },
     ["osd"] = {
         ["timeout_ms"] = 1100
+    },
+    ["look"] = {
+        ["radius"] = 12,
+        ["glass"] = {
+            ["terminal_opacity"] = 0.45,
+            ["blur_size"] = 10,
+            ["blur_passes"] = 3
+        }
     }
 }

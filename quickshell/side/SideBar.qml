@@ -14,8 +14,9 @@ PanelWindow {
     id: win
 
     anchors { left: true; top: true; bottom: true }
+    margins { left: 6; top: 6; bottom: 6 }
     implicitWidth: 44
-    color: Theme.base
+    color: "transparent"
     WlrLayershell.namespace: "rice-sidebar"
 
     readonly property var mon: Hyprland.monitorFor(screen)
@@ -23,11 +24,13 @@ PanelWindow {
     readonly property var source: Pipewire.defaultAudioSource
     PwObjectTracker { objects: [win.sink, win.source] }
 
-    // thin red edge on the right
+    // floating rounded strip with a thin red edge
     Rectangle {
-        anchors { right: parent.right; top: parent.top; bottom: parent.bottom }
-        width: 1
-        color: Theme.red_dim
+        anchors.fill: parent
+        radius: Settings.radius
+        color: Theme.base
+        border.width: 1
+        border.color: Theme.red_dim
     }
 
     // top: launcher + workspaces
@@ -54,6 +57,7 @@ PanelWindow {
                 readonly property bool occupied: !!(hw && hw.toplevels && hw.toplevels.values.length > 0)
                 x: 9
                 width: 24; height: 24
+                radius: Settings.radiusSmall
                 color: active ? Theme.red : (wsHover.hovered ? Theme.overlay : "transparent")
                 border.width: active ? 0 : 1
                 border.color: occupied ? Theme.red_dim : Theme.overlay
@@ -104,7 +108,7 @@ PanelWindow {
                 id: trayItem
                 required property var modelData
                 width: parent.width; height: 32
-                Rectangle { anchors.fill: parent; color: trayHover.hovered ? Theme.overlay : "transparent" }
+                Rectangle { anchors.fill: parent; radius: Settings.radiusSmall; color: trayHover.hovered ? Theme.overlay : "transparent" }
                 Image {
                     anchors.centerIn: parent
                     width: 18; height: 18

@@ -12,18 +12,21 @@ PanelWindow {
 
     visible: !GameMode.on
     anchors { left: true; right: true; bottom: true }
+    margins { left: 6; right: 6; bottom: 6 }
     implicitHeight: Settings.bar.main_height
-    color: Theme.base
+    color: "transparent"
     WlrLayershell.namespace: "rice-bar"
 
     readonly property var mon: Hyprland.monitorFor(screen)
     readonly property int fontSize: Settings.bar.font_size
 
-    // thin red edge on top
+    // floating rounded pill with a thin red edge
     Rectangle {
-        anchors { left: parent.left; right: parent.right; top: parent.top }
-        height: 1
-        color: Theme.red_dim
+        anchors.fill: parent
+        radius: Math.min(Settings.radius, height / 2)
+        color: Theme.base
+        border.width: 1
+        border.color: Theme.red_dim
     }
 
     // left: workspaces
@@ -39,6 +42,7 @@ PanelWindow {
                 readonly property bool active: win.mon && win.mon.activeWorkspace && win.mon.activeWorkspace.id === modelData
                 readonly property bool occupied: !!(hw && hw.toplevels && hw.toplevels.values.length > 0)
                 width: 24; height: 18
+                radius: Settings.radiusSmall / 2 + 1
                 color: active ? Theme.red : (hover.hovered ? Theme.overlay : "transparent")
                 border.width: active ? 0 : 1
                 border.color: occupied ? Theme.red_dim : Theme.overlay

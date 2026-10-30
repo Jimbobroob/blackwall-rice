@@ -103,7 +103,7 @@ All components read colours from ONE palette file. Never hardcode hex values els
 - **Super+Space** opens a search launcher **in the middle of the main monitor**, styled like the rest (glitch-in).
 
 ### Windows
-- **Sharp corners (0px rounding).**
+- ~~Sharp corners (0px rounding).~~ **Superseded by Afterthoughts: everything is rounded.**
 - **2px borders**: red (`#FF0033`) when focused, dark grey when not.
 - **6px gaps** between windows.
 - **Super+Tab** throws the focused window to the other monitor (onto that monitor's current workspace).
@@ -252,6 +252,17 @@ All components read colours from ONE palette file. Never hardcode hex values els
 - Updates count uses `dnf check-update` every 30 min; clicking it opens kitty running `sudo dnf upgrade`.
 - Side widgets are cards (surface fill, thin border, red tick). Clock style (analog/digital) follows `clock.side_style`.
 - Stats come from `quickshell/scripts/stats.sh` (1 s samples); GPU is read from the amdgpu hwmon/`gpu_busy_percent`.
+
+---
+
+## Afterthoughts (2026-10-30, after phase 3)
+Changes the user decided after seeing the rice running. These **override** earlier sections where they conflict.
+- **Everything is rounded** (replaces "sharp corners / sharp or angled corners"). One setting, `settings.json` → `look.radius` (default **12px**); chips, buttons and small items use half of it. Applies to:
+  - Hyprland windows (rounding with a slightly squircle curve),
+  - both bars (now **floating pills** with a 6px gap to the screen edge, not flush),
+  - all Quickshell widgets/cards, the launcher, notification toasts, the volume OSD, the power menu and the history panel.
+- **Terminals are "liquid glass"**: kitty is translucent (`look.glass.terminal_opacity`, default **0.45**) over a stronger background blur (`look.glass.blur_size` 10, `blur_passes` 3, vibrancy up), with a thin pale edge instead of the red border. Other windows keep their normal look. Opacity is generated into kitty's `colors.conf`, so edit `settings.json` and run `tools/generate.py`.
+- The "sharp/angled corners" part of the glitch/HUD description no longer applies. Thin red borders, monospace labels, scanlines and glitch effects (phase 6) still do.
 
 ## 4. Build plan
 Built in 6 phases. Details, steps and done-checks are in **`docs/phases.md`**. Progress is tracked in **`docs/progress.md`**.

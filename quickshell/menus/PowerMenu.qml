@@ -13,9 +13,9 @@ PanelWindow {
 
     visible: UiState.powerOpen || card.opacity > 0
     anchors { left: true; bottom: true }
-    margins { left: 52; bottom: 8 }
+    margins { left: 58; bottom: 6 }
     implicitWidth: 220
-    implicitHeight: col.implicitHeight + 2
+    implicitHeight: col.implicitHeight + 10
     color: "transparent"
     exclusionMode: ExclusionMode.Ignore
     WlrLayershell.layer: WlrLayer.Overlay
@@ -50,6 +50,7 @@ PanelWindow {
         color: Theme.surface
         border.width: 1
         border.color: Theme.red_dim
+        radius: Settings.radius
         opacity: UiState.powerOpen ? 1 : 0
         x: UiState.powerOpen ? 0 : -16
         Behavior on opacity { NumberAnimation { duration: 100 } }
@@ -67,7 +68,7 @@ PanelWindow {
 
         Column {
             id: col
-            anchors { left: parent.left; right: parent.right; top: parent.top; margins: 1 }
+            anchors { left: parent.left; right: parent.right; top: parent.top; margins: 5 }
             Repeater {
                 model: win.actions
                 delegate: Rectangle {
@@ -77,6 +78,7 @@ PanelWindow {
                     readonly property bool sel: win.index === index
                     readonly property bool danger: modelData.name === "Shut down" || modelData.name === "Reboot"
                     width: col.width; height: 40
+                    radius: Settings.radiusSmall
                     color: sel ? Theme.red : "transparent"
                     Behavior on color { ColorAnimation { duration: 60 } }
                     Row {

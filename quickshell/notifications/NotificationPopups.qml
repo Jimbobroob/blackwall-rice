@@ -36,8 +36,9 @@ PanelWindow {
                 color: Theme.surface
                 border.width: 1
                 border.color: critical ? Theme.red : Theme.overlay
+                radius: Settings.radius
 
-                Rectangle { width: 3; height: parent.height; color: critical ? Theme.red : Theme.red_dim }
+                Rectangle { x: 6; y: 12; width: 3; height: parent.height - 24; radius: 2; color: critical ? Theme.red : Theme.red_dim }
 
                 // slide/fade in
                 opacity: 0

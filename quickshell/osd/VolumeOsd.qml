@@ -48,6 +48,7 @@ PanelWindow {
     Rectangle {
         id: box
         anchors.fill: parent
+        radius: height / 2
         color: Theme.base
         border.width: 1
         border.color: win.audio && win.audio.muted ? Theme.red_dim : Theme.red
@@ -65,6 +66,8 @@ PanelWindow {
             id: track
             anchors { left: icon.right; leftMargin: 8; right: pct.left; rightMargin: 8; verticalCenter: parent.verticalCenter }
             height: 4
+            radius: 2
+            clip: true
             color: Theme.overlay
             Rectangle {
                 height: parent.height

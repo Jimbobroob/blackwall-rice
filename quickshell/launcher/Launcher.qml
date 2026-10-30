@@ -66,13 +66,14 @@ PanelWindow {
         color: Theme.surface
         border.width: 1
         border.color: Theme.red
+        radius: Settings.radius
         opacity: LauncherState.open ? 1 : 0
         scale: LauncherState.open ? 1 : 0.97
         Behavior on opacity { NumberAnimation { duration: 90; easing.type: Easing.OutCubic } }
         Behavior on scale { NumberAnimation { duration: 90; easing.type: Easing.OutCubic } }
 
         // red corner tick
-        Rectangle { width: 28; height: 3; color: Theme.red; anchors { left: parent.left; top: parent.top } }
+        Rectangle { x: Settings.radius; width: 28; height: 3; color: Theme.red }
 
         ColumnLayout {
             anchors { fill: parent; margins: 12 }
@@ -81,6 +82,7 @@ PanelWindow {
             Rectangle {
                 Layout.fillWidth: true
                 Layout.preferredHeight: 40
+                radius: Settings.radiusSmall
                 color: Theme.base
                 border.width: 1
                 border.color: Theme.overlay
@@ -118,10 +120,11 @@ PanelWindow {
                     required property int index
                     Layout.fillWidth: true
                     Layout.preferredHeight: 36
+                    radius: Settings.radiusSmall
                     color: row.index === win.index ? Theme.overlay : "transparent"
                     Rectangle {
                         visible: row.index === win.index
-                        width: 2; height: parent.height; color: Theme.red
+                        x: 3; y: 8; width: 2; height: parent.height - 16; radius: 1; color: Theme.red
                     }
                     Row {
                         anchors { fill: parent; leftMargin: 12 }

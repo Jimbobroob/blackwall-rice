@@ -18,12 +18,16 @@ Singleton {
         launcher: { width: 640, max_results: 8 },
         notifications: { timeout_ms: 6000, width: 380 },
         osd: { timeout_ms: 1100 },
+        look: { radius: 12 },
         widgets: { main: [], side: [] }
     })
 
     readonly property var clock: data.clock
     readonly property var monitors: data.monitors
     readonly property var bar: data.bar
+    // corner radius for everything (settings.json -> look.radius); small = chips, buttons, bars
+    readonly property int radius: data.look ? data.look.radius : 12
+    readonly property int radiusSmall: Math.round(radius / 2)
     // side widgets that exist so far (spotify/discord come in phase 4)
     readonly property var sideWidgetIds: ["clock", "calendar", "weather", "sysstats", "network", "cava"]
 

@@ -47,6 +47,7 @@ Card {
                     readonly property bool weekend: index % 7 >= 5
                     width: root.cell; height: root.cell - 6
                     color: isToday ? Theme.red : "transparent"
+                    radius: Settings.radiusSmall
                     visible: index < root.offset + root.daysInMonth || index < 35
                     Text {
                         anchors.centerIn: parent

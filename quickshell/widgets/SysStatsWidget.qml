@@ -27,6 +27,8 @@ Card {
         }
         Rectangle {
             y: 20; width: parent.width; height: 8
+            radius: 4
+            clip: true
             color: Theme.overlay
             Rectangle {
                 width: parent.width * Math.max(0, Math.min(100, value)) / 100
