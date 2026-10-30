@@ -139,10 +139,10 @@ return {
             },
             {
                 ["id"] = "discord",
-                ["anchor"] = "bottom-right",
+                ["anchor"] = "top-left",
                 ["margin"] = {
-                    48,
-                    232
+                    754,
+                    310
                 }
             },
             {

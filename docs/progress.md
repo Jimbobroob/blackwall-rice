@@ -68,3 +68,4 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P6.8 (user request) main clock: no seconds; weather moved down (margin y 212) so the two no longer overlap.
 - [x] P6.9 (user request) main bar auto-hide (bar.main_autohide). Tested: hidden by default, appears at the bottom edge, hides after leaving.
 - [x] P6.10 (user request) side widgets re-placed around the new wallpaper; cava 560px wide. Checked in a screenshot.
+- [x] P6.11 (user request) Discord widget moved under the weather card (top-left [754,310]).
