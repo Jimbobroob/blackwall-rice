@@ -47,7 +47,7 @@ PanelWindow {
             onClicked: LauncherState.toggle()
         }
 
-        Rectangle { width: parent.width - 16; height: 1; x: 8; color: Theme.overlay }
+        BarDivider { width: parent.width }
 
         Repeater {
             model: Settings.monitors.side.workspaces
@@ -87,8 +87,9 @@ PanelWindow {
             width: parent.width
             icon: "󰢮"
             label: Math.round(SysStats.gpuTemp) + "°"
-            iconColor: SysStats.gpuTemp >= 80 ? Theme.warning : Theme.text
-            labelColor: SysStats.gpuTemp >= 80 ? Theme.warning : Theme.muted
+            labelSize: 12
+            iconColor: SysStats.gpuTemp >= 80 ? Theme.warning : Theme.red
+            labelColor: SysStats.gpuTemp >= 80 ? Theme.warning : Theme.text
         }
 
         // dnf updates
@@ -96,12 +97,12 @@ PanelWindow {
             width: parent.width
             icon: "󰚰"
             label: Updates.checking && Updates.count === 0 ? "…" : String(Updates.count)
-            iconColor: Updates.count > 0 ? Theme.magenta : Theme.muted
-            labelColor: Updates.count > 0 ? Theme.magenta : Theme.muted
+            iconColor: Updates.count > 0 ? Theme.magenta : Theme.text
+            labelColor: Updates.count > 0 ? Theme.magenta : Theme.text
             onClicked: Updates.runUpdate()
         }
 
-        Rectangle { width: parent.width - 16; height: 1; x: 8; color: Theme.overlay }
+        BarDivider { width: parent.width }
 
         // system tray
         Repeater {
@@ -149,6 +150,8 @@ PanelWindow {
                 }
             }
         }
+
+        BarDivider { width: parent.width; visible: SystemTray.items.values.length > 0 }
 
         // mic mute (red when muted)
         BarButton {
@@ -200,6 +203,8 @@ PanelWindow {
             }
             Timer { interval: 5000; running: true; repeat: true; triggeredOnStart: true; onTriggered: poll.running = true }
         }
+
+        BarDivider { width: parent.width }
 
         // notification bell: history panel
         BarButton {

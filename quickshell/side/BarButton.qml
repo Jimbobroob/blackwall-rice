@@ -8,7 +8,8 @@ Rectangle {
     property string icon: ""
     property string label: ""
     property color iconColor: Theme.text
-    property color labelColor: Theme.muted
+    property color labelColor: Theme.text
+    property int labelSize: 9
     property bool lit: false          // filled red (e.g. mic muted)
     signal clicked()
     signal rightClicked()
@@ -34,7 +35,7 @@ Rectangle {
             visible: root.label !== ""
             text: root.label
             color: root.lit ? Theme.base : root.labelColor
-            font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 9
+            font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.labelSize
         }
     }
 
