@@ -9,7 +9,19 @@ Card {
     title: "discord"
     interactive: true
 
-    readonly property int w: 300
+    // members shown as a roughly square grid, filled left to right then down; capped at maxShown
+    readonly property int maxShown: 20
+    readonly property int cellW: 150
+    readonly property var shown: {
+        const all = DiscordVoice.members
+        if (all.length <= maxShown) return all
+        // over the cap: speakers first, then channel order
+        return all.map((m, i) => ({ m, i })).sort((a, b) => (b.m.speaking - a.m.speaking) || (a.i - b.i))
+                  .slice(0, maxShown).map(x => x.m)
+    }
+    readonly property int hidden: DiscordVoice.members.length - shown.length
+    readonly property int cols: Math.max(2, Math.ceil(Math.sqrt(shown.length)))
+    readonly property int w: cols * cellW
 
     component Toggle: Rectangle {
         id: t
@@ -53,39 +65,50 @@ Card {
             }
         }
 
-        Repeater {
-            model: DiscordVoice.members
-            delegate: Row {
-                required property var modelData
-                spacing: 12
-                Rectangle {
-                    width: 32; height: 32; radius: 16
-                    color: Theme.overlay
-                    border.width: 2
-                    border.color: modelData.speaking ? Theme.magenta : "transparent"
-                    clip: true
-                    Image {
-                        anchors.fill: parent; anchors.margins: 2
-                        source: modelData.avatar || ""
-                        asynchronous: true
-                        visible: status === Image.Ready
+        Grid {
+            columns: root.cols
+            columnSpacing: 0; rowSpacing: 10
+            Repeater {
+                model: root.shown
+                delegate: Row {
+                    required property var modelData
+                    width: root.cellW
+                    spacing: 10
+                    Rectangle {
+                        width: 32; height: 32; radius: 16
+                        color: Theme.overlay
+                        border.width: 2
+                        border.color: modelData.speaking ? Theme.magenta : "transparent"
+                        clip: true
+                        Image {
+                            anchors.fill: parent; anchors.margins: 2
+                            source: modelData.avatar || ""
+                            asynchronous: true
+                            visible: status === Image.Ready
+                        }
+                    }
+                    Text {
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: root.cellW - 32 - 10 - 28
+                        elide: Text.ElideRight
+                        text: modelData.name
+                        color: modelData.speaking ? Theme.text : Theme.muted
+                        font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13
+                    }
+                    Text {
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: modelData.deaf ? "󰟎" : (modelData.mute ? "󰍭" : "")
+                        color: Theme.red
+                        font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13
                     }
                 }
-                Text {
-                    anchors.verticalCenter: parent.verticalCenter
-                    width: root.w - 90
-                    elide: Text.ElideRight
-                    text: modelData.name
-                    color: modelData.speaking ? Theme.text : Theme.muted
-                    font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13
-                }
-                Text {
-                    anchors.verticalCenter: parent.verticalCenter
-                    text: modelData.deaf ? "󰟎" : (modelData.mute ? "󰍭" : "")
-                    color: Theme.red
-                    font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13
-                }
             }
+        }
+        Text {
+            visible: root.hidden > 0
+            text: "+" + root.hidden + " more"
+            color: Theme.muted
+            font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 11; font.letterSpacing: 1
         }
     }
 }
