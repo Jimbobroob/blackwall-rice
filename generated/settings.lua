@@ -123,10 +123,10 @@ return {
             },
             {
                 ["id"] = "sysstats",
-                ["anchor"] = "bottom-left",
+                ["anchor"] = "bottom-right",
                 ["margin"] = {
-                    92,
-                    48
+                    48,
+                    492
                 }
             },
             {
