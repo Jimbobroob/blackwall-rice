@@ -9,7 +9,7 @@ Claude updates this file during every phase. If a phase stops partway, the note 
 | 1. Foundation | ✅ | Finished 2026-10-30. User visual check passed. |
 | 2. Main monitor UI | ✅ | Finished 2026-10-30. Awaiting user visual check. |
 | 3. Side monitor dashboard | ✅ | Finished 2026-10-30. Awaiting user visual check. |
-| 4. Spotify + Discord widgets | 🟡 | P4.1–P4.6 done. **Resume at P4.7**: live test in a real call + Spotify playing, then user visual check. |
+| 4. Spotify + Discord widgets | ✅ | Finished 2026-10-30. User confirmed working (voice panel, mute/deafen, Spotify, snip). Discord grid capped at 20. |
 | 5. App theming + lock | ⬜ | |
 | 6. Polish | ⬜ | |
 
@@ -44,5 +44,6 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P4.4 Quickshell `services/DiscordVoice.qml` + `widgets/DiscordWidget.qml`; layout slot `discord` live. Tested against a fake socket server (members, speaking ring, mute icon, offline state, reconnect). Mute/deafen button clicks not tested.
 - [x] P4.5 Vencord built with the plugin via `tools/build-vencord.sh` (pnpm installed in ~/.local; plugin is copied into the Vencord tree because a symlink breaks its path aliases).
 - [x] P4.6 Vesktop pointed at `~/.local/share/vencord-src/dist` (state.json `vencordDir`), RiceVoice enabled, flatpak overrides for that dir (ro) and `xdg-run/rice`, Vesktop restarted. Socket live; widget shows 'not in a call'. (Backups of the old Vesktop state/settings are in the session scratchpad.)
-- [ ] P4.7 Live test in a real voice channel: members, speaking, mute/deafen; Spotify art/progress with a track playing. Ask user to confirm visually, then mark phase done and commit.
+- [x] P4.7 Live test: user confirmed everything works (voice panel in a real call, Spotify, snip bind).
 - [x] P4.8 (user request) `Super + Shift + S` snip bind (`hypr/scripts/snip.sh`: drag a region or click a window, then swappy). Registered, not yet fired interactively.
+- [x] P4.9 Discord widget member grid (square-ish, cap 20, speakers first, +N more).
