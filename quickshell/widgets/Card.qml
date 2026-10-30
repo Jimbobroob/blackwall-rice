@@ -12,15 +12,17 @@ Rectangle {
     property int pad: 18
     // true: the widget takes mouse input (WidgetHost drops its click-through mask)
     property bool interactive: false
+    // no panel at all: just the content floating on the wallpaper
+    property bool bare: false
 
     implicitWidth: holder.childrenRect.width + pad * 2
     implicitHeight: holder.childrenRect.height + pad * 2 + (title !== "" ? 22 : 0)
-    color: Qt.rgba(Theme.base.r, Theme.base.g, Theme.base.b, 0.9)
-    border.width: 1
+    color: bare ? "transparent" : Qt.rgba(Theme.base.r, Theme.base.g, Theme.base.b, 0.9)
+    border.width: bare ? 0 : 1
     border.color: Theme.red_dim
     radius: Settings.radius
 
-    Rectangle { x: Settings.radius; width: 28; height: 2; color: Theme.red }
+    Rectangle { visible: !root.bare; x: Settings.radius; width: 28; height: 2; color: Theme.red }
     Text {
         visible: root.title !== ""
         x: root.pad; y: 12
@@ -28,7 +30,7 @@ Rectangle {
         color: Theme.red_dim
         font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 10; font.letterSpacing: 2
     }
-    Scanlines {}
+    Scanlines { visible: !root.bare }
     Item {
         id: holder
         x: root.pad
