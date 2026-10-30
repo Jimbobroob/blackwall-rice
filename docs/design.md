@@ -247,6 +247,12 @@ All components read colours from ONE palette file. Never hardcode hex values els
 - Widget `margin` is `[horizontal, vertical]`. Main widgets: clock top-right, weather below it.
 - Clipboard history (Super+Shift+V) is still rofi; it wasn't in the phase 2 scope.
 
+### Phase 3 build decisions (2026-10-30)
+- Side bar is 44px wide. Bell shows the history count; the power and history popups open next to the bar, bottom-left. Both also work via `qs ipc call side power|history|close`.
+- Updates count uses `dnf check-update` every 30 min; clicking it opens kitty running `sudo dnf upgrade`.
+- Side widgets are cards (surface fill, thin border, red tick). Clock style (analog/digital) follows `clock.side_style`.
+- Stats come from `quickshell/scripts/stats.sh` (1 s samples); GPU is read from the amdgpu hwmon/`gpu_busy_percent`.
+
 ## 4. Build plan
 Built in 6 phases. Details, steps and done-checks are in **`docs/phases.md`**. Progress is tracked in **`docs/progress.md`**.
 Each phase is started with its slash command in Claude Code: `/rice-phase-1` … `/rice-phase-6`. `/rice-status` shows where things stand.

@@ -9,6 +9,7 @@ import "../services"
 PanelWindow {
     id: win
     required property var spec
+    property string role: "main"
 
     readonly property string a: spec.anchor || "top-left"
     readonly property var m: spec.margin || [48, 48]
@@ -32,11 +33,18 @@ PanelWindow {
     WlrLayershell.layer: WlrLayer.Background
     WlrLayershell.namespace: "rice-widget-" + spec.id
 
+    // widget id -> file, per monitor role
+    QtObject {
+        id: files
+        readonly property var mainFiles: ({ clock: "MainClock.qml", weather: "MainWeather.qml" })
+        readonly property var sideFiles: ({
+            clock: "SideClock.qml", calendar: "SideCalendar.qml", weather: "SideWeather.qml",
+            sysstats: "SysStatsWidget.qml", network: "NetSpeed.qml", cava: "CavaWidget.qml"
+        })
+    }
+
     Loader {
         id: loader
-        source: ({
-            clock: "MainClock.qml",
-            weather: "MainWeather.qml"
-        })[win.spec.id] || ""
+        source: (win.role === "side" ? files.sideFiles : files.mainFiles)[win.spec.id] || ""
     }
 }

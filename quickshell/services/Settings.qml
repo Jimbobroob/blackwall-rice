@@ -24,6 +24,8 @@ Singleton {
     readonly property var clock: data.clock
     readonly property var monitors: data.monitors
     readonly property var bar: data.bar
+    // side widgets that exist so far (spotify/discord come in phase 4)
+    readonly property var sideWidgetIds: ["clock", "calendar", "weather", "sysstats", "network", "cava"]
 
     FileView {
         path: Quickshell.shellPath("theme/settings.json")

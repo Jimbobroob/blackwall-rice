@@ -4,3 +4,6 @@ singleton Weather 1.0 Weather.qml
 singleton Notifs 1.0 Notifs.qml
 singleton LauncherState 1.0 LauncherState.qml
 singleton Hypr 1.0 Hypr.qml
+singleton SysStats 1.0 SysStats.qml
+singleton Updates 1.0 Updates.qml
+singleton UiState 1.0 UiState.qml

@@ -66,8 +66,8 @@ return {
                 ["id"] = "clock",
                 ["anchor"] = "top-left",
                 ["margin"] = {
-                    48,
-                    96
+                    92,
+                    48
                 }
             },
             {
@@ -75,47 +75,47 @@ return {
                 ["anchor"] = "top-left",
                 ["margin"] = {
                     420,
-                    96
+                    48
                 }
             },
             {
                 ["id"] = "weather",
                 ["anchor"] = "top-left",
                 ["margin"] = {
-                    720,
-                    96
+                    820,
+                    48
                 }
             },
             {
                 ["id"] = "spotify",
                 ["anchor"] = "center-left",
                 ["margin"] = {
-                    0,
-                    96
+                    92,
+                    0
                 }
             },
             {
                 ["id"] = "discord",
                 ["anchor"] = "center-right",
                 ["margin"] = {
-                    0,
-                    48
+                    48,
+                    0
                 }
             },
             {
                 ["id"] = "sysstats",
                 ["anchor"] = "bottom-left",
                 ["margin"] = {
-                    48,
-                    96
+                    92,
+                    48
                 }
             },
             {
                 ["id"] = "network",
                 ["anchor"] = "bottom-left",
                 ["margin"] = {
-                    48,
-                    420
+                    540,
+                    48
                 }
             },
             {

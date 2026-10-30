@@ -6,6 +6,8 @@ import "launcher"
 import "osd"
 import "notifications"
 import "widgets"
+import "side"
+import "menus"
 import "services"
 
 // Rice shell. One scope per monitor, keyed by role (main/side) not port name,
@@ -26,9 +28,18 @@ ShellRoot {
             LazyLoader { active: scope.role === "main"; VolumeOsd { screen: scope.modelData } }
             LazyLoader { active: scope.notifHost; NotificationPopups { screen: scope.modelData } }
 
+            LazyLoader { active: scope.role === "side"; SideBar { screen: scope.modelData } }
+            LazyLoader { active: scope.role === "side"; PowerMenu { screen: scope.modelData } }
+            LazyLoader { active: scope.role === "side"; HistoryPanel { screen: scope.modelData } }
+
             Variants {
                 model: scope.role === "main" ? Settings.data.widgets.main : []
-                delegate: WidgetHost { required property var modelData; spec: modelData; screen: scope.modelData }
+                delegate: WidgetHost { required property var modelData; spec: modelData; role: "main"; screen: scope.modelData }
+            }
+            // spotify / discord widgets arrive in phase 4; WidgetHost ignores ids it has no file for
+            Variants {
+                model: scope.role === "side" ? Settings.data.widgets.side.filter(w => Settings.sideWidgetIds.includes(w.id)) : []
+                delegate: WidgetHost { required property var modelData; spec: modelData; role: "side"; screen: scope.modelData }
             }
         }
     }
