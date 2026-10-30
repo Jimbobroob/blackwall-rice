@@ -7,7 +7,7 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 | Keys | Action |
 |---|---|
 | `Super + Enter` | Open terminal (kitty) |
-| `Super + Space` | App launcher (centre of main monitor) |
+| `Super + Space` | App launcher (centre of main monitor). Rofi until phase 2 |
 | `Super + S` | Show/hide Spotify window (always on side monitor) |
 | `Super + D` | Show/hide Discord window (always on side monitor) |
 
@@ -19,6 +19,8 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 | `Super + V` | Toggle floating |
 | `Super + ← ↑ → ↓` | Move focus |
 | `Super + Tab` | Throw focused window to the other monitor |
+| `Super + Left-drag` | Move window |
+| `Super + Right-drag` | Resize window |
 
 ## Workspaces
 | Keys | Action |
@@ -32,8 +34,17 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 |---|---|
 | `Super + L` | Lock screen |
 | `Print` | Screenshot an area, then edit it in swappy |
-| `Super + Shift + V` | Clipboard history |
+| `Super + Shift + V` | Clipboard history (rofi picker until phase 2) |
+
+## Media keys
+| Keys | Action |
+|---|---|
+| `Volume Up / Down` | Volume ±5% (max 100%) |
+| `Mute` | Mute speakers |
+| `Mic Mute` | Mute microphone |
+| `Play/Pause`, `Next`, `Prev` | Control the current player (Spotify) |
 
 ## Changelog
 - 2026-10-30: initial set agreed during design.
 - 2026-10-30: added `Super + S` (Spotify), `Super + D` (Discord), `Super + Tab` (window to other monitor).
+- 2026-10-30 (phase 1): added `Super + Left/Right-drag` (move/resize), media keys. `Super + Space` and `Super + Shift + V` use rofi until phase 2. Keyboard layout is now UK only, so `Super + Space` no longer switches layout.
