@@ -17,17 +17,23 @@ Rectangle {
 
     implicitWidth: holder.childrenRect.width + pad * 2
     implicitHeight: holder.childrenRect.height + pad * 2 + (title !== "" ? 22 : 0)
-    color: bare ? "transparent" : Qt.rgba(Theme.base.r, Theme.base.g, Theme.base.b, 0.9)
-    border.width: bare ? 0 : 1
-    border.color: Theme.red_dim
+    // liquid glass backing (blurred by the rice-widget-* layer rule in hypr/modules/rules.lua)
+    color: "transparent"
     radius: Settings.radius
+    GlassPanel {
+        visible: !root.bare
+        anchors.fill: parent
+        radius: root.radius
+        fillAlpha: root.glass.card_opacity !== undefined ? root.glass.card_opacity : 0.5
+    }
+    readonly property var glass: Settings.data.look.glass || ({})
 
     Rectangle { visible: !root.bare; x: Settings.radius; width: 28; height: 2; color: Theme.red }
     Text {
         visible: root.title !== ""
         x: root.pad; y: 12
         text: root.title.toUpperCase()
-        color: Theme.red_dim
+        color: Theme.red
         font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 10; font.letterSpacing: 2
     }
     Scanlines { visible: !root.bare }

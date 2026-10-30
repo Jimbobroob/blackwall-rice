@@ -8,7 +8,7 @@ import "../services"
 Rectangle {
     id: root
     readonly property var glass: Settings.data.look.glass || ({})
-    readonly property real fillAlpha: glass.bar_opacity !== undefined ? glass.bar_opacity : 0.4
+    property real fillAlpha: glass.bar_opacity !== undefined ? glass.bar_opacity : 0.4
     readonly property real tint: glass.bar_tint !== undefined ? glass.bar_tint : 0.08
 
     color: {

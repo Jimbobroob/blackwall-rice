@@ -179,7 +179,8 @@ return {
             ["blur_passes"] = 3,
             ["tint"] = 0.06,
             ["bar_opacity"] = 0.4,
-            ["bar_tint"] = 0.08
+            ["bar_tint"] = 0.08,
+            ["card_opacity"] = 0.5
         },
         ["cursor"] = {
             ["theme"] = "Bibata-Modern-Classic",
