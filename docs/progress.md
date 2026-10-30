@@ -9,7 +9,7 @@ Claude updates this file during every phase. If a phase stops partway, the note 
 | 1. Foundation | ✅ | Finished 2026-10-30. User visual check passed. |
 | 2. Main monitor UI | ✅ | Finished 2026-10-30. Awaiting user visual check. |
 | 3. Side monitor dashboard | ✅ | Finished 2026-10-30. Awaiting user visual check. |
-| 4. Spotify + Discord widgets | 🟡 | P4.1–P4.4 done. **Resume at P4.5**: build Vencord with the RiceVoice plugin (blocked on user running the build commands), point Vesktop at it, test live. |
+| 4. Spotify + Discord widgets | 🟡 | P4.1–P4.6 done. **Resume at P4.7**: live test in a real call + Spotify playing, then user visual check. |
 | 5. App theming + lock | ⬜ | |
 | 6. Polish | ⬜ | |
 
@@ -42,6 +42,7 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P4.2 Discord feasibility check: local RPC ruled out (Vesktop's arRPC has no voice events, rpc.voice.read needs approval). User chose **option B: Vencord plugin** (recorded in design.md).
 - [x] P4.3 Plugin source `vencord/riceVoice/` (index.ts renderer: voice members, speaking, mute/deaf, 250ms publish; native.ts: Unix socket `$XDG_RUNTIME_DIR/rice/discord.sock`, commands mute/deafen). **Not built or run yet.**
 - [x] P4.4 Quickshell `services/DiscordVoice.qml` + `widgets/DiscordWidget.qml`; layout slot `discord` live. Tested against a fake socket server (members, speaking ring, mute icon, offline state, reconnect). Mute/deafen button clicks not tested.
-- [ ] P4.5 Build Vencord with the plugin: `~/.local/share/vencord-src` is cloned (no deps installed). Needs: pnpm, `pnpm install`, symlink `vencord/riceVoice` into `src/userplugins/`, `pnpm build`.
-- [ ] P4.6 Vesktop: set its Vencord location to the build's `dist`, `flatpak override --user --filesystem=xdg-run/rice dev.vencord.Vesktop`, enable RiceVoice, restart Vesktop.
+- [x] P4.5 Vencord built with the plugin via `tools/build-vencord.sh` (pnpm installed in ~/.local; plugin is copied into the Vencord tree because a symlink breaks its path aliases).
+- [x] P4.6 Vesktop pointed at `~/.local/share/vencord-src/dist` (state.json `vencordDir`), RiceVoice enabled, flatpak overrides for that dir (ro) and `xdg-run/rice`, Vesktop restarted. Socket live; widget shows 'not in a call'. (Backups of the old Vesktop state/settings are in the session scratchpad.)
 - [ ] P4.7 Live test in a real voice channel: members, speaking, mute/deafen; Spotify art/progress with a track playing. Ask user to confirm visually, then mark phase done and commit.
+- [x] P4.8 (user request) `Super + Shift + S` snip bind (`hypr/scripts/snip.sh`: drag a region or click a window, then swappy). Registered, not yet fired interactively.

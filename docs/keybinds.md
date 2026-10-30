@@ -34,6 +34,7 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 |---|---|
 | `Super + L` | Lock screen |
 | `Print` | Screenshot an area, then edit it in swappy |
+| `Super + Shift + S` | Snip: drag a region or click a window, then edit it in swappy |
 | `Super + Shift + V` | Clipboard history (still a rofi picker, not part of the phase 2 scope) |
 
 ## Media keys
@@ -49,3 +50,4 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 - 2026-10-30: added `Super + S` (Spotify), `Super + D` (Discord), `Super + Tab` (window to other monitor).
 - 2026-10-30 (phase 1): added `Super + Left/Right-drag` (move/resize), media keys. `Super + Space` and `Super + Shift + V` use rofi until phase 2. Keyboard layout is now UK only, so `Super + Space` no longer switches layout.
 - 2026-10-30 (phase 2): `Super + Space` is now the Quickshell launcher (`qs ipc call launcher toggle`). Clipboard history stays on rofi.
+- 2026-10-30 (phase 4): added `Super + Shift + S` snip (region or window, via `hypr/scripts/snip.sh`).
