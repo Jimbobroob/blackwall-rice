@@ -47,3 +47,4 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P4.7 Live test: user confirmed everything works (voice panel in a real call, Spotify, snip bind).
 - [x] P4.8 (user request) `Super + Shift + S` snip bind (`hypr/scripts/snip.sh`: drag a region or click a window, then swappy). Registered, not yet fired interactively.
 - [x] P4.9 Discord widget member grid (square-ish, cap 20, speakers first, +N more).
+- [x] P4.10 Spotify widget volume knob (drag around it or scroll; Spotify's own volume over MPRIS).
