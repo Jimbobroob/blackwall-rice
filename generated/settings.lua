@@ -31,7 +31,7 @@ return {
     ["clock"] = {
         ["format"] = "24h",
         ["main_style"] = "digital",
-        ["side_style"] = "analog"
+        ["side_style"] = "digital"
     },
     ["weather"] = {
         ["location"] = "London, England",
@@ -131,9 +131,9 @@ return {
             },
             {
                 ["id"] = "spotify",
-                ["anchor"] = "bottom-left",
+                ["anchor"] = "top-left",
                 ["margin"] = {
-                    520,
+                    1020,
                     48
                 }
             },

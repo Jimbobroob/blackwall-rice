@@ -15,7 +15,7 @@ Card {
 
     Item {
         width: root.size
-        height: root.size + 54
+        height: root.analog ? root.size + 54 : 150
 
         // analog face
         Canvas {
@@ -64,7 +64,7 @@ Card {
         Text {
             visible: !root.analog
             anchors.horizontalCenter: parent.horizontalCenter
-            y: 70
+            y: 0
             text: Qt.formatTime(clock.date, root.h12 ? "h:mm AP" : "HH:mm")
             color: Theme.text
             font.family: "Rajdhani"; font.pixelSize: 84; font.weight: Font.DemiBold
@@ -73,14 +73,14 @@ Card {
         // date
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
-            y: root.size + 8
+            y: root.analog ? root.size + 8 : 100
             text: Qt.formatDate(clock.date, "dddd d MMMM").toUpperCase()
             color: Theme.muted
             font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13; font.letterSpacing: 2
         }
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
-            y: root.size + 30
+            y: root.analog ? root.size + 30 : 122
             text: Qt.formatDate(clock.date, "yyyy")
             color: Theme.red
             font.family: "Rajdhani"; font.pixelSize: 18; font.weight: Font.DemiBold; font.letterSpacing: 4

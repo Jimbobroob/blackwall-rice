@@ -71,3 +71,4 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P6.11 (user request) Discord widget moved under the weather card (top-left [754,310]).
 - [x] P6.12 (user request) network widget moved to Discord's old slot (bottom-right [48,232], above cava).
 - [x] P6.13 (user request) side clock is backgroundless (Card.bare).
+- [x] P6.14 (user requests) Spotify moved to top middle (top-left [1020,48]); side clock now digital 24h (clock.side_style = digital) with a tightened layout.
