@@ -43,8 +43,8 @@ return function(rice)
     hl.bind(key("L"), hl.dsp.exec_cmd("hyprlock"))
     hl.bind("Print", hl.dsp.exec_cmd([[grim -g "$(slurp)" - | swappy -f -]]))
     hl.bind(key("SHIFT + S"), hl.dsp.exec_cmd("~/.config/hypr/scripts/snip.sh"))
-    -- Temporary rofi picker until the Quickshell version.
-    hl.bind(key("SHIFT + V"), hl.dsp.exec_cmd("cliphist list | rofi -dmenu -p clipboard | cliphist decode | wl-copy"))
+    -- Clipboard history: rofi picker themed from the palette (scripts/clippick.sh).
+    hl.bind(key("SHIFT + V"), hl.dsp.exec_cmd(rice.dir .. "/scripts/clippick.sh"))
 
     -- Media keys
     local media = { locked = true, repeating = true }

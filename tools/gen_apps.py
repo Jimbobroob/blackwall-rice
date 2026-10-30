@@ -1097,6 +1097,49 @@ def gen_nvim(c, ansi, settings):
     write("nvim/colors/blackwall.lua", text)
 
 
+def gen_rofi(c, ansi, settings):
+    a = format(round(settings["look"]["glass"]["card_opacity"] * 255), "02X")
+    r = settings["look"]["radius"]
+    write("rofi/blackwall.rasi", f"""/* {HEADER} */
+* {{
+    base: {c['base']}{a};
+    surface: {c['surface']};
+    overlay: {c['overlay']};
+    text: {c['text']};
+    muted: {c['muted']};
+    red: {c['red']};
+    red-dim: {c['red_dim']};
+    background-color: transparent;
+    text-color: @text;
+    font: "JetBrainsMono Nerd Font 11";
+}}
+window {{
+    location: center;
+    width: 680px;
+    background-color: @base;
+    border: 1px;
+    border-color: @red-dim;
+    border-radius: {r}px;
+}}
+mainbox {{ padding: 12px; spacing: 8px; children: [ inputbar, listview ]; }}
+inputbar {{
+    padding: 8px 12px;
+    spacing: 10px;
+    background-color: @surface;
+    border: 1px;
+    border-color: @overlay;
+    border-radius: {r // 2}px;
+    children: [ prompt, entry ];
+}}
+prompt {{ text-color: @red; }}
+entry {{ placeholder: "search history"; placeholder-color: @muted; }}
+listview {{ lines: 10; columns: 1; scrollbar: false; fixed-height: false; spacing: 2px; }}
+element {{ padding: 7px 12px; border-radius: {r // 2}px; }}
+element selected.normal {{ background-color: @red; text-color: #000000; }}
+element-text {{ background-color: transparent; text-color: inherit; }}
+""".replace("#000000", c["base"]))
+
+
 def run(c, ansi, settings):
     gen_gtk(c, ansi)
     gen_toolkit_settings(settings)
@@ -1110,3 +1153,4 @@ def run(c, ansi, settings):
     gen_spicetify(c, ansi)
     gen_vesktop(c, ansi)
     gen_nvim(c, ansi, settings)
+    gen_rofi(c, ansi, settings)

@@ -36,7 +36,7 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 | `Super + L` | Lock screen |
 | `Print` | Screenshot an area, then edit it in swappy |
 | `Super + Shift + S` | Snip: drag a region or click a window, then edit it in swappy |
-| `Super + Shift + V` | Clipboard history (still a rofi picker, not part of the phase 2 scope) |
+| `Super + Shift + V` | Clipboard history: searchable list of everything you've copied (text and images), Enter copies the entry, Esc cancels. Themed rofi (`hypr/scripts/clippick.sh`) |
 
 ## Media keys
 | Keys | Action |
@@ -53,3 +53,4 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 - 2026-10-30 (phase 2): `Super + Space` is now the Quickshell launcher (`qs ipc call launcher toggle`). Clipboard history stays on rofi.
 - 2026-10-30 (phase 4): added `Super + Shift + S` snip (region or window, via `hypr/scripts/snip.sh`).
 - 2026-10-30 (phase 5): added `Super + B` (Firefox).
+- 2026-10-30 (refine): `Super + Shift + V` clipboard history fixed (recording was not running) and themed from the palette.

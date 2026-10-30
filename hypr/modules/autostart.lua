@@ -9,7 +9,7 @@ return function(rice)
         hl.exec_cmd("hypridle")
         hl.exec_cmd("hyprpaper -c " .. rice.dir .. "/generated/hyprpaper.conf")
         hl.exec_cmd("qs")
-        hl.exec_cmd("wl-paste --watch cliphist store")
+        hl.exec_cmd(rice.dir .. "/scripts/clipwatch.sh")
 
         for _, app in pairs(rice.apps) do
             hl.exec_cmd(app.cmd)
