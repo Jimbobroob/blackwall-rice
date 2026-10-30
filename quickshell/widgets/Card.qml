@@ -9,6 +9,8 @@ Rectangle {
     property string title: ""
     default property alias content: holder.data
     property int pad: 18
+    // true: the widget takes mouse input (WidgetHost drops its click-through mask)
+    property bool interactive: false
 
     implicitWidth: holder.childrenRect.width + pad * 2
     implicitHeight: holder.childrenRect.height + pad * 2 + (title !== "" ? 22 : 0)

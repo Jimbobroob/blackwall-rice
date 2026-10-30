@@ -28,8 +28,8 @@ Singleton {
     // corner radius for everything (settings.json -> look.radius); small = chips, buttons, bars
     readonly property int radius: data.look ? data.look.radius : 12
     readonly property int radiusSmall: Math.round(radius / 2)
-    // side widgets that exist so far (spotify/discord come in phase 4)
-    readonly property var sideWidgetIds: ["clock", "calendar", "weather", "sysstats", "network", "cava"]
+    // side widgets that exist so far
+    readonly property var sideWidgetIds: ["clock", "calendar", "weather", "spotify", "discord", "sysstats", "network", "cava"]
 
     FileView {
         path: Quickshell.shellPath("theme/settings.json")

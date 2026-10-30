@@ -253,6 +253,10 @@ All components read colours from ONE palette file. Never hardcode hex values els
 - Side widgets are cards (surface fill, thin border, red tick). Clock style (analog/digital) follows `clock.side_style`.
 - Stats come from `quickshell/scripts/stats.sh` (1 s samples); GPU is read from the amdgpu hwmon/`gpu_busy_percent`.
 
+### Phase 4 build decisions (2026-10-30)
+- **Discord voice widget uses a custom Vencord plugin** (option B). Discord's local RPC is out: Vesktop's arRPC has no voice/speaking events and `rpc.voice.read` needs Discord approval. The plugin reads voice state from Discord's stores inside Vesktop and talks to Quickshell over a Unix socket in `$XDG_RUNTIME_DIR`; mute/deafen go back over the same socket. Needs a locally built Vencord that Vesktop is pointed at.
+- Spotify widget is interactive: `Card.interactive` makes `WidgetHost` accept mouse input (other widgets stay click-through).
+
 ---
 
 ## Afterthoughts (2026-10-30, after phase 3)

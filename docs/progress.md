@@ -9,7 +9,7 @@ Claude updates this file during every phase. If a phase stops partway, the note 
 | 1. Foundation | ✅ | Finished 2026-10-30. User visual check passed. |
 | 2. Main monitor UI | ✅ | Finished 2026-10-30. Awaiting user visual check. |
 | 3. Side monitor dashboard | ✅ | Finished 2026-10-30. Awaiting user visual check. |
-| 4. Spotify + Discord widgets | ⬜ | |
+| 4. Spotify + Discord widgets | 🟡 | P4.1–P4.4 done. **Resume at P4.5**: build Vencord with the RiceVoice plugin (blocked on user running the build commands), point Vesktop at it, test live. |
 | 5. App theming + lock | ⬜ | |
 | 6. Polish | ⬜ | |
 
@@ -38,3 +38,10 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P3.4 widgets: analog clock + date, calendar, weather, system stats, network speed (checked live)
 - [x] P3.4b cava visualiser (Fedora's cava has no pipewire input, so it uses `pulse`; tested with sounds)
 - [x] P3.5 layout driven by settings.json widgets.side (spotify/discord entries kept for phase 4)
+- [x] P4.1 Spotify widget (MPRIS: art, title, artist, progress, prev/play-pause/next); WidgetHost masks only non-interactive widgets (Card.interactive). Rendered on DP-2; no track was playing, so live art/progress still to confirm.
+- [x] P4.2 Discord feasibility check: local RPC ruled out (Vesktop's arRPC has no voice events, rpc.voice.read needs approval). User chose **option B: Vencord plugin** (recorded in design.md).
+- [x] P4.3 Plugin source `vencord/riceVoice/` (index.ts renderer: voice members, speaking, mute/deaf, 250ms publish; native.ts: Unix socket `$XDG_RUNTIME_DIR/rice/discord.sock`, commands mute/deafen). **Not built or run yet.**
+- [x] P4.4 Quickshell `services/DiscordVoice.qml` + `widgets/DiscordWidget.qml`; layout slot `discord` live. Tested against a fake socket server (members, speaking ring, mute icon, offline state, reconnect). Mute/deafen button clicks not tested.
+- [ ] P4.5 Build Vencord with the plugin: `~/.local/share/vencord-src` is cloned (no deps installed). Needs: pnpm, `pnpm install`, symlink `vencord/riceVoice` into `src/userplugins/`, `pnpm build`.
+- [ ] P4.6 Vesktop: set its Vencord location to the build's `dist`, `flatpak override --user --filesystem=xdg-run/rice dev.vencord.Vesktop`, enable RiceVoice, restart Vesktop.
+- [ ] P4.7 Live test in a real voice channel: members, speaking, mute/deafen; Spotify art/progress with a track playing. Ask user to confirm visually, then mark phase done and commit.

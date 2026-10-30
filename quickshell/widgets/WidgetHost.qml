@@ -28,7 +28,8 @@ PanelWindow {
     implicitWidth: loader.item ? loader.item.implicitWidth : 1
     implicitHeight: loader.item ? loader.item.implicitHeight : 1
     color: "transparent"
-    mask: Region {}
+    // passive widgets are click-through; interactive ones (Card.interactive) take input
+    mask: Region { item: loader.item && loader.item.interactive ? loader.item : null }
     exclusionMode: ExclusionMode.Ignore
     WlrLayershell.layer: WlrLayer.Background
     WlrLayershell.namespace: "rice-widget-" + spec.id
@@ -39,7 +40,7 @@ PanelWindow {
         readonly property var mainFiles: ({ clock: "MainClock.qml", weather: "MainWeather.qml" })
         readonly property var sideFiles: ({
             clock: "SideClock.qml", calendar: "SideCalendar.qml", weather: "SideWeather.qml",
-            sysstats: "SysStatsWidget.qml", network: "NetSpeed.qml", cava: "CavaWidget.qml"
+            spotify: "SpotifyWidget.qml", discord: "DiscordWidget.qml", sysstats: "SysStatsWidget.qml", network: "NetSpeed.qml", cava: "CavaWidget.qml"
         })
     }
 
