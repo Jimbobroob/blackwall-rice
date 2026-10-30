@@ -586,6 +586,9 @@ misc               = {bare('overlay')}
 .main-nowPlayingBar-nowPlayingBar {{ border-top: 1px solid {c['red_dim']} !important; }}
 .main-trackList-selected, .main-trackList-trackListRow:hover {{ border-radius: 8px; }}
 .Root__main-view, .main-view-container {{ border-radius: 12px; }}
+/* Spotify tints page headers from cover art (home shortcuts, playlists, albums, artists): pin them to red. */
+.main-home-homeHeader, .main-entityHeader-background, .main-entityHeader-backgroundColor,
+.main-actionBarBackground-background, .main-entityHeader-overlay {{ background-color: {c['red_dim']} !important; }}
 """
     write("spicetify/Blackwall/color.ini", ini)
     write("spicetify/Blackwall/user.css", css)

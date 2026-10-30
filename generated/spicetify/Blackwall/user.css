@@ -3,3 +3,6 @@
 .main-nowPlayingBar-nowPlayingBar { border-top: 1px solid #7A0019 !important; }
 .main-trackList-selected, .main-trackList-trackListRow:hover { border-radius: 8px; }
 .Root__main-view, .main-view-container { border-radius: 12px; }
+/* Spotify tints page headers from cover art (home shortcuts, playlists, albums, artists): pin them to red. */
+.main-home-homeHeader, .main-entityHeader-background, .main-entityHeader-backgroundColor,
+.main-actionBarBackground-background, .main-entityHeader-overlay { background-color: #7A0019 !important; }
