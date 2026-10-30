@@ -115,10 +115,10 @@ return {
             },
             {
                 ["id"] = "network",
-                ["anchor"] = "top-left",
+                ["anchor"] = "bottom-right",
                 ["margin"] = {
-                    1020,
-                    48
+                    48,
+                    232
                 }
             },
             {
