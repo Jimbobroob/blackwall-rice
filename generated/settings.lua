@@ -174,10 +174,10 @@ return {
     ["look"] = {
         ["radius"] = 12,
         ["glass"] = {
-            ["terminal_opacity"] = 0.16,
-            ["blur_size"] = 10,
-            ["blur_passes"] = 3,
-            ["tint"] = 0.06,
+            ["terminal_opacity"] = 0.7,
+            ["blur_size"] = 4,
+            ["blur_passes"] = 2,
+            ["tint"] = 0.0,
             ["card_opacity"] = 0.65
         },
         ["cursor"] = {

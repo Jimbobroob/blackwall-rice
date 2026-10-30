@@ -19,12 +19,12 @@ return function(rice)
         idle_inhibit = "fullscreen",
     })
 
-    -- Liquid-glass terminals: translucent (kitty background_opacity) over strong blur,
-    -- with a soft red edge, and a red-tinted background (look.glass.tint).
+    -- Terminals are plain translucent: kitty's background_opacity (look.glass.terminal_opacity),
+    -- no blur behind them, normal borders.
     hl.window_rule({
-        name  = "glass-kitty",
+        name  = "translucent-kitty",
         match = { class = "^kitty$" },
-        border_color = rice.rgb("red", "88"),
+        no_blur = true,
         no_shadow = true,
     })
 

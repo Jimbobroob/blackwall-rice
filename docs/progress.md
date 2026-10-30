@@ -83,3 +83,4 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P6.23 (user request) side bar: groups separated by red_dim dividers (status | tray apps | controls | bell+power); GPU temp bigger (12px, white, red icon); labels use text colour.
 - [x] P6.24 (user request) system + network moved right (margin 16, flush with the notification toasts).
 - [x] P6.25 (user request) Neovim colourscheme `blackwall` generated from the palette, linked into ~/.config/nvim/colors, init.lua switched to it (backup: ~/rice-old-backup/nvim-init.lua.pre-blackwall). Checked in kitty on a C++ file; diagnostics/LSP colours not seen live.
+- [x] P6.26 (user request) terminals: liquid glass replaced by plain translucent (terminal_opacity 0.7, no_blur rule, tint 0, global blur back to 4/2).
