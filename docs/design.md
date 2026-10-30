@@ -270,6 +270,7 @@ All components read colours from ONE palette file. Never hardcode hex values els
 - Glitch effects are Quickshell shaders (`quickshell/fx/`, built by `tools/build-shaders.sh`): widget/launcher/power-menu pop-in (slice shift + RGB split), scanlines on cards, and a red/magenta tear overlay on workspace change (skipped in game mode on main). Levels come from `settings.json` → `glitch_levels`.
 - **Side bar is liquid glass; main bar stays solid** (user request after phase 6): the side floating pill is translucent and red-tinted over a Hyprland blur (layer rule for `rice-sidebar` in `hypr/modules/rules.lua`), with a soft top sheen and bright top rim (`quickshell/widgets/GlassPanel.qml`). Tune in `settings.json` → `look.glass.bar_opacity` (0.4) and `bar_tint` (0.08).
 - **Widgets are black + red** (user request): cards are near-black (`base` at 90%) with `red_dim` borders, and magenta is dropped from the desktop widgets (the bars keep it for small details). The side tray shows Discord's own icon instead of Vesktop's.
+- **Main bar auto-hides** (user request): it slides away and returns when the pointer touches the bottom edge of the main monitor (hides ~0.45s after it leaves); windows use the full screen height. `settings.json` → `bar.main_autohide` (false = always visible, reserves space). The side bar is unchanged.
 
 ## Afterthoughts (2026-10-30, after phase 3)
 Changes the user decided after seeing the rice running. These **override** earlier sections where they conflict.

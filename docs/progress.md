@@ -66,3 +66,4 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P6.6 (user request) main bar back to solid (glass only on side bar); tray shows the Discord icon for Vesktop; widgets recoloured black + red.
 - [x] P6.7 (user request) glitches re-roll seed, strength and length on every play (pop-in and workspace tear).
 - [x] P6.8 (user request) main clock: no seconds; weather moved down (margin y 212) so the two no longer overlap.
+- [x] P6.9 (user request) main bar auto-hide (bar.main_autohide). Tested: hidden by default, appears at the bottom edge, hides after leaving.

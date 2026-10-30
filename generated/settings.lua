@@ -157,7 +157,8 @@ return {
     },
     ["bar"] = {
         ["main_height"] = 28,
-        ["font_size"] = 12
+        ["font_size"] = 12,
+        ["main_autohide"] = true
     },
     ["launcher"] = {
         ["width"] = 640,

@@ -18,7 +18,7 @@ PanelWindow {
 
     visible: shown || box.opacity > 0
     anchors { bottom: true }
-    margins.bottom: Settings.bar.main_height + 10
+    margins.bottom: Settings.bar.main_autohide ? 16 : Settings.bar.main_height + 10
     implicitWidth: 320
     implicitHeight: 22
     color: "transparent"

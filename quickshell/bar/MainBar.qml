@@ -12,13 +12,41 @@ PanelWindow {
 
     visible: !GameMode.on
     anchors { left: true; right: true; bottom: true }
-    margins { left: 6; right: 6; bottom: 6 }
-    implicitHeight: Settings.bar.main_height
+    // The window also covers the 6px gap under the pill, so the pointer at the very screen edge reaches it.
+    margins { left: 6; right: 6 }
+    implicitHeight: Settings.bar.main_height + 6
     color: "transparent"
     WlrLayershell.namespace: "rice-bar"
 
+    // Auto-hide (settings.json -> bar.main_autohide): slides away, reappears when the pointer
+    // touches the bottom edge, hides again shortly after it leaves. Off = always shown, reserves space.
+    readonly property bool autohide: !!Settings.bar.main_autohide
+    property bool revealed: false
+    readonly property bool open: !autohide || revealed
+    exclusionMode: autohide ? ExclusionMode.Ignore : ExclusionMode.Auto
+    // click-through while hidden, except a thin strip at the screen edge that wakes the bar
+    mask: Region { item: win.open ? hit : trigger }
+
     readonly property var mon: Hyprland.monitorFor(screen)
     readonly property int fontSize: Settings.bar.font_size
+
+    Item { id: hit; anchors.fill: parent
+        HoverHandler {
+            onHoveredChanged: {
+                if (hovered) { hideTimer.stop(); win.revealed = true }
+                else hideTimer.restart()
+            }
+        }
+    }
+    Item { id: trigger; anchors { left: parent.left; right: parent.right; bottom: parent.bottom } height: 4 }
+    Timer { id: hideTimer; interval: 450; onTriggered: win.revealed = false }
+
+    Item {
+        id: body
+        width: parent.width
+        height: Settings.bar.main_height
+        y: win.open ? 0 : height + 6
+        Behavior on y { NumberAnimation { duration: 140; easing.type: Easing.OutCubic } }
 
     // floating rounded pill with a thin red edge
     Rectangle {
@@ -84,4 +112,5 @@ PanelWindow {
         Network {}
         Clock {}
     }
+}
 }
