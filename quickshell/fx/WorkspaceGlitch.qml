@@ -29,17 +29,19 @@ PanelWindow {
         lastWs = wsId
         if (first || wsId < 0 || Settings.glitch.ws_ms <= 0 || Settings.glitch.ws_intensity <= 0) return
         if (role === "main" && GameMode.on) return
-        seed = Math.random() * 10
+        seed = Math.random() * 100
+        variance = 0.6 + Math.random() * 0.8
         anim.restart()
     }
     property real seed: 0
+    property real variance: 1
 
-    NumberAnimation { id: anim; target: win; property: "progress"; from: 1; to: 0; duration: Settings.glitch.ws_ms; easing.type: Easing.OutQuad }
+    NumberAnimation { id: anim; target: win; property: "progress"; from: 1; to: 0; duration: Settings.glitch.ws_ms * (0.8 + win.variance * 0.3); easing.type: Easing.OutQuad }
 
     ShaderEffect {
         anchors.fill: parent
         property real progress: win.progress
-        property real intensity: Settings.glitch.ws_intensity
+        property real intensity: Math.min(1, Settings.glitch.ws_intensity * win.variance)
         property real seed: win.seed
         property color red: Theme.red
         property color magenta: Theme.magenta

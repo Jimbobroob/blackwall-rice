@@ -64,3 +64,4 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P6.4 README.md
 - [x] P6.5 (user request) Liquid-glass bars: GlassPanel + blur layer rules; bar_opacity/bar_tint in settings.json.
 - [x] P6.6 (user request) main bar back to solid (glass only on side bar); tray shows the Discord icon for Vesktop; widgets recoloured black + red.
+- [x] P6.7 (user request) glitches re-roll seed, strength and length on every play (pop-in and workspace tear).

@@ -10,6 +10,9 @@ Item {
     required property Item target
     property bool running: false
     property real progress: 0
+    // re-rolled on every play() so no two glitches look alike
+    property real seed: 0
+    property real variance: 1
 
     x: target ? target.x : 0
     y: target ? target.y : 0
@@ -21,6 +24,8 @@ Item {
         if (!target || Settings.glitch.pop_ms <= 0) return
         anim.stop()
         progress = 1
+        seed = Math.random() * 100
+        variance = 0.6 + Math.random() * 0.9
         running = true
         pause.duration = delay || 0
         anim.restart()
@@ -29,7 +34,7 @@ Item {
     SequentialAnimation {
         id: anim
         PauseAnimation { id: pause }
-        NumberAnimation { target: root; property: "progress"; from: 1; to: 0; duration: Settings.glitch.pop_ms; easing.type: Easing.OutQuad }
+        NumberAnimation { target: root; property: "progress"; from: 1; to: 0; duration: Settings.glitch.pop_ms * (0.8 + root.variance * 0.3); easing.type: Easing.OutQuad }
         ScriptAction { script: root.running = false }
     }
 
@@ -39,8 +44,8 @@ Item {
         anchors.fill: parent
         property variant source: src
         property real progress: root.progress
-        property real strength: Settings.glitch.strength
-        property real seed: Math.random() * 10
+        property real strength: Settings.glitch.strength * root.variance
+        property real seed: root.seed
         // held invisible while waiting out the stagger delay
         opacity: pause.running ? 0 : 1
         fragmentShader: Qt.resolvedUrl("glitch.frag.qsb")

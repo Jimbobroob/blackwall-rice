@@ -17,7 +17,7 @@ float hash(float n) { return fract(sin(n * 78.233 + seed * 12.9898) * 43758.5453
 void main() {
     vec2 uv = qt_TexCoord0;
     float p = progress;
-    float band = floor(uv.y * 90.0 + floor(p * 6.0) * 3.0);
+    float band = floor(uv.y * (60.0 + hash(1.0) * 60.0) + floor(p * 6.0) * 3.0);
     float hit = step(1.0 - 0.12 * p, hash(band));
     float len = 0.15 + 0.7 * hash(band + 1.0);
     float start = hash(band + 2.0) * (1.0 - len);
