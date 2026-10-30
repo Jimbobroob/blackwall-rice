@@ -1,0 +1,8 @@
+# What install.sh links, one per line:
+#   <source, relative to ~/rice>   <target, relative to $HOME>
+# Existing targets are moved to ~/rice-old-backup/<timestamp>/ first.
+
+hypr                     .config/hypr
+kitty                    .config/kitty
+fish/config.fish         .config/fish/config.fish
+generated/starship.toml  .config/starship.toml

@@ -1,0 +1,9 @@
+# editor / OS junk
+*.swp
+*~
+.DS_Store
+# runtime state written by scripts
+*.state
+*.log
+# python
+__pycache__/

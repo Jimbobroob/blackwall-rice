@@ -1,0 +1,25 @@
+{
+  "name": "blackwall",
+  "colors": {
+    "base":    "#07070A",
+    "surface": "#111116",
+    "overlay": "#1C1C24",
+    "text":    "#E6E1E3",
+    "muted":   "#6E6A75",
+    "red":     "#FF0033",
+    "red_dim": "#7A0019",
+    "magenta": "#FF2AA0",
+    "warning": "#FFB000"
+  },
+  "ansi": {
+    "_comment": "Extra hues only for terminal programs that need all 16 ANSI colours.",
+    "green":         "#2FD08A",
+    "blue":          "#5B6CFF",
+    "cyan":          "#2BC8D9",
+    "bright_green":  "#6BF0B4",
+    "bright_blue":   "#8C98FF",
+    "bright_cyan":   "#6FE6F2",
+    "bright_yellow": "#FFCB55",
+    "bright_black":  "#3A3844"
+  }
+}
