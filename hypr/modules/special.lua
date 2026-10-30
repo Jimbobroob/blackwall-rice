@@ -2,14 +2,17 @@
 -- Super+S / Super+D show them on the SIDE monitor (never main), and hide them again.
 return function(rice)
     rice.apps = {
-        spotify = { class = "spotify", cmd = "flatpak run com.spotify.Client" },
-        discord = { class = "vesktop", cmd = "flatpak run dev.vencord.Vesktop" },
+        -- classes: lowercase; Flatpak builds may report the app id instead of the short name.
+        spotify = { classes = { "spotify" }, cmd = "flatpak run com.spotify.Client" },
+        discord = { classes = { "vesktop", "dev.vencord.vesktop" }, cmd = "flatpak run dev.vencord.Vesktop" },
     }
 
     local function app_for(window)
         local class = (window.class or ""):lower()
         for name, app in pairs(rice.apps) do
-            if class == app.class then return name end
+            for _, c in ipairs(app.classes) do
+                if class == c then return name end
+            end
         end
     end
 
@@ -35,27 +38,40 @@ return function(rice)
         if window then park(window) end
     end)
 
+    -- On (re)load, tidy any app windows that ended up somewhere else.
+    for _, w in ipairs(hl.get_windows()) do park(w) end
+
     local return_to -- monitor to give focus back to when hiding
 
     function rice.toggle_app(name)
         local app = rice.apps[name]
-        local side = rice.monitor("side") or hl.get_active_monitor()
-        local shown = side.active_special_workspace
 
-        if shown and shown.name == "special:" .. name then
-            side:set_special_workspace(nil)
-            if return_to and return_to ~= side.name and hl.get_monitor(return_to) then
-                hl.dispatch(hl.dsp.focus({ monitor = return_to }))
+        -- Showing anywhere? Then this press hides it.
+        for _, mon in ipairs(hl.get_monitors()) do
+            local shown = mon.active_special_workspace
+            if shown and shown.name == "special:" .. name then
+                mon:set_special_workspace(nil)
+                if return_to and return_to ~= mon.name and hl.get_monitor(return_to) then
+                    hl.dispatch(hl.dsp.focus({ monitor = return_to }))
+                end
+                return
             end
-            return
         end
 
+        -- Remember where you were, unless you're just switching from the other app.
         local active = hl.get_active_monitor()
-        return_to = active and active.name
+        local current = active and active.active_special_workspace
+        local switching = current and rice.apps[(current.name:gsub("^special:", ""))]
+        if not switching then
+            return_to = active and active.name
+        end
 
         if #windows_of(name) == 0 then
             hl.exec_cmd(app.cmd)
         end
+        -- Specials open on the focused monitor, so focus the side one first.
+        local side = rice.monitor("side") or active
+        hl.dispatch(hl.dsp.focus({ monitor = side.name }))
         side:set_special_workspace(name)
 
         local win = windows_of(name)[1]

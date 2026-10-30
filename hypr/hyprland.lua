@@ -22,6 +22,9 @@ function rice.monitor(role)
     return hl.get_monitor("desc:" .. rice.settings.monitors[role].desc)
 end
 
+-- Global so scripts/widgets can call helpers, e.g. hyprctl eval 'rice.toggle_app("spotify")'
+_G.rice = rice
+
 for _, name in ipairs({ "env", "monitors", "look", "input", "special", "rules", "binds", "gamemode", "autostart" }) do
     dofile(dir .. "/modules/" .. name .. ".lua")(rice)
 end

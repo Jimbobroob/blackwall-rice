@@ -16,7 +16,7 @@ return function(rice)
     for name, app in pairs(rice.apps) do
         hl.window_rule({
             name  = "hide-" .. name,
-            match = { class = "(?i)^" .. app.class .. "$" },
+            match = { class = "(?i)^(" .. table.concat(app.classes, "|"):gsub("%.", "\\.") .. ")$" },
             workspace = "special:" .. name .. " silent",
         })
     end

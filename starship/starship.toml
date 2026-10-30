@@ -17,6 +17,7 @@ read_only = " 󰌾"
 read_only_style = "red_dim"
 truncation_length = 4
 truncation_symbol = "…/"
+truncate_to_repo = false
 
 [git_branch]
 symbol = " "
