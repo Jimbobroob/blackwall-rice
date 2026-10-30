@@ -6,7 +6,7 @@ Claude updates this file during every phase. If a phase stops partway, the note 
 | Phase | Status | Notes |
 |---|---|---|
 | 0. Design (grilling) | ✅ | Finished 2026-10-30 |
-| 1. Foundation | 🟡 | Configs installed + verified. Waiting on user: starship (COPR), Spotify/Vesktop flatpaks, `chsh` to fish, then S/D toggle test + visual check. |
+| 1. Foundation | 🟡 | All steps done and verified. Only the user's visual check (both monitors, kitty/fish/starship look, Super+S/D keys) remains; then mark ✅. |
 | 2. Main monitor UI | ⬜ | |
 | 3. Side monitor dashboard | ⬜ | |
 | 4. Spotify + Discord widgets | ⬜ | |
@@ -22,6 +22,6 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P1.5 Hyprland Lua config (monitors by desc, ws 1-5/6-10, look, binds, Spotify/Discord specials, autostart)
 - [x] P1.6 game mode (hypr/modules/gamemode.lua): tested, main-only, writes $XDG_RUNTIME_DIR/rice/gamemode
 - [x] P1.7 kitty
-- [ ] P1.8 fish + starship (config installed; starship install + chsh pending)
+- [x] P1.8 fish + starship (starship installed via COPR, login shell is fish)
 - [x] P1.9 Rajdhani (tools/install-fonts.sh)
-- [ ] P1.10 install + verify (hypr/kitty/fish/starship linked, no config errors; S/D toggle + user visual check pending)
+- [x] P1.10 install + verify (hypr/kitty/fish/starship linked, no config errors; S/D toggles tested via rice.toggle_app: open/close on DP-2, windows in special workspaces). User visual check pending.
