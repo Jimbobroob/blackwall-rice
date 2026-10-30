@@ -7,7 +7,7 @@ Claude updates this file during every phase. If a phase stops partway, the note 
 |---|---|---|
 | 0. Design (grilling) | ✅ | Finished 2026-10-30 |
 | 1. Foundation | ✅ | Finished 2026-10-30. User visual check passed. |
-| 2. Main monitor UI | ⬜ | |
+| 2. Main monitor UI | ✅ | Finished 2026-10-30. Awaiting user visual check. |
 | 3. Side monitor dashboard | ⬜ | |
 | 4. Spotify + Discord widgets | ⬜ | |
 | 5. App theming + lock | ⬜ | |
@@ -25,3 +25,10 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P1.8 fish + starship (starship installed via COPR, login shell is fish)
 - [x] P1.9 Rajdhani (tools/install-fonts.sh)
 - [x] P1.10 install + verify (hypr/kitty/fish/starship linked, no config errors; S/D toggles tested via rice.toggle_app: open/close on DP-2, windows in special workspaces). User visual check passed.
+- [x] P2.1 Quickshell skeleton (quickshell/, Theme + Settings singletons, per-monitor scopes keyed by role, KVM-safe)
+- [x] P2.2 bottom bar (workspaces, title, now-playing, volume, network, 24h clock); hides in game mode (tested)
+- [x] P2.3 launcher (Super+Space via qs ipc)
+- [x] P2.4 volume OSD
+- [x] P2.5 notification server (side top-right, history in Notifs.history for the phase 3 bell)
+- [x] P2.6 main widgets: digital clock + weather (Open-Meteo), placed from settings.json
+- [x] P2.7 autostart: `qs` added, rumda bar no longer runs; no waybar/dunst/rofi autostarts exist (rofi only for clipboard picker)

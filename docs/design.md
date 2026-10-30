@@ -240,6 +240,13 @@ All components read colours from ONE palette file. Never hardcode hex values els
 
 ---
 
+### Phase 2 build decisions (2026-10-30)
+- Quickshell config lives in `~/rice/quickshell`, linked to `~/.config/quickshell`. `quickshell/theme` is a symlink to `generated/` (palette singleton is **`Theme`**, because `Palette` clashes with a Qt type).
+- Windows are keyed by monitor **role** (matched by description), so a KVM switch just recreates that monitor's windows. If the side monitor is away, notifications show on main.
+- Workspace clicks use `hyprctl eval` (Lua config). Weather is Open-Meteo (no key); lat/long are in `settings.json`.
+- Widget `margin` is `[horizontal, vertical]`. Main widgets: clock top-right, weather below it.
+- Clipboard history (Super+Shift+V) is still rofi; it wasn't in the phase 2 scope.
+
 ## 4. Build plan
 Built in 6 phases. Details, steps and done-checks are in **`docs/phases.md`**. Progress is tracked in **`docs/progress.md`**.
 Each phase is started with its slash command in Claude Code: `/rice-phase-1` … `/rice-phase-6`. `/rice-status` shows where things stand.

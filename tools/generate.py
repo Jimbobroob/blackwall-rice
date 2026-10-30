@@ -87,9 +87,15 @@ def gen_css(c, ansi):
 
 def gen_qml(c, ansi):
     props = "\n".join(f'    readonly property color {k}: "{v}"' for k, v in {**c, **ansi}.items())
-    (OUT / "Palette.qml").write_text(
+    (OUT / "Theme.qml").write_text(
         f"// {HEADER}\npragma Singleton\nimport QtQuick\n\nQtObject {{\n{props}\n}}\n"
     )
+
+
+def gen_qml_extras(settings):
+    """Singleton registration + settings copy so Quickshell reads everything from one folder."""
+    (OUT / "qmldir").write_text("singleton Theme 1.0 Theme.qml\n")
+    (OUT / "settings.json").write_text(json.dumps(settings, indent=2) + "\n")
 
 
 def gen_fish(c, ansi):
@@ -138,6 +144,7 @@ def main():
     gen_kitty(name, c, ansi)
     gen_css(c, ansi)
     gen_qml(c, ansi)
+    gen_qml_extras(settings)
     gen_fish(c, ansi)
     gen_starship(name, c, ansi)
     print(f"generated -> {OUT}")

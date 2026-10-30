@@ -6,3 +6,4 @@ hypr                     .config/hypr
 kitty                    .config/kitty
 fish/config.fish         .config/fish/config.fish
 generated/starship.toml  .config/starship.toml
+quickshell               .config/quickshell

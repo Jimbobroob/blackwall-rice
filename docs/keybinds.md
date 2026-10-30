@@ -7,7 +7,7 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 | Keys | Action |
 |---|---|
 | `Super + Enter` | Open terminal (kitty) |
-| `Super + Space` | App launcher (centre of main monitor). Rofi until phase 2 |
+| `Super + Space` | App launcher (Quickshell, centre of main monitor). Esc closes, ↑↓ + Enter |
 | `Super + S` | Show/hide Spotify window (always on side monitor) |
 | `Super + D` | Show/hide Discord window (always on side monitor) |
 
@@ -34,7 +34,7 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 |---|---|
 | `Super + L` | Lock screen |
 | `Print` | Screenshot an area, then edit it in swappy |
-| `Super + Shift + V` | Clipboard history (rofi picker until phase 2) |
+| `Super + Shift + V` | Clipboard history (still a rofi picker, not part of the phase 2 scope) |
 
 ## Media keys
 | Keys | Action |
@@ -48,3 +48,4 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 - 2026-10-30: initial set agreed during design.
 - 2026-10-30: added `Super + S` (Spotify), `Super + D` (Discord), `Super + Tab` (window to other monitor).
 - 2026-10-30 (phase 1): added `Super + Left/Right-drag` (move/resize), media keys. `Super + Space` and `Super + Shift + V` use rofi until phase 2. Keyboard layout is now UK only, so `Super + Space` no longer switches layout.
+- 2026-10-30 (phase 2): `Super + Space` is now the Quickshell launcher (`qs ipc call launcher toggle`). Clipboard history stays on rofi.

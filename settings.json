@@ -1,49 +1,145 @@
 {
   "glitch_level": "medium",
-
   "clock": {
     "format": "24h",
     "main_style": "digital",
     "side_style": "analog"
   },
-
   "weather": {
     "location": "London, England",
     "temperature_unit": "C",
-    "wind_unit": "mph"
+    "wind_unit": "mph",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "refresh_minutes": 15
   },
-
   "monitors": {
     "main": {
       "desc": "Microstep MSI G241",
       "output": "HDMI-A-1",
       "mode": "1920x1080@144",
       "position": "2560x360",
-      "workspaces": [1, 2, 3, 4, 5]
+      "workspaces": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
     },
     "side": {
       "desc": "iiyama Corporation PL3270Q",
       "output": "DP-2",
       "mode": "2560x1440@60",
       "position": "0x0",
-      "workspaces": [6, 7, 8, 9, 10]
+      "workspaces": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
     }
   },
-
   "widgets": {
     "main": [
-      { "id": "clock",   "anchor": "top-right", "margin": [48, 48] },
-      { "id": "weather", "anchor": "top-right", "margin": [180, 48] }
+      {
+        "id": "clock",
+        "anchor": "top-right",
+        "margin": [
+          48,
+          48
+        ]
+      },
+      {
+        "id": "weather",
+        "anchor": "top-right",
+        "margin": [
+          48,
+          150
+        ]
+      }
     ],
     "side": [
-      { "id": "clock",    "anchor": "top-left",     "margin": [48, 96] },
-      { "id": "calendar", "anchor": "top-left",     "margin": [420, 96] },
-      { "id": "weather",  "anchor": "top-left",     "margin": [720, 96] },
-      { "id": "spotify",  "anchor": "center-left",  "margin": [0, 96] },
-      { "id": "discord",  "anchor": "center-right", "margin": [0, 48] },
-      { "id": "sysstats", "anchor": "bottom-left",  "margin": [48, 96] },
-      { "id": "network",  "anchor": "bottom-left",  "margin": [48, 420] },
-      { "id": "cava",     "anchor": "bottom-right", "margin": [48, 48] }
+      {
+        "id": "clock",
+        "anchor": "top-left",
+        "margin": [
+          48,
+          96
+        ]
+      },
+      {
+        "id": "calendar",
+        "anchor": "top-left",
+        "margin": [
+          420,
+          96
+        ]
+      },
+      {
+        "id": "weather",
+        "anchor": "top-left",
+        "margin": [
+          720,
+          96
+        ]
+      },
+      {
+        "id": "spotify",
+        "anchor": "center-left",
+        "margin": [
+          0,
+          96
+        ]
+      },
+      {
+        "id": "discord",
+        "anchor": "center-right",
+        "margin": [
+          0,
+          48
+        ]
+      },
+      {
+        "id": "sysstats",
+        "anchor": "bottom-left",
+        "margin": [
+          48,
+          96
+        ]
+      },
+      {
+        "id": "network",
+        "anchor": "bottom-left",
+        "margin": [
+          48,
+          420
+        ]
+      },
+      {
+        "id": "cava",
+        "anchor": "bottom-right",
+        "margin": [
+          48,
+          48
+        ]
+      }
     ]
+  },
+  "bar": {
+    "main_height": 28,
+    "font_size": 12
+  },
+  "launcher": {
+    "width": 640,
+    "max_results": 8
+  },
+  "notifications": {
+    "timeout_ms": 6000,
+    "width": 380
+  },
+  "osd": {
+    "timeout_ms": 1100
   }
 }

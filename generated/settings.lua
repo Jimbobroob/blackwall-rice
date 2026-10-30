@@ -9,7 +9,10 @@ return {
     ["weather"] = {
         ["location"] = "London, England",
         ["temperature_unit"] = "C",
-        ["wind_unit"] = "mph"
+        ["wind_unit"] = "mph",
+        ["latitude"] = 51.5074,
+        ["longitude"] = -0.1278,
+        ["refresh_minutes"] = 15
     },
     ["monitors"] = {
         ["main"] = {
@@ -53,8 +56,8 @@ return {
                 ["id"] = "weather",
                 ["anchor"] = "top-right",
                 ["margin"] = {
-                    180,
-                    48
+                    48,
+                    150
                 }
             }
         },
@@ -124,5 +127,20 @@ return {
                 }
             }
         }
+    },
+    ["bar"] = {
+        ["main_height"] = 28,
+        ["font_size"] = 12
+    },
+    ["launcher"] = {
+        ["width"] = 640,
+        ["max_results"] = 8
+    },
+    ["notifications"] = {
+        ["timeout_ms"] = 6000,
+        ["width"] = 380
+    },
+    ["osd"] = {
+        ["timeout_ms"] = 1100
     }
 }
