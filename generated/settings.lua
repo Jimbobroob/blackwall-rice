@@ -133,7 +133,7 @@ return {
                 ["id"] = "spotify",
                 ["anchor"] = "top-left",
                 ["margin"] = {
-                    1020,
+                    788,
                     48
                 }
             },
@@ -141,8 +141,8 @@ return {
                 ["id"] = "discord",
                 ["anchor"] = "top-left",
                 ["margin"] = {
-                    754,
-                    310
+                    420,
+                    48
                 }
             },
             {
