@@ -24,3 +24,4 @@ generated/fastfetch            .config/fastfetch
 generated/firefox/chrome       .config/mozilla/firefox/sgu7n1ns.default-release/chrome
 generated/spicetify/Blackwall  .config/spicetify/Themes/Blackwall
 generated/firefox/user.js     .config/mozilla/firefox/sgu7n1ns.default-release/user.js
+generated/nvim/colors          .config/nvim/colors

@@ -184,7 +184,8 @@ return {
             ["theme"] = "Bibata-Modern-Classic",
             ["size"] = 24
         },
-        ["icon_theme"] = "Papirus-Dark"
+        ["icon_theme"] = "Papirus-Dark",
+        ["nvim_transparent"] = true
     },
     ["lock"] = {
         ["idle_minutes"] = 60,

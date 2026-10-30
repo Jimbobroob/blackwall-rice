@@ -780,6 +780,323 @@ def gen_vesktop(c, ansi):
     write("vesktop/blackwall.theme.css", css)
 
 
+NVIM_TEMPLATE = r"""-- __HEADER__
+-- Blackwall colourscheme for Neovim: palette-generated, covers core, treesitter, LSP,
+-- diagnostics, gitsigns, mini.nvim (statusline/pick/files/clue/icons) and blink.cmp.
+vim.cmd("highlight clear")
+if vim.fn.exists("syntax_on") == 1 then vim.cmd("syntax reset") end
+vim.g.colors_name = "blackwall"
+vim.o.termguicolors = true
+vim.o.background = "dark"
+
+local c = __PALETTE__
+local transparent = __TRANSPARENT__
+local bg = transparent and "NONE" or c.base
+
+local function hl(name, spec) vim.api.nvim_set_hl(0, name, spec) end
+local function link(name, to) vim.api.nvim_set_hl(0, name, { link = to }) end
+
+-- Editor ---------------------------------------------------------------
+hl("Normal",       { fg = c.text, bg = bg })
+hl("NormalNC",     { fg = c.text, bg = bg })
+hl("NormalFloat",  { fg = c.text, bg = c.surface })
+hl("FloatBorder",  { fg = c.red_dim, bg = c.surface })
+hl("FloatTitle",   { fg = c.red, bg = c.surface, bold = true })
+hl("SignColumn",   { bg = bg })
+hl("EndOfBuffer",  { fg = c.base, bg = bg })
+hl("LineNr",       { fg = c.bright_black })
+hl("LineNrAbove",  { fg = c.bright_black })
+hl("LineNrBelow",  { fg = c.bright_black })
+hl("CursorLineNr", { fg = c.red, bold = true })
+hl("CursorLine",   { bg = c.surface })
+hl("CursorColumn", { bg = c.surface })
+hl("ColorColumn",  { bg = c.surface })
+hl("Cursor",       { fg = c.base, bg = c.red })
+hl("lCursor",      { fg = c.base, bg = c.red })
+hl("TermCursor",   { fg = c.base, bg = c.red })
+hl("Visual",       { bg = c.visual })
+hl("VisualNOS",    { bg = c.visual })
+hl("Search",       { fg = c.base, bg = c.warning })
+hl("CurSearch",    { fg = c.base, bg = c.red, bold = true })
+hl("IncSearch",    { fg = c.base, bg = c.red, bold = true })
+hl("Substitute",   { fg = c.base, bg = c.magenta })
+hl("MatchParen",   { fg = c.magenta, bold = true, underline = true })
+hl("Folded",       { fg = c.muted, bg = c.surface })
+hl("FoldColumn",   { fg = c.muted })
+hl("NonText",      { fg = c.bright_black })
+hl("Whitespace",   { fg = c.overlay })
+hl("SpecialKey",   { fg = c.bright_black })
+hl("Conceal",      { fg = c.muted })
+hl("Directory",    { fg = c.red })
+hl("Title",        { fg = c.red, bold = true })
+hl("Question",     { fg = c.cyan })
+hl("MoreMsg",      { fg = c.green })
+hl("ModeMsg",      { fg = c.text, bold = true })
+hl("ErrorMsg",     { fg = c.red, bold = true })
+hl("WarningMsg",   { fg = c.warning })
+hl("WinSeparator", { fg = c.red_dim, bg = bg })
+link("VertSplit", "WinSeparator")
+hl("WinBar",       { fg = c.text, bg = bg, bold = true })
+hl("WinBarNC",     { fg = c.muted, bg = bg })
+hl("StatusLine",   { fg = c.text, bg = c.surface })
+hl("StatusLineNC", { fg = c.muted, bg = c.surface })
+hl("TabLine",      { fg = c.muted, bg = c.surface })
+hl("TabLineFill",  { bg = c.base })
+hl("TabLineSel",   { fg = c.base, bg = c.red, bold = true })
+hl("Pmenu",        { fg = c.text, bg = c.surface })
+hl("PmenuSel",     { fg = c.base, bg = c.red })
+hl("PmenuSbar",    { bg = c.overlay })
+hl("PmenuThumb",   { bg = c.red_dim })
+hl("PmenuKind",    { fg = c.magenta, bg = c.surface })
+hl("PmenuExtra",   { fg = c.muted, bg = c.surface })
+hl("WildMenu",     { fg = c.base, bg = c.red })
+hl("QuickFixLine", { bg = c.overlay, bold = true })
+hl("Underlined",   { fg = c.magenta, underline = true })
+hl("SpellBad",     { sp = c.red, undercurl = true })
+hl("SpellCap",     { sp = c.warning, undercurl = true })
+hl("SpellRare",    { sp = c.magenta, undercurl = true })
+hl("SpellLocal",   { sp = c.cyan, undercurl = true })
+
+-- Syntax ---------------------------------------------------------------
+hl("Comment",      { fg = c.muted, italic = true })
+hl("Constant",     { fg = c.warning })
+hl("String",       { fg = c.green })
+hl("Character",    { fg = c.green })
+hl("Number",       { fg = c.warning })
+hl("Boolean",      { fg = c.warning, bold = true })
+hl("Float",        { fg = c.warning })
+hl("Identifier",   { fg = c.text })
+hl("Function",     { fg = c.magenta })
+hl("Statement",    { fg = c.red })
+hl("Conditional",  { fg = c.red })
+hl("Repeat",       { fg = c.red })
+hl("Label",        { fg = c.red })
+hl("Operator",     { fg = c.bright_black_text })
+hl("Keyword",      { fg = c.red })
+hl("Exception",    { fg = c.red })
+hl("PreProc",      { fg = c.bright_blue })
+hl("Include",      { fg = c.bright_blue })
+hl("Define",       { fg = c.bright_blue })
+hl("Macro",        { fg = c.bright_blue })
+hl("PreCondit",    { fg = c.bright_blue })
+hl("Type",         { fg = c.cyan })
+hl("StorageClass", { fg = c.red })
+hl("Structure",    { fg = c.cyan })
+hl("Typedef",      { fg = c.cyan })
+hl("Special",      { fg = c.bright_cyan })
+hl("SpecialChar",  { fg = c.bright_cyan })
+hl("Tag",          { fg = c.red })
+hl("Delimiter",    { fg = c.muted })
+hl("SpecialComment", { fg = c.muted, italic = true })
+hl("Debug",        { fg = c.warning })
+hl("Error",        { fg = c.red, bold = true })
+hl("Todo",         { fg = c.base, bg = c.warning, bold = true })
+hl("Ignore",       { fg = c.muted })
+
+-- Treesitter -----------------------------------------------------------
+local ts = {
+  ["@variable"] = { fg = c.text },
+  ["@variable.builtin"] = { fg = c.red, italic = true },
+  ["@variable.parameter"] = { fg = c.bright_blue },
+  ["@variable.member"] = { fg = c.text },
+  ["@constant"] = { fg = c.warning },
+  ["@constant.builtin"] = { fg = c.warning, bold = true },
+  ["@constant.macro"] = { fg = c.bright_blue },
+  ["@module"] = { fg = c.bright_blue },
+  ["@label"] = { fg = c.red },
+  ["@string"] = { fg = c.green },
+  ["@string.escape"] = { fg = c.bright_cyan },
+  ["@string.regexp"] = { fg = c.bright_cyan },
+  ["@string.special"] = { fg = c.bright_cyan },
+  ["@character"] = { fg = c.green },
+  ["@number"] = { fg = c.warning },
+  ["@boolean"] = { fg = c.warning, bold = true },
+  ["@type"] = { fg = c.cyan },
+  ["@type.builtin"] = { fg = c.cyan, italic = true },
+  ["@attribute"] = { fg = c.bright_blue },
+  ["@property"] = { fg = c.text },
+  ["@function"] = { fg = c.magenta },
+  ["@function.builtin"] = { fg = c.magenta, italic = true },
+  ["@function.macro"] = { fg = c.bright_blue },
+  ["@constructor"] = { fg = c.cyan },
+  ["@operator"] = { fg = c.bright_black_text },
+  ["@keyword"] = { fg = c.red },
+  ["@keyword.function"] = { fg = c.red },
+  ["@keyword.return"] = { fg = c.red, bold = true },
+  ["@keyword.import"] = { fg = c.bright_blue },
+  ["@punctuation"] = { fg = c.muted },
+  ["@punctuation.special"] = { fg = c.bright_cyan },
+  ["@comment"] = { fg = c.muted, italic = true },
+  ["@comment.error"] = { fg = c.base, bg = c.red, bold = true },
+  ["@comment.warning"] = { fg = c.base, bg = c.warning, bold = true },
+  ["@comment.todo"] = { fg = c.base, bg = c.warning, bold = true },
+  ["@comment.note"] = { fg = c.base, bg = c.cyan, bold = true },
+  ["@markup.heading"] = { fg = c.red, bold = true },
+  ["@markup.strong"] = { bold = true },
+  ["@markup.italic"] = { italic = true },
+  ["@markup.link"] = { fg = c.magenta },
+  ["@markup.link.url"] = { fg = c.magenta, underline = true },
+  ["@markup.raw"] = { fg = c.green },
+  ["@markup.list"] = { fg = c.red },
+  ["@tag"] = { fg = c.red },
+  ["@tag.attribute"] = { fg = c.bright_blue },
+  ["@tag.delimiter"] = { fg = c.muted },
+  ["@diff.plus"] = { fg = c.green },
+  ["@diff.minus"] = { fg = c.red },
+  ["@diff.delta"] = { fg = c.blue },
+}
+for name, spec in pairs(ts) do hl(name, spec) end
+
+-- LSP / diagnostics ----------------------------------------------------
+link("@lsp.type.namespace", "@module")
+link("@lsp.type.class", "@type")
+link("@lsp.type.struct", "@type")
+link("@lsp.type.enum", "@type")
+link("@lsp.type.interface", "@type")
+link("@lsp.type.typeParameter", "@type")
+link("@lsp.type.parameter", "@variable.parameter")
+link("@lsp.type.property", "@property")
+link("@lsp.type.function", "@function")
+link("@lsp.type.method", "@function")
+link("@lsp.type.macro", "@function.macro")
+hl("LspReferenceText",  { bg = c.overlay })
+hl("LspReferenceRead",  { bg = c.overlay })
+hl("LspReferenceWrite", { bg = c.overlay, underline = true })
+hl("LspSignatureActiveParameter", { fg = c.red, bold = true })
+hl("LspInlayHint", { fg = c.bright_black, italic = true })
+hl("LspCodeLens", { fg = c.muted })
+hl("DiagnosticError", { fg = c.red })
+hl("DiagnosticWarn",  { fg = c.warning })
+hl("DiagnosticInfo",  { fg = c.cyan })
+hl("DiagnosticHint",  { fg = c.bright_blue })
+hl("DiagnosticOk",    { fg = c.green })
+hl("DiagnosticVirtualTextError", { fg = c.red, bg = c.diag_error })
+hl("DiagnosticVirtualTextWarn",  { fg = c.warning, bg = c.diag_warn })
+hl("DiagnosticVirtualTextInfo",  { fg = c.cyan, bg = c.diag_info })
+hl("DiagnosticVirtualTextHint",  { fg = c.bright_blue, bg = c.diag_hint })
+hl("DiagnosticUnderlineError", { sp = c.red, undercurl = true })
+hl("DiagnosticUnderlineWarn",  { sp = c.warning, undercurl = true })
+hl("DiagnosticUnderlineInfo",  { sp = c.cyan, undercurl = true })
+hl("DiagnosticUnderlineHint",  { sp = c.bright_blue, undercurl = true })
+hl("DiagnosticDeprecated", { sp = c.muted, strikethrough = true })
+
+-- Diff / git -----------------------------------------------------------
+hl("DiffAdd",    { bg = c.diff_add })
+hl("DiffDelete", { fg = c.red_dim, bg = c.diff_delete })
+hl("DiffChange", { bg = c.diff_change })
+hl("DiffText",   { bg = c.diff_text })
+hl("Added",      { fg = c.green })
+hl("Removed",    { fg = c.red })
+hl("Changed",    { fg = c.blue })
+hl("GitSignsAdd",    { fg = c.green })
+hl("GitSignsChange", { fg = c.blue })
+hl("GitSignsDelete", { fg = c.red })
+hl("GitSignsCurrentLineBlame", { fg = c.bright_black, italic = true })
+
+-- mini.nvim ------------------------------------------------------------
+hl("MiniStatuslineModeNormal",  { fg = c.base, bg = c.red, bold = true })
+hl("MiniStatuslineModeInsert",  { fg = c.base, bg = c.magenta, bold = true })
+hl("MiniStatuslineModeVisual",  { fg = c.base, bg = c.warning, bold = true })
+hl("MiniStatuslineModeReplace", { fg = c.text, bg = c.red_dim, bold = true })
+hl("MiniStatuslineModeCommand", { fg = c.base, bg = c.cyan, bold = true })
+hl("MiniStatuslineModeOther",   { fg = c.base, bg = c.muted, bold = true })
+hl("MiniStatuslineDevinfo",     { fg = c.text, bg = c.overlay })
+hl("MiniStatuslineFilename",    { fg = c.text, bg = c.surface })
+hl("MiniStatuslineFileinfo",    { fg = c.muted, bg = c.overlay })
+hl("MiniStatuslineInactive",    { fg = c.muted, bg = c.surface })
+hl("MiniCursorword",        { bg = c.overlay })
+hl("MiniCursorwordCurrent", { bg = c.overlay })
+hl("MiniIndentscopeSymbol", { fg = c.red_dim })
+hl("MiniJump",              { fg = c.base, bg = c.magenta })
+hl("MiniPickBorder",        { fg = c.red_dim, bg = c.surface })
+hl("MiniPickBorderBusy",    { fg = c.warning, bg = c.surface })
+hl("MiniPickBorderText",    { fg = c.red, bg = c.surface, bold = true })
+hl("MiniPickMatchCurrent",  { bg = c.overlay })
+hl("MiniPickMatchMarked",   { bg = c.visual })
+hl("MiniPickMatchRanges",   { fg = c.magenta, bold = true })
+hl("MiniPickPrompt",        { fg = c.text, bg = c.surface })
+hl("MiniPickPromptCaret",   { fg = c.red, bg = c.surface })
+hl("MiniPickPromptPrefix",  { fg = c.red, bg = c.surface })
+hl("MiniPickNormal",        { fg = c.text, bg = c.surface })
+hl("MiniFilesBorder",       { fg = c.red_dim, bg = c.surface })
+hl("MiniFilesBorderModified", { fg = c.warning, bg = c.surface })
+hl("MiniFilesNormal",       { fg = c.text, bg = c.surface })
+hl("MiniFilesTitle",        { fg = c.muted, bg = c.surface })
+hl("MiniFilesTitleFocused", { fg = c.red, bg = c.surface, bold = true })
+hl("MiniFilesDirectory",    { fg = c.red })
+hl("MiniFilesFile",         { fg = c.text })
+hl("MiniClueBorder",        { fg = c.red_dim, bg = c.surface })
+hl("MiniClueTitle",         { fg = c.red, bg = c.surface, bold = true })
+hl("MiniClueNextKey",       { fg = c.magenta, bg = c.surface })
+hl("MiniClueNextKeyWithPostkeys", { fg = c.red, bg = c.surface })
+hl("MiniClueDescGroup",     { fg = c.red, bg = c.surface })
+hl("MiniClueDescSingle",    { fg = c.text, bg = c.surface })
+hl("MiniClueSeparator",     { fg = c.muted, bg = c.surface })
+hl("MiniIconsAzure",  { fg = c.cyan })
+hl("MiniIconsBlue",   { fg = c.blue })
+hl("MiniIconsCyan",   { fg = c.bright_cyan })
+hl("MiniIconsGreen",  { fg = c.green })
+hl("MiniIconsGrey",   { fg = c.text })
+hl("MiniIconsOrange", { fg = c.warning })
+hl("MiniIconsPurple", { fg = c.magenta })
+hl("MiniIconsRed",    { fg = c.red })
+hl("MiniIconsYellow", { fg = c.bright_yellow })
+hl("MiniTrailspace",  { bg = c.red_dim })
+hl("MiniStarterCurrent", {})
+hl("MiniStarterHeader", { fg = c.red })
+hl("MiniStarterItemBullet", { fg = c.red_dim })
+hl("MiniStarterQuery", { fg = c.magenta })
+hl("MiniStarterSection", { fg = c.red })
+
+-- blink.cmp ------------------------------------------------------------
+hl("BlinkCmpMenu",          { fg = c.text, bg = c.surface })
+hl("BlinkCmpMenuBorder",    { fg = c.red_dim, bg = c.surface })
+hl("BlinkCmpMenuSelection", { fg = c.base, bg = c.red })
+hl("BlinkCmpScrollBarThumb", { bg = c.red_dim })
+hl("BlinkCmpLabel",         { fg = c.text })
+hl("BlinkCmpLabelDeprecated", { fg = c.muted, strikethrough = true })
+hl("BlinkCmpLabelMatch",    { fg = c.magenta, bold = true })
+hl("BlinkCmpLabelDetail",   { fg = c.muted })
+hl("BlinkCmpLabelDescription", { fg = c.muted })
+hl("BlinkCmpKind",          { fg = c.magenta })
+hl("BlinkCmpSource",        { fg = c.muted })
+hl("BlinkCmpGhostText",     { fg = c.bright_black })
+hl("BlinkCmpDoc",           { fg = c.text, bg = c.surface })
+hl("BlinkCmpDocBorder",     { fg = c.red_dim, bg = c.surface })
+hl("BlinkCmpDocSeparator",  { fg = c.red_dim, bg = c.surface })
+hl("BlinkCmpSignatureHelp", { fg = c.text, bg = c.surface })
+hl("BlinkCmpSignatureHelpBorder", { fg = c.red_dim, bg = c.surface })
+hl("BlinkCmpSignatureHelpActiveParameter", { fg = c.red, bold = true })
+
+-- :terminal colours (same 16 as kitty) ---------------------------------
+local term = { c.surface, c.red, c.green, c.warning, c.blue, c.magenta, c.cyan, c.text,
+               c.bright_black, c.red, c.bright_green, c.bright_yellow, c.bright_blue, c.magenta, c.bright_cyan, "#FFFFFF" }
+for i, col in ipairs(term) do vim.g["terminal_color_" .. (i - 1)] = col end
+"""
+
+
+def gen_nvim(c, ansi, settings):
+    pal = {**c, **ansi}
+    pal.update({
+        "visual": mix(c["base"], c["red"], 0.28),
+        "bright_black_text": mix(c["muted"], c["text"], 0.35),
+        "diag_error": mix(c["base"], c["red"], 0.14),
+        "diag_warn": mix(c["base"], c["warning"], 0.12),
+        "diag_info": mix(c["base"], ansi["cyan"], 0.10),
+        "diag_hint": mix(c["base"], ansi["bright_blue"], 0.10),
+        "diff_add": mix(c["base"], ansi["green"], 0.16),
+        "diff_delete": mix(c["base"], c["red"], 0.18),
+        "diff_change": mix(c["base"], ansi["blue"], 0.14),
+        "diff_text": mix(c["base"], ansi["blue"], 0.30),
+    })
+    body = ",\n".join(f'  {k} = "{v}"' for k, v in pal.items())
+    transparent = "true" if settings["look"].get("nvim_transparent", True) else "false"
+    text = (NVIM_TEMPLATE.replace("__HEADER__", HEADER)
+            .replace("__PALETTE__", "{\n" + body + ",\n}")
+            .replace("__TRANSPARENT__", transparent))
+    write("nvim/colors/blackwall.lua", text)
+
+
 def run(c, ansi, settings):
     gen_gtk(c, ansi)
     gen_toolkit_settings(settings)
@@ -792,3 +1109,4 @@ def run(c, ansi, settings):
     gen_firefox(c, ansi)
     gen_spicetify(c, ansi)
     gen_vesktop(c, ansi)
+    gen_nvim(c, ansi, settings)
