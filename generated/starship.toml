@@ -8,25 +8,20 @@ palette = "blackwall"
 # Icons need JetBrainsMono Nerd Font.
 #
 # "Bubbles" layout (after oh-my-posh's bubblesextra), Blackwall colours:
-#                                  ( 󰉋 ~/rice) (  main  2) ( 1.82)
-#   (󱦟 3s) ( 1) (user ❯)                                         ( 19:32)
+#   (󰉋 ~/rice) (main 2) (1.82) (19:32)
+#   (󱦟 3s) (✕ 1) (user ❯)
 # Every bubble: dark "overlay" pill, coloured icon/text.
 
 add_newline = true
 command_timeout = 800
 
 format = """
-$fill$directory$git_branch$git_status$rust$c$cpp$dotnet$python$nodejs$jobs
+$directory$git_branch$git_status$rust$c$cpp$dotnet$python$nodejs$jobs$time
 $cmd_duration$status$username"""
-
-right_format = "$time"
-
-[fill]
-symbol = " "
 
 [directory]
 style = "bg:overlay fg:red bold"
-format = " [](fg:overlay)[󰉋 $path]($style)[$read_only]($read_only_style)[](fg:overlay)"
+format = "[](fg:overlay)[󰉋 $path]($style)[$read_only]($read_only_style)[](fg:overlay)"
 read_only = " 󰌾"
 read_only_style = "bg:overlay fg:warning"
 home_symbol = "~"
@@ -124,7 +119,7 @@ disabled = true
 disabled = false
 time_format = "%H:%M"
 style = "bg:overlay fg:magenta"
-format = "[](fg:overlay)[\uF017 $time]($style)[](fg:overlay)"
+format = " [](fg:overlay)[\uF017 $time]($style)[](fg:overlay)"
 
 [palettes.blackwall]
 base = "#07070A"
