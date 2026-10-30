@@ -261,7 +261,7 @@ Changes the user decided after seeing the rice running. These **override** earli
   - Hyprland windows (rounding with a slightly squircle curve),
   - both bars (now **floating pills** with a 6px gap to the screen edge, not flush),
   - all Quickshell widgets/cards, the launcher, notification toasts, the volume OSD, the power menu and the history panel.
-- **Terminals are "liquid glass"**: kitty is translucent (`look.glass.terminal_opacity`, default **0.45**) over a stronger background blur (`look.glass.blur_size` 10, `blur_passes` 3, vibrancy up), with a **red tint** (`look.glass.tint`, default 0.18: the base colour blended toward the signature red) and a soft translucent red edge. Other windows keep their normal look. Opacity is generated into kitty's `colors.conf`, so edit `settings.json` and run `tools/generate.py`.
+- **Terminals are "liquid glass"**: kitty is translucent (`look.glass.terminal_opacity`, default **0.45**) over a stronger background blur (`look.glass.blur_size` 10, `blur_passes` 3, vibrancy up), with a **red tint** (`look.glass.tint`, default 0.06: the base colour blended toward the signature red) and a soft translucent red edge. Other windows keep their normal look. Opacity is generated into kitty's `colors.conf`, so edit `settings.json` and run `tools/generate.py`.
 - The "sharp/angled corners" part of the glitch/HUD description no longer applies. Thin red borders, monospace labels, scanlines and glitch effects (phase 6) still do.
 
 ## 4. Build plan
