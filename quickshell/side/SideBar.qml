@@ -7,6 +7,7 @@ import Quickshell.Services.SystemTray
 import Quickshell.Io
 import "../theme"
 import "../services"
+import "../widgets"
 
 // Vertical bar on the left edge of the side monitor.
 // launcher | ws 6-10 | space | GPU temp | updates | tray | mic | volume | network | bell | power
@@ -25,12 +26,9 @@ PanelWindow {
     PwObjectTracker { objects: [win.sink, win.source] }
 
     // floating rounded strip with a thin red edge
-    Rectangle {
+    GlassPanel {
         anchors.fill: parent
         radius: Settings.radius
-        color: Theme.base
-        border.width: 1
-        border.color: Theme.red_dim
     }
 
     // top: launcher + workspaces

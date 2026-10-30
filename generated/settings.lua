@@ -176,7 +176,9 @@ return {
             ["terminal_opacity"] = 0.16,
             ["blur_size"] = 10,
             ["blur_passes"] = 3,
-            ["tint"] = 0.06
+            ["tint"] = 0.06,
+            ["bar_opacity"] = 0.4,
+            ["bar_tint"] = 0.08
         },
         ["cursor"] = {
             ["theme"] = "Bibata-Modern-Classic",

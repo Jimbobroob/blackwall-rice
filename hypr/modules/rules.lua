@@ -28,6 +28,11 @@ return function(rice)
         no_shadow = true,
     })
 
+    -- Liquid-glass bars: blur whatever is behind the (translucent) Quickshell bars.
+    for _, ns in ipairs({ "rice-bar", "rice-sidebar" }) do
+        hl.layer_rule({ match = { namespace = ns }, blur = true, ignore_alpha = 0.05 })
+    end
+
     -- Spotify and Discord always open hidden in their special workspace.
     for name, app in pairs(rice.apps) do
         hl.window_rule({

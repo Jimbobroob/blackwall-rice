@@ -5,6 +5,7 @@ import Quickshell.Wayland
 import Quickshell.Hyprland
 import "../theme"
 import "../services"
+import "../widgets"
 
 // Slim bottom bar for the main monitor. Hidden completely in game mode.
 PanelWindow {
@@ -21,12 +22,9 @@ PanelWindow {
     readonly property int fontSize: Settings.bar.font_size
 
     // floating rounded pill with a thin red edge
-    Rectangle {
+    GlassPanel {
         anchors.fill: parent
         radius: Math.min(Settings.radius, height / 2)
-        color: Theme.base
-        border.width: 1
-        border.color: Theme.red_dim
     }
 
     // left: workspaces
