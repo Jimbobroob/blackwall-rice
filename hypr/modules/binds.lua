@@ -5,6 +5,7 @@ return function(rice)
 
     -- Apps
     hl.bind(key("Return"), hl.dsp.exec_cmd("kitty"))
+    hl.bind(key("B"), hl.dsp.exec_cmd("firefox"))
     hl.bind(key("Space"), hl.dsp.exec_cmd("qs ipc call launcher toggle"))
     hl.bind(key("S"), function() rice.toggle_app("spotify") end)
     hl.bind(key("D"), function() rice.toggle_app("discord") end)
