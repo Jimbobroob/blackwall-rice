@@ -152,7 +152,7 @@ return {
             ["tint"] = 0.06
         },
         ["cursor"] = {
-            ["theme"] = "Adwaita",
+            ["theme"] = "Bibata-Modern-Classic",
             ["size"] = 24
         },
         ["icon_theme"] = "Papirus-Dark"

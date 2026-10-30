@@ -10,7 +10,7 @@ Claude updates this file during every phase. If a phase stops partway, the note 
 | 2. Main monitor UI | ✅ | Finished 2026-10-30. Awaiting user visual check. |
 | 3. Side monitor dashboard | ✅ | Finished 2026-10-30. Awaiting user visual check. |
 | 4. Spotify + Discord widgets | ✅ | Finished 2026-10-30. User confirmed working (voice panel, mute/deafen, Spotify, snip). Discord grid capped at 20. |
-| 5. App theming + lock | 🟡 | Resume at P5.6. Blocked on: `sudo dnf install hypridle fastfetch`; cursor + Spicetify downloads (the auto-mode classifier blocked them, user decides); Spotify dir needs a sudo chmod for Spicetify. |
+| 5. App theming + lock | 🟡 | Resume at P5.7b. Blocked on: user runs the Spotify dir sudo chmod; then `spicetify backup apply`, lock test (Super+L), Firefox + Vesktop visual checks. |
 | 6. Polish | ⬜ | |
 
 ## Step log
@@ -53,7 +53,8 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P5.3 Checked live: btop, yazi, Nautilus (GTK4) and qt6ct render in the palette. Cursor theme is Adwaita for now (`settings.json` look.cursor)
 - [x] P5.4 Vesktop: `tools/install-vesktop-theme.sh` copied + enabled blackwall.theme.css (needs a Vesktop restart to show)
 - [x] P5.5 hyprlock.conf (Rajdhani clock/date, weather via `hypr/scripts/lock_weather.py`, input field; main + side monitors by desc) and hypridle.conf (lock after `lock.idle_minutes` = 60); Hyprland rule `idle_inhibit = fullscreen`; hypridle + cursor set in autostart. **Not yet tested: hypridle not installed, hyprlock not fired.**
-- [ ] P5.6 install hypridle + fastfetch (sudo), test fastfetch, start hypridle, test lock (Super+L) with the user
-- [ ] P5.7 Spicetify (binary download + Spotify dir permissions) and the final cursor theme
+- [x] P5.6a hypridle, hyprlock, fastfetch installed; fastfetch renders with the themed config; hypridle running. **Lock (Super+L) still to be tested with the user.**
+- [x] P5.7a Spicetify binary installed, Blackwall theme present (current_theme=Blackwall), cursor set to Bibata-Modern-Classic in settings.json.
+- [ ] P5.7b Spotify dir chmod (sudo, user) then `spicetify backup apply`
 - [ ] P5.8 Firefox visual check (restart Firefox), Vesktop restart check
 
