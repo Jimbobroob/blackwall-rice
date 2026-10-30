@@ -12,6 +12,13 @@ return function(rice)
         no_focus = true,
     })
 
+    -- Games and fullscreen video block the idle auto-lock (hypridle honours this).
+    hl.window_rule({
+        name  = "idle-inhibit-fullscreen",
+        match = { class = ".*" },
+        idle_inhibit = "fullscreen",
+    })
+
     -- Liquid-glass terminals: translucent (kitty background_opacity) over strong blur,
     -- with a soft red edge, and a red-tinted background (look.glass.tint).
     hl.window_rule({

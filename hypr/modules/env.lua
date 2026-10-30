@@ -2,8 +2,12 @@
 return function(rice)
     local home = os.getenv("HOME")
 
-    hl.env("XCURSOR_SIZE", "24")
-    hl.env("HYPRCURSOR_SIZE", "24")
+    local cursor = rice.settings.look.cursor
+    hl.env("XCURSOR_THEME", cursor.theme)
+    hl.env("XCURSOR_SIZE", tostring(cursor.size))
+    hl.env("HYPRCURSOR_THEME", cursor.theme)
+    hl.env("HYPRCURSOR_SIZE", tostring(cursor.size))
+    hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
     hl.env("TERMINAL", "kitty")
     hl.env("BROWSER", "firefox")
     -- Let launchers see Flatpak apps (Spotify, Vesktop).

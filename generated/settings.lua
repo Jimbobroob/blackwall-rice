@@ -150,6 +150,15 @@ return {
             ["blur_size"] = 10,
             ["blur_passes"] = 3,
             ["tint"] = 0.06
-        }
+        },
+        ["cursor"] = {
+            ["theme"] = "Adwaita",
+            ["size"] = 24
+        },
+        ["icon_theme"] = "Papirus-Dark"
+    },
+    ["lock"] = {
+        ["idle_minutes"] = 60,
+        ["grace_seconds"] = 0
     }
 }

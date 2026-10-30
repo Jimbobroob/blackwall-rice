@@ -7,3 +7,20 @@ kitty                    .config/kitty
 fish/config.fish         .config/fish/config.fish
 generated/starship.toml  .config/starship.toml
 quickshell               .config/quickshell
+
+# Phase 5: app theming + lock (hyprlock/hypridle are inside the hypr folder)
+generated/gtk/gtk.css          .config/gtk-3.0/gtk.css
+generated/gtk/gtk.css          .config/gtk-4.0/gtk.css
+generated/gtk/settings.ini     .config/gtk-3.0/settings.ini
+generated/gtk/settings.ini     .config/gtk-4.0/settings.ini
+generated/qt/qt5ct.conf        .config/qt5ct/qt5ct.conf
+generated/qt/qt6ct.conf        .config/qt6ct/qt6ct.conf
+generated/qt/blackwall.conf    .config/qt6ct/colors/blackwall.conf
+generated/qt/blackwall.conf    .config/qt5ct/colors/blackwall.conf
+btop                           .config/btop
+generated/yazi/theme.toml      .config/yazi/theme.toml
+generated/cava                 .config/cava
+generated/fastfetch            .config/fastfetch
+generated/firefox/chrome       .config/mozilla/firefox/sgu7n1ns.default-release/chrome
+generated/spicetify/Blackwall  .config/spicetify/Themes/Blackwall
+generated/firefox/user.js     .config/mozilla/firefox/sgu7n1ns.default-release/user.js

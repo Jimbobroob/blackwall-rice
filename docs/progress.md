@@ -10,7 +10,7 @@ Claude updates this file during every phase. If a phase stops partway, the note 
 | 2. Main monitor UI | ✅ | Finished 2026-10-30. Awaiting user visual check. |
 | 3. Side monitor dashboard | ✅ | Finished 2026-10-30. Awaiting user visual check. |
 | 4. Spotify + Discord widgets | ✅ | Finished 2026-10-30. User confirmed working (voice panel, mute/deafen, Spotify, snip). Discord grid capped at 20. |
-| 5. App theming + lock | ⬜ | |
+| 5. App theming + lock | 🟡 | Resume at P5.6. Blocked on: `sudo dnf install hypridle fastfetch`; cursor + Spicetify downloads (the auto-mode classifier blocked them, user decides); Spotify dir needs a sudo chmod for Spicetify. |
 | 6. Polish | ⬜ | |
 
 ## Step log
@@ -48,3 +48,12 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P4.8 (user request) `Super + Shift + S` snip bind (`hypr/scripts/snip.sh`: drag a region or click a window, then swappy). Registered, not yet fired interactively.
 - [x] P4.9 Discord widget member grid (square-ish, cap 20, speakers first, +N more).
 - [x] P4.10 Spotify widget volume knob (drag around it or scroll; Spotify's own volume over MPRIS).
+- [x] P5.1 `tools/gen_apps.py` (called by generate.py): GTK css/settings.ini, qt5ct/qt6ct conf + colour scheme, btop, yazi, cava, fastfetch, hyprlock, hypridle, Firefox chrome + user.js, Spicetify theme, Vesktop theme, all from the palette
+- [x] P5.2 install.sh run for the new links (backup `~/rice-old-backup/20261030-204452`); `tools/apply-gsettings.sh` (dark scheme, adw-gtk3-dark, Papirus-Dark, font, cursor; old values saved, `--restore` undoes)
+- [x] P5.3 Checked live: btop, yazi, Nautilus (GTK4) and qt6ct render in the palette. Cursor theme is Adwaita for now (`settings.json` look.cursor)
+- [x] P5.4 Vesktop: `tools/install-vesktop-theme.sh` copied + enabled blackwall.theme.css (needs a Vesktop restart to show)
+- [x] P5.5 hyprlock.conf (Rajdhani clock/date, weather via `hypr/scripts/lock_weather.py`, input field; main + side monitors by desc) and hypridle.conf (lock after `lock.idle_minutes` = 60); Hyprland rule `idle_inhibit = fullscreen`; hypridle + cursor set in autostart. **Not yet tested: hypridle not installed, hyprlock not fired.**
+- [ ] P5.6 install hypridle + fastfetch (sudo), test fastfetch, start hypridle, test lock (Super+L) with the user
+- [ ] P5.7 Spicetify (binary download + Spotify dir permissions) and the final cursor theme
+- [ ] P5.8 Firefox visual check (restart Firefox), Vesktop restart check
+

@@ -155,6 +155,8 @@ def main():
     gen_qml_extras(settings)
     gen_fish(c, ansi)
     gen_starship(name, c, ansi)
+    import gen_apps
+    gen_apps.run(c, ansi, settings)
     print(f"generated -> {OUT}")
 
 

@@ -5,6 +5,8 @@ return function(rice)
         -- Session plumbing.
         hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE")
         hl.exec_cmd("systemctl --user start hyprpolkitagent")
+        hl.exec_cmd("hyprctl setcursor " .. rice.settings.look.cursor.theme .. " " .. rice.settings.look.cursor.size)
+        hl.exec_cmd("hypridle")
         hl.exec_cmd("qs")
         hl.exec_cmd("wl-paste --watch cliphist store")
 
