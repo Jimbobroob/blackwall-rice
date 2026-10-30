@@ -146,7 +146,7 @@ return {
     ["look"] = {
         ["radius"] = 12,
         ["glass"] = {
-            ["terminal_opacity"] = 0.28,
+            ["terminal_opacity"] = 0.16,
             ["blur_size"] = 10,
             ["blur_passes"] = 3,
             ["tint"] = 0.06
