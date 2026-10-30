@@ -77,3 +77,4 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P6.17 (user request) system + network nudged up 80px (margins 572 / 312).
 - [x] P6.18 (user request) top row is now clock | Discord [420,48] | Spotify [788,48].
 - [x] P6.19 (user request) widget cards are liquid glass (Card uses GlassPanel, card_opacity 0.5, blur layer rule); card titles brightened to red.
+- [x] P6.20 (user request) widget cards: liquid glass replaced by plain translucent (card_opacity 0.65, no blur).

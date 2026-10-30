@@ -272,7 +272,7 @@ All components read colours from ONE palette file. Never hardcode hex values els
 - **Widgets are black + red** (user request): cards are near-black (`base` at 90%) with `red_dim` borders, and magenta is dropped from the desktop widgets (the bars keep it for small details). The side tray shows Discord's own icon instead of Vesktop's.
 - **Main bar auto-hides** (user request): it slides away and returns when the pointer touches the bottom edge of the main monitor (hides ~0.45s after it leaves); windows use the full screen height. `settings.json` → `bar.main_autohide` (false = always visible, reserves space). The side bar is unchanged.
 - **Side widget layout re-planned around the wallpaper** (user request): top strip = clock, Discord, Spotify (above the head); bottom-left = system stats + Spotify (dark floor); bottom-right = network above cava (cava narrowed to 560px); Discord sits under the weather card (grows downward during a call). Left-middle and the figure stay clear. It's all `settings.json` → `widgets.side`, so a new wallpaper means re-placing here.
-- **Widget cards are liquid glass** (user request): translucent red-tinted fill over a Hyprland blur (`rice-widget-*` layer rule), same sheen/rim as the side bar (`GlassPanel`). `settings.json` → `look.glass.card_opacity` (0.5). Backgroundless widgets (`bare`, e.g. the side clock) are unaffected.
+- **Widget cards are plain translucent** (user tried liquid glass, disliked the look): `base` at `look.glass.card_opacity` (0.65) with a thin `red_dim` border, no blur or sheen. Liquid glass stays on the side bar only.
 
 ## Afterthoughts (2026-10-30, after phase 3)
 Changes the user decided after seeing the rice running. These **override** earlier sections where they conflict.

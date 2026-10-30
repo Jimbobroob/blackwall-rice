@@ -17,16 +17,13 @@ Rectangle {
 
     implicitWidth: holder.childrenRect.width + pad * 2
     implicitHeight: holder.childrenRect.height + pad * 2 + (title !== "" ? 22 : 0)
-    // liquid glass backing (blurred by the rice-widget-* layer rule in hypr/modules/rules.lua)
-    color: "transparent"
-    radius: Settings.radius
-    GlassPanel {
-        visible: !root.bare
-        anchors.fill: parent
-        radius: root.radius
-        fillAlpha: root.glass.card_opacity !== undefined ? root.glass.card_opacity : 0.5
-    }
+    // plain translucent panel; opacity is settings.json -> look.glass.card_opacity
     readonly property var glass: Settings.data.look.glass || ({})
+    readonly property real fillAlpha: glass.card_opacity !== undefined ? glass.card_opacity : 0.65
+    color: bare ? "transparent" : Qt.rgba(Theme.base.r, Theme.base.g, Theme.base.b, fillAlpha)
+    border.width: bare ? 0 : 1
+    border.color: Theme.red_dim
+    radius: Settings.radius
 
     Rectangle { visible: !root.bare; x: Settings.radius; width: 28; height: 2; color: Theme.red }
     Text {
