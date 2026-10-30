@@ -1,119 +1,116 @@
-# Starship prompt template. Colours are palette names (red, magenta, muted...);
+# Starship prompt template. Colours are palette names (red, magenta, overlay...);
 # tools/generate.py appends the [palettes] table and writes generated/starship.toml.
 # Icons need JetBrainsMono Nerd Font.
 #
-# Looks like:
-#   ┌▓ 󰣛 user  󰉋 ~/rice //  main  1 //  1.82 // 󱦟 3s          09:41
-#   └─
+# "Bubbles" layout (after oh-my-posh's bubblesextra), Blackwall colours:
+#                                  ( 󰉋 ~/rice) (  main  2) ( 1.82)
+#   (󱦟 3s) ( 1) (user ❯)                                         ( 19:32)
+# Every bubble: dark "overlay" pill, coloured icon/text.
 
 add_newline = true
 command_timeout = 800
 
 format = """
-[┌](red)[▓](red)[ $os$username ](bg:red fg:base bold)[](fg:red) \
-$directory$git_branch$git_status$rust$c$cpp$dotnet$python$nodejs$jobs$cmd_duration$status
-[└─](red)[ ](bold red)"""
+$fill$directory$git_branch$git_status$rust$c$cpp$dotnet$python$nodejs$jobs
+$cmd_duration$status$username"""
 
 right_format = "$time"
 
-[os]
-disabled = false
-style = "bg:red fg:base bold"
-format = "[$symbol]($style)"
-
-[os.symbols]
-Fedora = " "
-Linux = " "
-
-[username]
-show_always = true
-style_user = "bg:red fg:base bold"
-style_root = "bg:red fg:text bold"
-format = "[$user]($style)"
+[fill]
+symbol = " "
 
 [directory]
-style = "bold text"
-format = "[󰉋 ](red)[$path]($style)[$read_only]($read_only_style) "
-home_symbol = "~"
+style = "bg:overlay fg:red bold"
+format = " [](fg:overlay)[󰉋 $path]($style)[$read_only]($read_only_style)[](fg:overlay)"
 read_only = " 󰌾"
-read_only_style = "red_dim"
+read_only_style = "bg:overlay fg:warning"
+home_symbol = "~"
 truncation_length = 4
 truncation_symbol = "…/"
 truncate_to_repo = false
 
 [directory.substitutions]
 "Documents" = "󰈙 Documents"
-"Downloads" = " Downloads"
+"Downloads" = "\uF019 Downloads"
 "Music" = "󰝚 Music"
-"Pictures" = " Pictures"
-"Source" = " Source"
+"Pictures" = "\uF03E Pictures"
+"Source" = "\uF121 Source"
 "rice" = "󰔶 rice"
 
+# Branch opens the git bubble, status closes it.
 [git_branch]
-symbol = " "
-style = "magenta"
-format = "[//](muted) [$symbol$branch]($style) "
+symbol = "\uE0A0 "
+style = "bg:overlay fg:magenta"
+format = " [](fg:overlay)[$symbol$branch]($style)"
 
 [git_status]
-style = "red"
-format = "([$all_status$ahead_behind]($style) )"
-conflicted = " "
+style = "bg:overlay fg:magenta"
+format = "[( $all_status$ahead_behind)]($style)[](fg:overlay)"
+conflicted = "\uF06A "
 ahead = "⇡${count} "
 behind = "⇣${count} "
 diverged = "⇕⇡${ahead_count}⇣${behind_count} "
-untracked = " ${count} "
+untracked = "\uF059 ${count} "
 stashed = "󰏗 ${count} "
-modified = " ${count} "
-staged = " ${count} "
+modified = "\uF040 ${count} "
+staged = "\uF00C ${count} "
 renamed = "󰑕 ${count} "
-deleted = " ${count} "
+deleted = "\uF1F8 ${count} "
 
 [rust]
-symbol = " "
-style = "red"
-format = "[//](muted) [$symbol$version]($style) "
+symbol = "\uE7A8 "
+style = "bg:overlay fg:red"
+format = " [](fg:overlay)[$symbol$version]($style)[](fg:overlay)"
 
 [c]
-symbol = " "
-style = "red"
-format = "[//](muted) [$symbol$version]($style) "
+symbol = "\uE61E "
+style = "bg:overlay fg:cyan"
+format = " [](fg:overlay)[$symbol$version]($style)[](fg:overlay)"
 
 [cpp]
 disabled = false
-symbol = " "
-style = "red"
-format = "[//](muted) [$symbol$version]($style) "
+symbol = "\uE61D "
+style = "bg:overlay fg:blue"
+format = " [](fg:overlay)[$symbol$version]($style)[](fg:overlay)"
 
 [dotnet]
 symbol = "󰪮 "
-style = "red"
-format = "[//](muted) [$symbol$version]($style) "
+style = "bg:overlay fg:magenta"
+format = " [](fg:overlay)[$symbol$version]($style)[](fg:overlay)"
 
 [python]
-symbol = " "
-style = "red"
-format = "[//](muted) [$symbol$version]($style) "
+symbol = "\uE73C "
+style = "bg:overlay fg:warning"
+format = " [](fg:overlay)[$symbol$version( $virtualenv)]($style)[](fg:overlay)"
 
 [nodejs]
-symbol = " "
-style = "red"
-format = "[//](muted) [$symbol$version]($style) "
+symbol = "\uE718 "
+style = "bg:overlay fg:green"
+format = " [](fg:overlay)[$symbol$version]($style)[](fg:overlay)"
 
 [jobs]
-symbol = " "
-style = "magenta"
-format = "[//](muted) [$symbol$number]($style) "
+symbol = "\uF013 "
+style = "bg:overlay fg:warning"
+format = " [](fg:overlay)[$symbol$number]($style)[](fg:overlay)"
 
+# Line 2 (left).
 [cmd_duration]
-min_time = 2000
-style = "warning"
-format = "[//](muted) [󱦟 $duration]($style) "
+min_time = 0
+show_milliseconds = false
+style = "bg:overlay fg:muted"
+format = "[](fg:overlay)[󱦟 $duration]($style)[](fg:overlay) "
 
 [status]
 disabled = false
-symbol = " "
-style = "bold red"
-format = "[//](muted) [$symbol$status]($style) "
+symbol = "\uF00D "
+style = "bg:overlay fg:red bold"
+format = "[](fg:overlay)[$symbol$status]($style)[](fg:overlay) "
+
+[username]
+show_always = true
+style_user = "bg:overlay fg:red bold"
+style_root = "bg:overlay fg:warning bold"
+format = "[](fg:overlay)[$user ❯]($style)[](fg:overlay) "
 
 [character]
 disabled = true
@@ -121,5 +118,5 @@ disabled = true
 [time]
 disabled = false
 time_format = "%H:%M"
-style = "muted"
-format = "[ $time]($style)"
+style = "bg:overlay fg:magenta"
+format = "[](fg:overlay)[\uF017 $time]($style)[](fg:overlay)"

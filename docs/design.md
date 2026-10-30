@@ -179,7 +179,7 @@ All components read colours from ONE palette file. Never hardcode hex values els
 ### Terminal & shell
 - **Terminal: kitty** (chosen for its image protocol, maturity and r/unixporn examples).
 - **Shell: fish** (replacing bash as the default).
-- **Prompt: starship**, themed with the palette. Two-line HUD with **Nerd Font icons** (red angled user block, folder/git/language icons). (Added 2026-10-30: the plain version was too barren.)
+- **Prompt: starship**, themed with the palette, in a **"bubbles" layout** (after oh-my-posh's bubblesextra, the user's old prompt): dark rounded pills with coloured Nerd Font icons; path/git/languages right-aligned on line 1, time + status + `user ❯` on line 2. `ls` uses eza with icons. (Changed 2026-10-30: the plain version was too barren.)
 - **Terminal greeting: NONE for now.** Terminal opens straight to the prompt. (A fastfetch image like Johnny's gun can be added later. kitty supports real images.)
 
 ### Motion
