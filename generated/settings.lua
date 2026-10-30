@@ -99,17 +99,17 @@ return {
             },
             {
                 ["id"] = "calendar",
-                ["anchor"] = "top-left",
+                ["anchor"] = "bottom-left",
                 ["margin"] = {
-                    420,
+                    92,
                     48
                 }
             },
             {
                 ["id"] = "weather",
-                ["anchor"] = "top-left",
+                ["anchor"] = "bottom-left",
                 ["margin"] = {
-                    754,
+                    426,
                     48
                 }
             },
