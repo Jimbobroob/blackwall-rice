@@ -8,7 +8,7 @@ Card {
         spacing: 18
         Text {
             text: Weather.icon
-            color: Theme.magenta
+            color: Theme.red
             font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 64
             anchors.verticalCenter: parent.verticalCenter
         }

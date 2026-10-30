@@ -111,7 +111,9 @@ PanelWindow {
                     anchors.centerIn: parent
                     width: 18; height: 18
                     sourceSize: Qt.size(36, 36)
-                    source: trayItem.modelData.icon
+                    // Vesktop's tray icon is its own logo; show Discord's real one instead
+                    readonly property bool isDiscord: /vesktop|discord|vencord/i.test((trayItem.modelData.id || "") + (trayItem.modelData.title || ""))
+                    source: isDiscord ? Quickshell.iconPath("discord", trayItem.modelData.icon) : trayItem.modelData.icon
                 }
                 HoverHandler { id: trayHover }
                 TapHandler {

@@ -50,7 +50,7 @@ Card {
             readout: Math.round(SysStats.gpu) + "%  ·  " + Math.round(SysStats.gpuTemp) + "°C"
         }
         Meter {
-            label: "RAM"; value: SysStats.ram; tint: Theme.magenta
+            label: "RAM"; value: SysStats.ram; tint: Theme.red_dim
             readout: SysStats.ramUsedGb.toFixed(1) + " / " + SysStats.ramTotalGb.toFixed(0) + " GB"
         }
     }

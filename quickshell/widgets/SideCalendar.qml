@@ -52,7 +52,7 @@ Card {
                     Text {
                         anchors.centerIn: parent
                         text: parent.valid ? parent.day : ""
-                        color: parent.isToday ? Theme.base : (parent.weekend ? Theme.magenta : Theme.text)
+                        color: parent.isToday ? Theme.base : (parent.weekend ? Theme.red : Theme.text)
                         font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13
                         font.bold: parent.isToday
                     }

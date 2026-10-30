@@ -67,6 +67,6 @@ Card {
                 font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13
             }
         }
-        Graph { data: SysStats.txHistory; tint: Theme.magenta }
+        Graph { data: SysStats.txHistory; tint: Theme.red_dim }
     }
 }

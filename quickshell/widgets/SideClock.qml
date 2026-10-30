@@ -81,7 +81,7 @@ Card {
             anchors.horizontalCenter: parent.horizontalCenter
             y: root.size + 30
             text: Qt.formatDate(clock.date, "yyyy")
-            color: Theme.magenta
+            color: Theme.red
             font.family: "Rajdhani"; font.pixelSize: 18; font.weight: Font.DemiBold; font.letterSpacing: 4
         }
     }

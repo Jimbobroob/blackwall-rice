@@ -70,7 +70,7 @@ Card {
                     ctx.beginPath(); ctx.arc(c, c, r, a0, a0 + sweep * k.value); ctx.stroke()
                 }
                 const ang = a0 + sweep * k.value
-                ctx.fillStyle = Theme.magenta
+                ctx.fillStyle = Theme.red
                 ctx.beginPath(); ctx.arc(c + Math.cos(ang) * (r - 12), c + Math.sin(ang) * (r - 12), 3, 0, Math.PI * 2); ctx.fill()
             }
         }
@@ -121,7 +121,7 @@ Card {
             Text {
                 width: parent.width
                 text: root.active ? root.player.trackTitle : "Nothing playing"
-                color: root.active && root.player.isPlaying ? Theme.magenta : Theme.text
+                color: root.active && root.player.isPlaying ? Theme.red : Theme.text
                 elide: Text.ElideRight
                 font.family: "Rajdhani"; font.pixelSize: 26; font.bold: true
             }

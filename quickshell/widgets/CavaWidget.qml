@@ -37,7 +37,7 @@ Item {
                     width: parent.width
                     radius: width / 2
                     height: Math.max(2, root.bars[index] / 100 * root.height)
-                    color: root.bars[index] > 80 ? Theme.magenta : Theme.red
+                    color: root.bars[index] > 80 ? Theme.text : Theme.red
                     Behavior on height { NumberAnimation { duration: 40 } }
                 }
             }

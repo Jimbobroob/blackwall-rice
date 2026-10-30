@@ -63,3 +63,4 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P6.3 Review: no Hyprland config errors, both monitors/modes/positions right, qs/hypridle/hyprpaper running, links in place, fonts installed. Not re-tested this phase: lock, game mode, KVM unplug.
 - [x] P6.4 README.md
 - [x] P6.5 (user request) Liquid-glass bars: GlassPanel + blur layer rules; bar_opacity/bar_tint in settings.json.
+- [x] P6.6 (user request) main bar back to solid (glass only on side bar); tray shows the Discord icon for Vesktop; widgets recoloured black + red.

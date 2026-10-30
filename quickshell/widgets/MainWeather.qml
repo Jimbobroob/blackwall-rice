@@ -11,7 +11,7 @@ Item {
         spacing: 14
         Text {
             text: Weather.icon
-            color: Theme.magenta
+            color: Theme.red
             font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 44
         }
         Column {

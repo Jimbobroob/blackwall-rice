@@ -15,9 +15,9 @@ Rectangle {
 
     implicitWidth: holder.childrenRect.width + pad * 2
     implicitHeight: holder.childrenRect.height + pad * 2 + (title !== "" ? 22 : 0)
-    color: Qt.rgba(Theme.surface.r, Theme.surface.g, Theme.surface.b, 0.88)
+    color: Qt.rgba(Theme.base.r, Theme.base.g, Theme.base.b, 0.9)
     border.width: 1
-    border.color: Theme.overlay
+    border.color: Theme.red_dim
     radius: Settings.radius
 
     Rectangle { x: Settings.radius; width: 28; height: 2; color: Theme.red }

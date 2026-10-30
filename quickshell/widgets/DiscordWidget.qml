@@ -53,7 +53,7 @@ Card {
                 elide: Text.ElideRight
                 text: !DiscordVoice.online ? "󰙯  discord offline"
                     : DiscordVoice.connected ? "󰕾  " + DiscordVoice.channel : "󰙯  not in a call"
-                color: DiscordVoice.connected ? Theme.magenta : Theme.muted
+                color: DiscordVoice.connected ? Theme.red : Theme.muted
                 font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12; font.letterSpacing: 1
             }
             Row {
@@ -78,7 +78,7 @@ Card {
                         width: 32; height: 32; radius: 16
                         color: Theme.overlay
                         border.width: 2
-                        border.color: modelData.speaking ? Theme.magenta : "transparent"
+                        border.color: modelData.speaking ? Theme.red : "transparent"
                         clip: true
                         Image {
                             anchors.fill: parent; anchors.margins: 2

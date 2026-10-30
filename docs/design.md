@@ -268,7 +268,8 @@ All components read colours from ONE palette file. Never hardcode hex values els
 ### Phase 6 build decisions (2026-10-30)
 - **Wallpaper differs per monitor** (user choice, overrides "same on both"): main = kimono (1920x1080), side = dark red cyberpunk (2560x1440). Files in `~/Pictures/Wallpapers`, paths in `settings.json` → `wallpaper`; drawn by hyprpaper from `generated/hyprpaper.conf`. Desktop widgets moved to the Bottom layer so they sit above it.
 - Glitch effects are Quickshell shaders (`quickshell/fx/`, built by `tools/build-shaders.sh`): widget/launcher/power-menu pop-in (slice shift + RGB split), scanlines on cards, and a red/magenta tear overlay on workspace change (skipped in game mode on main). Levels come from `settings.json` → `glitch_levels`.
-- **Bars are liquid glass** (user request after phase 6): both floating pills are translucent and red-tinted over a Hyprland blur (layer rules for `rice-bar` / `rice-sidebar` in `hypr/modules/rules.lua`), with a soft top sheen and bright top rim (`quickshell/widgets/GlassPanel.qml`). Tune in `settings.json` → `look.glass.bar_opacity` (0.4) and `bar_tint` (0.08).
+- **Side bar is liquid glass; main bar stays solid** (user request after phase 6): the side floating pill is translucent and red-tinted over a Hyprland blur (layer rule for `rice-sidebar` in `hypr/modules/rules.lua`), with a soft top sheen and bright top rim (`quickshell/widgets/GlassPanel.qml`). Tune in `settings.json` → `look.glass.bar_opacity` (0.4) and `bar_tint` (0.08).
+- **Widgets are black + red** (user request): cards are near-black (`base` at 90%) with `red_dim` borders, and magenta is dropped from the desktop widgets (the bars keep it for small details). The side tray shows Discord's own icon instead of Vesktop's.
 
 ## Afterthoughts (2026-10-30, after phase 3)
 Changes the user decided after seeing the rice running. These **override** earlier sections where they conflict.
