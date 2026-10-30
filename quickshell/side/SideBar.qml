@@ -26,9 +26,12 @@ PanelWindow {
     PwObjectTracker { objects: [win.sink, win.source] }
 
     // floating rounded strip with a thin red edge
-    GlassPanel {
+    Rectangle {
         anchors.fill: parent
         radius: Settings.radius
+        color: Qt.rgba(Theme.base.r, Theme.base.g, Theme.base.b, Settings.panelAlpha)
+        border.width: 1
+        border.color: Theme.red_dim
     }
 
     // top: launcher + workspaces

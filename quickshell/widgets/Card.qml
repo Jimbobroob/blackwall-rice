@@ -18,9 +18,7 @@ Rectangle {
     implicitWidth: holder.childrenRect.width + pad * 2
     implicitHeight: holder.childrenRect.height + pad * 2 + (title !== "" ? 22 : 0)
     // plain translucent panel; opacity is settings.json -> look.glass.card_opacity
-    readonly property var glass: Settings.data.look.glass || ({})
-    readonly property real fillAlpha: glass.card_opacity !== undefined ? glass.card_opacity : 0.65
-    color: bare ? "transparent" : Qt.rgba(Theme.base.r, Theme.base.g, Theme.base.b, fillAlpha)
+    color: bare ? "transparent" : Qt.rgba(Theme.base.r, Theme.base.g, Theme.base.b, Settings.panelAlpha)
     border.width: bare ? 0 : 1
     border.color: Theme.red_dim
     radius: Settings.radius

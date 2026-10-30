@@ -6,7 +6,6 @@ import "../services"
 // Side-monitor clock. Analog by default ("an actual clock"), digital if settings say so.
 Card {
     id: root
-    bare: true
     readonly property bool analog: Settings.clock.side_style !== "digital"
     readonly property bool h12: Settings.clock.format === "12h"
     readonly property int size: 260

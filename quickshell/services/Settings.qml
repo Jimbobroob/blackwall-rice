@@ -28,6 +28,8 @@ Singleton {
     readonly property var bar: data.bar
     // active glitch profile (settings.json -> glitch_level picks one of glitch_levels)
     readonly property var glitch: (data.glitch_levels && data.glitch_levels[data.glitch_level]) || ({ pop_ms: 0, strength: 0, scan_alpha: 0, scan_pitch: 3, ws_ms: 0, ws_intensity: 0 })
+    // fill opacity shared by widget cards and both bars (settings.json -> look.glass.card_opacity)
+    readonly property real panelAlpha: data.look && data.look.glass && data.look.glass.card_opacity !== undefined ? data.look.glass.card_opacity : 0.65
     // corner radius for everything (settings.json -> look.radius); small = chips, buttons, bars
     readonly property int radius: data.look ? data.look.radius : 12
     readonly property int radiusSmall: Math.round(radius / 2)

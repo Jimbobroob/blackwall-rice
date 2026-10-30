@@ -28,9 +28,6 @@ return function(rice)
         no_shadow = true,
     })
 
-    -- Liquid-glass side bar: blur whatever is behind it (the main bar is solid).
-    hl.layer_rule({ match = { namespace = "rice-sidebar" }, blur = true, ignore_alpha = 0.05 })
-
     -- Spotify and Discord always open hidden in their special workspace.
     for name, app in pairs(rice.apps) do
         hl.window_rule({
