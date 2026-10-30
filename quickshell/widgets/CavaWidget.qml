@@ -7,7 +7,7 @@ import "../services"
 // Audio visualiser fed by cava's raw ASCII output (scripts/cava.conf).
 Item {
     id: root
-    implicitWidth: 720
+    implicitWidth: 560
     implicitHeight: 160
 
     property var bars: new Array(48).fill(0)

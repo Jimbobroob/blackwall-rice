@@ -109,24 +109,16 @@ return {
                 ["id"] = "weather",
                 ["anchor"] = "top-left",
                 ["margin"] = {
-                    820,
+                    754,
                     48
                 }
             },
             {
-                ["id"] = "spotify",
-                ["anchor"] = "center-left",
+                ["id"] = "network",
+                ["anchor"] = "top-left",
                 ["margin"] = {
-                    92,
-                    0
-                }
-            },
-            {
-                ["id"] = "discord",
-                ["anchor"] = "center-right",
-                ["margin"] = {
-                    48,
-                    0
+                    1020,
+                    48
                 }
             },
             {
@@ -138,11 +130,19 @@ return {
                 }
             },
             {
-                ["id"] = "network",
+                ["id"] = "spotify",
                 ["anchor"] = "bottom-left",
                 ["margin"] = {
-                    540,
+                    520,
                     48
+                }
+            },
+            {
+                ["id"] = "discord",
+                ["anchor"] = "bottom-right",
+                ["margin"] = {
+                    48,
+                    232
                 }
             },
             {
