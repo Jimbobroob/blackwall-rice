@@ -8,7 +8,7 @@ Claude updates this file during every phase. If a phase stops partway, the note 
 | 0. Design (grilling) | ✅ | Finished 2026-10-30 |
 | 1. Foundation | ✅ | Finished 2026-10-30. User visual check passed. |
 | 2. Main monitor UI | ✅ | Finished 2026-10-30. Awaiting user visual check. |
-| 3. Side monitor dashboard | 🟡 | Everything built and checked except the cava visualiser (needs `sudo dnf install cava`, then check it renders). Awaiting user visual check. |
+| 3. Side monitor dashboard | ✅ | Finished 2026-10-30. Awaiting user visual check. |
 | 4. Spotify + Discord widgets | ⬜ | |
 | 5. App theming + lock | ⬜ | |
 | 6. Polish | ⬜ | |
@@ -36,5 +36,5 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P3.2 power menu (lock, log out, suspend, reboot, shut down; checked visually, actions not fired)
 - [x] P3.3 notification history panel (bell)
 - [x] P3.4 widgets: analog clock + date, calendar, weather, system stats, network speed (checked live)
-- [ ] P3.4b cava visualiser: code written (widgets/CavaWidget.qml, scripts/cava.conf), cava not installed yet
+- [x] P3.4b cava visualiser (Fedora's cava has no pipewire input, so it uses `pulse`; tested with sounds)
 - [x] P3.5 layout driven by settings.json widgets.side (spotify/discord entries kept for phase 4)

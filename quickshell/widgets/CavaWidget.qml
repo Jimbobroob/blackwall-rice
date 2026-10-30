@@ -14,7 +14,7 @@ Item {
 
     Process {
         running: true
-        command: ["cava", "-p", Quickshell.shellPath("scripts/cava.conf")]
+        command: ["/usr/bin/cava", "-p", Quickshell.shellPath("scripts/cava.conf")]
         stdout: SplitParser {
             onRead: line => {
                 const v = line.split(";").filter(s => s !== "").map(Number)
