@@ -193,6 +193,51 @@ All components read colours from ONE palette file. Never hardcode hex values els
 - **Monitors are matched by description** (`desc:`), not port name, so they survive the KVM renaming ports.
 - Until phase 2's Quickshell launcher exists, `Super+Space` and clipboard history temporarily use rofi.
 
+#### Details Claude chose during phase 1 (not discussed in grilling, all changeable)
+**Palette / settings**
+- `palette.json` gained an **`ansi` block** (green, blue, cyan + bright variants, bright black), because terminal programs need all 16 ANSI colours. Only terminal colours use them.
+- `tools/generate.py` builds every colour/settings format into `~/rice/generated/` (Hyprland Lua, kitty, fish, starship, CSS, QML). Edit the JSON, never `generated/`.
+- `settings.json` also holds the **monitor descriptions, modes, positions and workspace lists**, the weather location/units, and a **first-draft widget layout** (anchors + margins per monitor) for phases 2–3 to refine.
+
+**Hyprland**
+- **Inactive border colour = `overlay`** (`#1C1C24`), the palette's "borders at rest".
+- **Blur stays on** normally (size 4, 2 passes). **Shadows off.** Resize by dragging borders is on.
+- Animations: short ease-out curve, windows pop in at 90%, **workspaces slide vertically**, special workspaces slide+fade.
+- **Workspaces 1–10 are persistent** (always exist, so the bars can always show them).
+- **Special workspaces don't hide on a workspace switch**: Spotify/Discord stay up until you press their key again.
+- Mouse sensitivity **0.2** (carried over from the old config).
+- **Super+F = real fullscreen** (not maximise). **Super+Tab follows the window** to the other monitor.
+- Extra binds not in the original list: **Super+Left/Right-drag** move/resize, and **media keys** (volume ±5% capped at 100%, mute, mic mute, play/pause/next/prev).
+
+**Spotify / Discord toggles**
+- Showing an app **focuses its window**. Hiding it **returns focus to the monitor you came from**, and switching straight from one app to the other keeps that return point.
+- If the app isn't running, the key launches it first.
+- Vesktop's Flatpak reports the class `dev.vencord.Vesktop`, so both that and `vesktop` are matched.
+- The toggle can be called from scripts/widgets: `hyprctl eval 'rice.toggle_app("spotify")'` (or `"discord"`).
+- On a config reload, any Spotify/Discord window that ended up elsewhere is moved back to its hidden workspace.
+
+**KVM**
+- When a monitor comes back, its workspaces (1–5 or 6–10) are moved back to it automatically.
+- Any unknown monitor plugged in gets its preferred mode, placed automatically.
+
+**Game mode**
+- Triggers on **any real fullscreen window** on main (a fullscreen video counts too, Hyprland can't tell games apart). Maximised windows don't trigger it.
+- Also turns off **shadows** for main-monitor windows.
+- Writes `1`/`0` to **`$XDG_RUNTIME_DIR/rice/gamemode`** for the Quickshell bar to read.
+
+**Startup**
+- "Nothing else" means no other *apps*. Session plumbing also starts at login: **polkit agent** (hyprpolkitagent), the **clipboard history watcher** (`wl-paste --watch cliphist store`) and the D-Bus environment update.
+- The old rumda Quickshell bar is no longer started; there is **no bar until phase 2**. The hyprlock config moved to the backup, so **Super+L uses hyprlock's default look until phase 5**.
+
+**Terminal / shell**
+- kitty: JetBrainsMono Nerd Font **11.5pt**, **96% background opacity**, 10px padding, no title bar, **red non-blinking block cursor**, no bell, copy-on-select, tabs at the bottom.
+- fish: fresh minimal config (none of the old abbreviations were carried over), `~/.local/bin` and `~/.cargo/bin` on PATH, **`ls`/`ll`/`la`/`lt` via eza with icons**, **`cd` via zoxide**.
+- Rajdhani is installed per-user (`~/.local/share/fonts`) by `tools/install-fonts.sh`.
+
+**Install**
+- What gets linked is listed in **`links.txt`**. `install.sh` **moves** (not copies) the old files into `~/rice-old-backup/<timestamp>/` with a manifest. `rollback.sh` undoes every install newest first (or `--last` for just the latest), and leaves alone anything you changed by hand since.
+- Phase 1 links: `~/.config/hypr` (whole folder), `~/.config/kitty` (whole folder), `~/.config/fish/config.fish` (just the file, so fish's own state stays put), `~/.config/starship.toml`.
+
 ---
 
 ## 4. Build plan
