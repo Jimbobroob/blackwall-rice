@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Effects
 import Quickshell
 import Quickshell.Wayland
 import Quickshell.Hyprland
@@ -111,12 +112,22 @@ PanelWindow {
                 width: parent.width; height: 32
                 Rectangle { anchors.fill: parent; radius: Settings.radiusSmall; color: trayHover.hovered ? Theme.overlay : "transparent" }
                 Image {
+                    id: trayImg
                     anchors.centerIn: parent
                     width: 18; height: 18
+                    visible: false
                     sourceSize: Qt.size(36, 36)
                     // Vesktop's tray icon is its own logo; show Discord's real one instead
                     readonly property bool isDiscord: /vesktop|discord|vencord/i.test((trayItem.modelData.id || "") + (trayItem.modelData.title || ""))
                     source: isDiscord ? Quickshell.iconPath("discord", trayItem.modelData.icon) : trayItem.modelData.icon
+                }
+                // app icons are forced into the palette: light grey, red on hover
+                MultiEffect {
+                    anchors.fill: trayImg
+                    source: trayImg
+                    colorization: 1.0
+                    colorizationColor: trayHover.hovered ? Theme.red : Theme.text
+                    Behavior on colorizationColor { ColorAnimation { duration: 80 } }
                 }
                 HoverHandler { id: trayHover }
                 TapHandler {

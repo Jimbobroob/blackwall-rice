@@ -79,3 +79,4 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P6.19 (user request) widget cards are liquid glass (Card uses GlassPanel, card_opacity 0.5, blur layer rule); card titles brightened to red.
 - [x] P6.20 (user request) widget cards: liquid glass replaced by plain translucent (card_opacity 0.65, no blur).
 - [x] P6.21 (user request) side clock has its background back; both bars now use the same plain translucent style as the cards (Settings.panelAlpha); GlassPanel and the bar blur rule removed.
+- [x] P6.22 (user request) side-bar tray icons (Spotify, Steam, Discord) forced into the palette: light grey, red on hover (MultiEffect colorization).
