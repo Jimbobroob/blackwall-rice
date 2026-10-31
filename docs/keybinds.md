@@ -20,7 +20,7 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 | `Super + F` | Fullscreen |
 | `Super + V` | Toggle floating |
 | `Super + ← ↑ → ↓` | Move focus |
-| `Super + Shift + ← ↑ → ↓` | Swap the focused window with the one in that direction (they trade places and sizes; works across monitors) |
+| `Super + Shift + ← ↑ → ↓` | Move the focused window that way: swaps with the window there (they trade places and sizes). If there's none on the workspace that way, the split flips instead (e.g. two stacked + `→` = side by side, this one on the right). Alone on a workspace: swaps with the other monitor's window |
 | `Super + Tab` | Throw focused window to the other monitor |
 | `Super + Left-drag` | Move window |
 | `Super + Right-drag` | Resize window |
@@ -60,3 +60,4 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 - 2026-10-31 (refine): added `Super + W` (widget drawer).
 - 2026-10-31 (refine): clicking a drawer tab pins the drawer (mouse, not a key).
 - 2026-10-31 (refine): added `Super + Shift + arrows` (swap window with its neighbour).
+- 2026-10-31 (refine): `Super + Shift + arrows` also flips the split (stacked <-> side by side) when there's no window that way.

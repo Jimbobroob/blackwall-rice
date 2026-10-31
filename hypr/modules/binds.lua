@@ -22,10 +22,42 @@ return function(rice)
     end)
     hl.bind(key("F"), hl.dsp.window.fullscreen({ action = "toggle", mode = "fullscreen" }))
     hl.bind(key("V"), hl.dsp.window.float({ action = "toggle" }))
+    -- Tiled window on this workspace lying in `dir` from `win` (overlapping it on the other axis).
+    local function neighbour(win, dir)
+        local ax, ay, aw, ah = win.at.x, win.at.y, win.size.x, win.size.y
+        for _, o in ipairs(hl.get_workspace_windows(win.workspace.id)) do
+            if o.address ~= win.address and not o.floating then
+                local ox, oy, ow, oh = o.at.x, o.at.y, o.size.x, o.size.y
+                local acrossY = oy < ay + ah and oy + oh > ay
+                local acrossX = ox < ax + aw and ox + ow > ax
+                if (dir == "right" and ox >= ax + aw and acrossY) or (dir == "left" and ox + ow <= ax and acrossY)
+                    or (dir == "down" and oy >= ay + ah and acrossX) or (dir == "up" and oy + oh <= ay and acrossX) then
+                    return o
+                end
+            end
+        end
+    end
+    -- Super+Shift+arrow: swap with the window that way (they trade places and sizes). If there is none
+    -- on this workspace but there are other tiles (e.g. two stacked, press right), flip the split so this
+    -- window ends up on that side. Alone on the workspace: swap with the other monitor's window.
+    local function shift(dir)
+        local win = hl.get_active_window()
+        if not win or win.floating or not win.workspace then return end
+        local others = 0
+        for _, o in ipairs(hl.get_workspace_windows(win.workspace.id)) do
+            if o.address ~= win.address and not o.floating then others = others + 1 end
+        end
+        if neighbour(win, dir) or others == 0 then
+            return hl.dispatch(hl.dsp.window.swap({ direction = dir }))
+        end
+        hl.dispatch(hl.dsp.layout("togglesplit"))
+        -- the split flipped; if this window landed on the far side, swap it over
+        win = hl.get_active_window()
+        if win and neighbour(win, dir) then hl.dispatch(hl.dsp.window.swap({ direction = dir })) end
+    end
     for _, dir in ipairs({ "left", "right", "up", "down" }) do
         hl.bind(key(dir), hl.dsp.focus({ direction = dir }))
-        -- swap places (and so sizes) with the neighbour that way, across monitors too
-        hl.bind(key("SHIFT + " .. dir), hl.dsp.window.swap({ direction = dir }))
+        hl.bind(key("SHIFT + " .. dir), function() shift(dir) end)
     end
     hl.bind(key("mouse:272"), hl.dsp.window.drag(),   { mouse = true })
     hl.bind(key("mouse:273"), hl.dsp.window.resize(), { mouse = true })
