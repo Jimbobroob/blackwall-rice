@@ -139,6 +139,14 @@ PanelWindow {
                     acceptedButtons: Qt.RightButton
                     onTapped: if (trayItem.modelData.hasMenu) menu.open()
                 }
+                // middle-click quits the app (Spotify's tray menu has no Quit)
+                TapHandler {
+                    acceptedButtons: Qt.MiddleButton
+                    onTapped: {
+                        const id = ((trayItem.modelData.id || "") + (trayItem.modelData.title || "")).toLowerCase();
+                        if (id.includes("spotify")) Quickshell.execDetached(["flatpak", "kill", "com.spotify.Client"]);
+                    }
+                }
                 QsMenuAnchor {
                     id: menu
                     menu: trayItem.modelData.menu
