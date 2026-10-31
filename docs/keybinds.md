@@ -22,6 +22,7 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 | `Super + ← ↑ → ↓` | Move focus |
 | `Super + Shift + ← ↑ → ↓` | Move the focused window that way: swaps with the window there (they trade places and sizes). If there's none on the workspace that way, the split flips instead (e.g. two stacked + `→` = side by side, this one on the right). Alone on a workspace: swaps with the other monitor's window |
 | `Super + Tab` | Throw focused window to the other monitor |
+| `Alt + Tab` | Window switcher: live previews of every open window on both monitors (Spotify / Discord too), most recent first. Hold Alt and tap Tab to step (`Alt + Shift + Tab` goes back), let go of Alt to switch. While open: arrows / mouse move, Enter or click picks, Esc cancels |
 | `Super + Left-drag` | Move window |
 | `Super + Right-drag` | Resize window |
 
@@ -61,3 +62,4 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 - 2026-10-31 (refine): clicking a drawer tab pins the drawer (mouse, not a key).
 - 2026-10-31 (refine): added `Super + Shift + arrows` (swap window with its neighbour).
 - 2026-10-31 (refine): `Super + Shift + arrows` also flips the split (stacked <-> side by side) when there's no window that way.
+- 2026-10-31 (refine): added `Alt + Tab` / `Alt + Shift + Tab` window switcher (Quickshell, `quickshell/switcher`).

@@ -79,4 +79,26 @@ return function(rice)
             hl.dispatch(hl.dsp.focus({ window = "address:" .. win.address }))
         end
     end
+
+    -- Focus any window by address (the Alt+Tab switcher calls this through hyprctl eval).
+    -- A hidden Spotify / Discord window is shown on the side monitor first, the same way Super+S / D do.
+    function rice.focus_window(address)
+        local want = (address or ""):gsub("^0x", "")
+        for _, w in ipairs(hl.get_windows()) do
+            if (w.address or ""):gsub("^0x", "") == want then
+                local name = app_for(w)
+                local ws = w.workspace and w.workspace.name or ""
+                if name and ws == "special:" .. name then
+                    local shown = false
+                    for _, mon in ipairs(hl.get_monitors()) do
+                        local s = mon.active_special_workspace
+                        if s and s.name == ws then shown = true end
+                    end
+                    if not shown then rice.toggle_app(name) end
+                end
+                hl.dispatch(hl.dsp.focus({ window = "address:" .. w.address }))
+                return
+            end
+        end
+    end
 end

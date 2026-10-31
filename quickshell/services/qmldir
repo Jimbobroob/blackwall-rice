@@ -12,3 +12,4 @@ singleton Procs 1.0 Procs.qml
 singleton Players 1.0 Players.qml
 singleton Timers 1.0 Timers.qml
 singleton Reminders 1.0 Reminders.qml
+singleton SwitcherState 1.0 SwitcherState.qml

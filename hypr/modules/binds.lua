@@ -74,6 +74,22 @@ return function(rice)
         end
     end)
 
+    -- Alt+Tab window switcher (quickshell/switcher). Hold Alt, tap Tab (Shift+Tab goes back),
+    -- let go of Alt to switch. The Alt release only pings Quickshell after an Alt+Tab, and
+    -- never swallows the key, so Alt still works normally in games and apps.
+    local switching = false
+    local function switch(dir)
+        switching = true
+        hl.dispatch(hl.dsp.exec_cmd("qs ipc call switcher " .. dir))
+    end
+    hl.bind("ALT + Tab", function() switch("next") end, { repeating = true })
+    hl.bind("ALT + SHIFT + Tab", function() switch("prev") end, { repeating = true })
+    hl.bind("Alt_L", function()
+        if not switching then return end
+        switching = false
+        hl.dispatch(hl.dsp.exec_cmd("qs ipc call switcher commit"))
+    end, { release = true, ignore_mods = true, non_consuming = true, transparent = true })
+
     -- Workspaces: 1-5 main, 6-10 side (Super+0 = 10). Monitor locking is in monitors.lua.
     for i = 1, 10 do
         local k = tostring(i % 10)

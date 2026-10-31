@@ -3,6 +3,7 @@ import QtQuick
 import Quickshell
 import "bar"
 import "launcher"
+import "switcher"
 import "osd"
 import "notifications"
 import "widgets"
@@ -30,6 +31,7 @@ ShellRoot {
             LazyLoader { active: scope.role !== ""; WorkspaceGlitch { screen: scope.modelData; role: scope.role } }
             LazyLoader { active: scope.role === "main"; MainBar { screen: scope.modelData } }
             LazyLoader { active: scope.role === "main"; Launcher { screen: scope.modelData } }
+            LazyLoader { active: scope.role === "main"; Switcher { screen: scope.modelData } }
             LazyLoader { active: scope.role === "main"; VolumeOsd { screen: scope.modelData } }
             LazyLoader { active: scope.notifHost; NotificationPopups { screen: scope.modelData } }
 
