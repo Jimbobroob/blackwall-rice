@@ -14,6 +14,9 @@ import "fx"
 // Rice shell. One scope per monitor, keyed by role (main/side) not port name,
 // so a KVM switch just removes and re-adds that monitor's windows.
 ShellRoot {
+    // touch Reminders at start so due reminders fire even if the drawer is never opened
+    readonly property int reminderCount: Reminders.items.length
+
     Variants {
         model: Quickshell.screens
 

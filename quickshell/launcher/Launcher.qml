@@ -30,7 +30,21 @@ PanelWindow {
     property string query: ""
     property int index: 0
 
+    // "remind <when> <text>" turns the launcher into the reminder prompt (services/Reminders.qml)
+    readonly property var reminder: {
+        const m = query.match(/^\s*remind(?:\s+me)?\s*(.*)$/i)
+        if (!m) return null
+        const r = Reminders.parse(m[1])
+        return {
+            icon: "alarm-symbolic",
+            name: r ? "󰀠  " + Reminders.clockText(r.at) + "  ·  " + r.text
+                    : "󰀠  remind 18:30 raid  ·  remind 20m tea  ·  remind 1h30m stretch",
+            execute: () => { if (r) Reminders.add(m[1]) }
+        }
+    }
+
     readonly property var results: {
+        if (reminder) return [reminder]
         const q = query.trim().toLowerCase()
         const apps = DesktopEntries.applications.values.filter(a => !a.noDisplay)
         const scored = []

@@ -31,7 +31,8 @@ Scope {
     readonly property var files: ({
         calendar: "SideCalendar.qml", weather: "SideWeather.qml", spotify: "SpotifyWidget.qml",
         discord: "DiscordWidget.qml", sysstats: "SysStatsWidget.qml", network: "NetSpeed.qml",
-        procs: "ProcsWidget.qml", mixer: "MixerWidget.qml"
+        procs: "ProcsWidget.qml", mixer: "MixerWidget.qml",
+        forecast: "ForecastWidget.qml", sun: "SunWidget.qml", timer: "TimerWidget.qml", reminders: "RemindersWidget.qml"
     })
 
     // hover strip at the top edge
@@ -50,7 +51,7 @@ Scope {
         id: win
         screen: root.screen
         anchors { top: true }
-        implicitWidth: 1500; implicitHeight: 800
+        implicitWidth: 1500; implicitHeight: 960
         visible: root.p > 0
         color: "transparent"
         exclusionMode: ExclusionMode.Ignore
@@ -61,7 +62,12 @@ Scope {
 
         Item {
             id: panel
-            readonly property var grid: stack.children[Math.min(UiState.drawerTab, stack.children.length - 1)]
+            // the active tab's column (matched by index: the Repeater itself is also one of stack's children)
+            readonly property var grid: {
+                for (const c of stack.children)
+                    if (c.lines !== undefined && c.index === UiState.drawerTab) return c
+                return null
+            }
             readonly property int pad: 14
             x: (win.width - width) / 2
             y: -(1 - root.p) * (height + 16)

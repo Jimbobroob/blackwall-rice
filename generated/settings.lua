@@ -155,10 +155,26 @@ return {
             {
                 ["name"] = "Date",
                 ["ids"] = {
-                    "calendar",
-                    "weather"
+                    {
+                        "calendar",
+                        "forecast"
+                    },
+                    {
+                        "weather",
+                        "sun"
+                    },
+                    {
+                        "timer",
+                        "reminders"
+                    }
                 },
-                ["layout"] = "row"
+                ["layout"] = "column",
+                ["width"] = 990,
+                ["fill"] = {
+                    "forecast",
+                    "sun",
+                    "reminders"
+                }
             }
         }
     },
