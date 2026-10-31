@@ -3,7 +3,7 @@ return function(rice)
     hl.config({
         general = {
             gaps_in     = 3, -- 3 per side = 6px between windows
-            gaps_out    = 6,
+            gaps_out    = { top = 6, right = 6, bottom = 6, left = 0 }, -- left 0: windows sit flush against the docked side bar
             border_size = 2,
             col = {
                 active_border   = rice.rgb("red"),
