@@ -9,7 +9,9 @@ Card {
     title: "discord"
     interactive: true
 
-    // members shown as a roughly square grid, filled left to right then down; capped at maxShown
+    // members fill left to right then down; capped at maxShown. On its own (wallpaper) the grid is
+    // roughly square but at most 3 wide, so it grows up the left side; the drawer stretches `w` to the
+    // full tab width and the grid wraps to fit, so it only grows downward.
     readonly property int maxShown: 20
     readonly property int cellW: 150
     readonly property var shown: {
@@ -20,8 +22,8 @@ Card {
                   .slice(0, maxShown).map(x => x.m)
     }
     readonly property int hidden: DiscordVoice.members.length - shown.length
-    readonly property int cols: Math.max(2, Math.ceil(Math.sqrt(shown.length)))
-    readonly property int w: cols * cellW
+    property int w: Math.min(3, Math.max(2, Math.ceil(Math.sqrt(shown.length)))) * cellW
+    readonly property int cols: Math.max(1, Math.floor(w / cellW))
 
     component Toggle: Rectangle {
         id: t

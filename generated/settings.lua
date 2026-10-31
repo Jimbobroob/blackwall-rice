@@ -140,15 +140,16 @@ return {
                 ["name"] = "Media",
                 ["ids"] = {
                     {
-                        "discord",
+                        "spotify",
                         "mixer"
                     },
-                    "spotify"
+                    "discord"
                 },
                 ["layout"] = "column",
-                ["width"] = 920,
+                ["width"] = 990,
                 ["fill"] = {
-                    "mixer"
+                    "mixer",
+                    "discord"
                 }
             },
             {

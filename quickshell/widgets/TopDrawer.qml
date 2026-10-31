@@ -156,6 +156,13 @@ Scope {
                                         if (c instanceof Loader && c.item) { n++; if (c !== skip) w += c.item.implicitWidth }
                                     return w + Math.max(0, n - 1) * line.spacing
                                 }
+                                // cards in a line share the tallest one's height
+                                function maxH() {
+                                    let h = 0
+                                    for (const c of line.children)
+                                        if (c instanceof Loader && c.item) h = Math.max(h, c.item.implicitHeight)
+                                    return h
+                                }
                                 Repeater {
                                     model: line.modelData
                                     delegate: Loader {
@@ -163,9 +170,12 @@ Scope {
                                         required property string modelData
                                         active: win.visible && grp.visible
                                         source: root.files[modelData] || ""
-                                        onLoaded: if (grp.fill.includes(modelData) && item.w !== undefined) {
-                                            const base = item.w
-                                            item.w = Qt.binding(() => Math.max(base, grp.minW - line.othersWidth(ld) - item.pad * 2))
+                                        onLoaded: {
+                                            item.height = Qt.binding(() => line.maxH())
+                                            if (grp.fill.includes(modelData) && item.w !== undefined) {
+                                                const base = item.w
+                                                item.w = Qt.binding(() => Math.max(base, grp.minW - line.othersWidth(ld) - item.pad * 2))
+                                            }
                                         }
                                     }
                                 }
