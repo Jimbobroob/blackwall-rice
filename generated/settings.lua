@@ -128,8 +128,11 @@ return {
             {
                 ["name"] = "System",
                 ["ids"] = {
-                    "sysstats",
-                    "network"
+                    {
+                        "sysstats",
+                        "network"
+                    },
+                    "procs"
                 },
                 ["layout"] = "column"
             },

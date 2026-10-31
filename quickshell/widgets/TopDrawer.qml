@@ -7,7 +7,8 @@ import "../fx"
 
 // Widget tabs that drop down from the top edge of the side monitor. Hover the top-centre strip
 // (or Super+W / the bar button to pin it); hover a tab chip to switch group. Groups come from
-// settings.json -> widgets.tabs: [{ name, ids, layout: "row" | "column" }].
+// settings.json -> widgets.tabs: [{ name, ids, layout: "row" | "column" }]. In a column, an entry can be
+// a list of ids that share one line, e.g. [["sysstats", "network"], "procs"].
 Scope {
     id: root
     required property var screen
@@ -27,7 +28,8 @@ Scope {
 
     readonly property var files: ({
         calendar: "SideCalendar.qml", weather: "SideWeather.qml", spotify: "SpotifyWidget.qml",
-        discord: "DiscordWidget.qml", sysstats: "SysStatsWidget.qml", network: "NetSpeed.qml"
+        discord: "DiscordWidget.qml", sysstats: "SysStatsWidget.qml", network: "NetSpeed.qml",
+        procs: "ProcsWidget.qml"
     })
 
     // hover strip at the top edge
@@ -46,7 +48,7 @@ Scope {
         id: win
         screen: root.screen
         anchors { top: true }
-        implicitWidth: 1040; implicitHeight: 640
+        implicitWidth: 1040; implicitHeight: 800
         visible: root.p > 0
         color: "transparent"
         exclusionMode: ExclusionMode.Ignore
@@ -118,21 +120,31 @@ Scope {
 
                 Repeater {
                     model: root.tabs
-                    delegate: Grid {
+                    delegate: Column {
                         id: grp
                         required property var modelData
                         required property int index
-                        columns: modelData.layout === "column" ? 1 : modelData.ids.length
+                        // each line is a list of ids laid side by side
+                        readonly property var lines: modelData.layout === "column"
+                            ? modelData.ids.map(i => [].concat(i)) : [modelData.ids]
                         spacing: 12
                         visible: opacity > 0
                         opacity: UiState.drawerTab === index ? 1 : 0
                         Behavior on opacity { NumberAnimation { duration: 160 } }
                         Repeater {
-                            model: grp.modelData.ids
-                            delegate: Loader {
-                                required property string modelData
-                                active: win.visible && grp.visible
-                                source: root.files[modelData] || ""
+                            model: grp.lines
+                            delegate: Row {
+                                id: line
+                                required property var modelData
+                                spacing: 12
+                                Repeater {
+                                    model: line.modelData
+                                    delegate: Loader {
+                                        required property string modelData
+                                        active: win.visible && grp.visible
+                                        source: root.files[modelData] || ""
+                                    }
+                                }
                             }
                         }
                     }

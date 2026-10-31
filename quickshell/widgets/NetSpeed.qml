@@ -11,7 +11,7 @@ Card {
         id: g
         property var data: []
         property color tint: Theme.red
-        width: 360; height: 56
+        width: 260; height: 101
         onDataChanged: requestPaint()
         onPaint: {
             const ctx = getContext("2d")
@@ -39,7 +39,7 @@ Card {
     Column {
         spacing: 10
         Item {
-            width: 360; height: 18
+            width: 260; height: 18
             Text {
                 text: "󰁅  DOWN"
                 color: Theme.muted
@@ -54,7 +54,7 @@ Card {
         }
         Graph { data: SysStats.rxHistory; tint: Theme.red }
         Item {
-            width: 360; height: 18
+            width: 260; height: 18
             Text {
                 text: "󰁝  UP"
                 color: Theme.muted
