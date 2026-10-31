@@ -16,7 +16,6 @@ PanelWindow {
     id: win
 
     anchors { left: true; top: true; bottom: true }
-    margins { left: 6; top: 6; bottom: 6 }
     implicitWidth: 44
     color: "transparent"
     WlrLayershell.namespace: "rice-sidebar"
@@ -26,13 +25,15 @@ PanelWindow {
     readonly property var source: Pipewire.defaultAudioSource
     PwObjectTracker { objects: [win.sink, win.source] }
 
-    // floating rounded strip with a thin red edge
+    // docked strip flush with the screen edge, thin red line on the inner side
     Rectangle {
         anchors.fill: parent
-        radius: Settings.radius
         color: Qt.rgba(Theme.base.r, Theme.base.g, Theme.base.b, Settings.panelAlpha)
-        border.width: 1
-        border.color: Theme.red_dim
+    }
+    Rectangle {
+        anchors { top: parent.top; bottom: parent.bottom; right: parent.right }
+        width: 1
+        color: Theme.red_dim
     }
 
     // top: launcher + workspaces

@@ -88,3 +88,4 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] R1 (user request) clipboard history fixed: the watcher was not running (and nothing restarted it); now supervised text+image watchers (clipwatch.sh), picker script + palette-generated rofi theme. Tested: copy -> list -> pick -> paste. Not tested: image entries, a fresh login.
 - [x] R2 (user request) side-bar tray: middle-click on the Spotify icon quits it (`flatpak kill com.spotify.Client`); its tray menu has no Quit. Reload clean; click not tested.
 - [x] R3 (user request) Super+Q quits Spotify/Vesktop outright (they hid to tray on close). Reload clean; not tested on the apps.
+- [x] R4 (user request) side bar docked instead of floating (no margins/rounded corners). Checked in a screenshot: flush at x0, 44x1440, windows still tile beside it.
