@@ -24,6 +24,8 @@ return function(rice)
     hl.bind(key("V"), hl.dsp.window.float({ action = "toggle" }))
     for _, dir in ipairs({ "left", "right", "up", "down" }) do
         hl.bind(key(dir), hl.dsp.focus({ direction = dir }))
+        -- swap places (and so sizes) with the neighbour that way, across monitors too
+        hl.bind(key("SHIFT + " .. dir), hl.dsp.window.swap({ direction = dir }))
     end
     hl.bind(key("mouse:272"), hl.dsp.window.drag(),   { mouse = true })
     hl.bind(key("mouse:273"), hl.dsp.window.resize(), { mouse = true })

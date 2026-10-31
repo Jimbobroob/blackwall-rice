@@ -20,6 +20,7 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 | `Super + F` | Fullscreen |
 | `Super + V` | Toggle floating |
 | `Super + ← ↑ → ↓` | Move focus |
+| `Super + Shift + ← ↑ → ↓` | Swap the focused window with the one in that direction (they trade places and sizes; works across monitors) |
 | `Super + Tab` | Throw focused window to the other monitor |
 | `Super + Left-drag` | Move window |
 | `Super + Right-drag` | Resize window |
@@ -58,3 +59,4 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 - 2026-10-31 (refine): `Super + Q` quits Spotify/Vesktop (flatpak kill) instead of only closing their window.
 - 2026-10-31 (refine): added `Super + W` (widget drawer).
 - 2026-10-31 (refine): clicking a drawer tab pins the drawer (mouse, not a key).
+- 2026-10-31 (refine): added `Super + Shift + arrows` (swap window with its neighbour).
