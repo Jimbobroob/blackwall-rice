@@ -8,7 +8,9 @@ import "../fx"
 // Widget tabs that drop down from the top edge of the side monitor. Hover the top-centre strip
 // (or Super+W / the bar button to pin it); hover a tab chip to switch group, click it to pin. Groups come from
 // settings.json -> widgets.tabs: [{ name, ids, layout: "row" | "column" }]. In a column, an entry can be
-// a list of ids that share one line, e.g. [["sysstats", "network"], "procs"].
+// a list of ids that share one line, e.g. [["sysstats", "network"], "procs"]. Lines are centred.
+// Optional "width" + "fill": [ids]: those widgets stretch so their line is that wide (they need a
+// settable `w`, the content width).
 Scope {
     id: root
     required property var screen
@@ -29,7 +31,7 @@ Scope {
     readonly property var files: ({
         calendar: "SideCalendar.qml", weather: "SideWeather.qml", spotify: "SpotifyWidget.qml",
         discord: "DiscordWidget.qml", sysstats: "SysStatsWidget.qml", network: "NetSpeed.qml",
-        procs: "ProcsWidget.qml", mixer: "MixerWidget.qml", lyrics: "LyricsWidget.qml"
+        procs: "ProcsWidget.qml", mixer: "MixerWidget.qml"
     })
 
     // hover strip at the top edge
@@ -134,6 +136,8 @@ Scope {
                         // each line is a list of ids laid side by side
                         readonly property var lines: modelData.layout === "column"
                             ? modelData.ids.map(i => [].concat(i)) : [modelData.ids]
+                        readonly property var fill: modelData.fill || []
+                        readonly property int minW: modelData.width || 0
                         spacing: 12
                         visible: opacity > 0
                         opacity: UiState.drawerTab === index ? 1 : 0
@@ -143,13 +147,26 @@ Scope {
                             delegate: Row {
                                 id: line
                                 required property var modelData
+                                anchors.horizontalCenter: parent ? parent.horizontalCenter : undefined
                                 spacing: 12
+                                // width taken by everything in this line except `skip`
+                                function othersWidth(skip) {
+                                    let w = 0, n = 0
+                                    for (const c of line.children)
+                                        if (c instanceof Loader && c.item) { n++; if (c !== skip) w += c.item.implicitWidth }
+                                    return w + Math.max(0, n - 1) * line.spacing
+                                }
                                 Repeater {
                                     model: line.modelData
                                     delegate: Loader {
+                                        id: ld
                                         required property string modelData
                                         active: win.visible && grp.visible
                                         source: root.files[modelData] || ""
+                                        onLoaded: if (grp.fill.includes(modelData) && item.w !== undefined) {
+                                            const base = item.w
+                                            item.w = Qt.binding(() => Math.max(base, grp.minW - line.othersWidth(ld) - item.pad * 2))
+                                        }
                                     }
                                 }
                             }

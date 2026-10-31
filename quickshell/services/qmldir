@@ -10,4 +10,3 @@ singleton UiState 1.0 UiState.qml
 singleton DiscordVoice 1.0 DiscordVoice.qml
 singleton Procs 1.0 Procs.qml
 singleton Players 1.0 Players.qml
-singleton Lyrics 1.0 Lyrics.qml
