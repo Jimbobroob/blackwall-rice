@@ -90,3 +90,4 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] R3 (user request) Super+Q quits Spotify/Vesktop outright (they hid to tray on close). Reload clean; not tested on the apps.
 - [x] R4 (user request) side bar docked instead of floating (no margins/rounded corners). Checked in a screenshot: flush at x0, 44x1440, windows still tile beside it.
 - [x] R5 (user request) no gap between the side bar and windows (gaps_out left 0). Config clean; Vesktop now at x46 (bar 44 + 2px border).
+- [x] R6 (user request) widget drawer: side widgets slide out/in (Super+W, `qs ipc call side widgets`, button under the launcher). Checked: closed = only main widgets exist, open = all in their old spots (screenshot), closes again. Slide animation itself not watched; no auto-close.

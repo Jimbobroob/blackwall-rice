@@ -15,6 +15,7 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 ## Windows
 | Keys | Action |
 |---|---|
+| `Super + W` | Slide the side-monitor widgets in/out (also the button under the launcher in the side bar) |
 | `Super + Q` | Close window (Spotify / Vesktop: quit the app, they otherwise stay in the tray) |
 | `Super + F` | Fullscreen |
 | `Super + V` | Toggle floating |
@@ -55,3 +56,4 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 - 2026-10-30 (phase 5): added `Super + B` (Firefox).
 - 2026-10-30 (refine): `Super + Shift + V` clipboard history fixed (recording was not running) and themed from the palette.
 - 2026-10-31 (refine): `Super + Q` quits Spotify/Vesktop (flatpak kill) instead of only closing their window.
+- 2026-10-31 (refine): added `Super + W` (widget drawer).

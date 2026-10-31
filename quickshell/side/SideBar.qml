@@ -48,6 +48,13 @@ PanelWindow {
             onClicked: LauncherState.toggle()
         }
 
+        BarButton {
+            width: parent.width
+            icon: "󰕮"
+            iconColor: UiState.widgetsOpen ? Theme.red : Theme.text
+            onClicked: UiState.toggleWidgets()
+        }
+
         BarDivider { width: parent.width }
 
         Repeater {
