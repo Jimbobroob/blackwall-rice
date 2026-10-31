@@ -48,7 +48,7 @@ Scope {
         id: win
         screen: root.screen
         anchors { top: true }
-        implicitWidth: 1040; implicitHeight: 800
+        implicitWidth: 1500; implicitHeight: 800
         visible: root.p > 0
         color: "transparent"
         exclusionMode: ExclusionMode.Ignore
