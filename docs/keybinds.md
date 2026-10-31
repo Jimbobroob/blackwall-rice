@@ -15,7 +15,7 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 ## Windows
 | Keys | Action |
 |---|---|
-| `Super + W` | Pin the top widget drawer open/closed (also the button under the launcher in the side bar); hovering the top-centre of the side monitor opens it too |
+| `Super + W` | Pin the top widget drawer open/closed (also the button under the launcher in the side bar); hovering the top-centre of the side monitor opens it too; clicking a tab pins it on that tab (click the pinned tab again to unpin) |
 | `Super + Q` | Close window (Spotify / Vesktop: quit the app, they otherwise stay in the tray) |
 | `Super + F` | Fullscreen |
 | `Super + V` | Toggle floating |
@@ -57,3 +57,4 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 - 2026-10-30 (refine): `Super + Shift + V` clipboard history fixed (recording was not running) and themed from the palette.
 - 2026-10-31 (refine): `Super + Q` quits Spotify/Vesktop (flatpak kill) instead of only closing their window.
 - 2026-10-31 (refine): added `Super + W` (widget drawer).
+- 2026-10-31 (refine): clicking a drawer tab pins the drawer (mouse, not a key).

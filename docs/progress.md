@@ -97,3 +97,4 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] R10 (user request) System tab: sysstats + network side by side (260px wide, equal height), VRAM/disk/uptime rows, new ProcsWidget (top 8 apps, btop-style segmented CPU meter). Checked in screenshots; processes refresh every 2s. Media/Date tabs untouched but not re-seen.
 - [x] R11 (user request) processes feed always on (services/Procs.qml) instead of starting with the card: list is filled 0.5s after opening (screenshot). top uses ~6 MB RSS, ~1% CPU.
 - [x] R12 (user request) system card bars go upwards (5 vertical bars, same card size). Checked in a screenshot.
+- [x] R13 (user request) clicking a drawer tab pins the drawer on that tab; pinned tab shows a pin glyph. Glyph checked in a screenshot (pinned via IPC); the click itself not tested (no input tool).

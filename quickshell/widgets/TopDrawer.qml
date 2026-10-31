@@ -6,7 +6,7 @@ import "../services"
 import "../fx"
 
 // Widget tabs that drop down from the top edge of the side monitor. Hover the top-centre strip
-// (or Super+W / the bar button to pin it); hover a tab chip to switch group. Groups come from
+// (or Super+W / the bar button to pin it); hover a tab chip to switch group, click it to pin. Groups come from
 // settings.json -> widgets.tabs: [{ name, ids, layout: "row" | "column" }]. In a column, an entry can be
 // a list of ids that share one line, e.g. [["sysstats", "network"], "procs"].
 Scope {
@@ -98,12 +98,19 @@ Scope {
                         Text {
                             id: label
                             anchors.centerIn: parent
-                            text: chip.modelData.name.toUpperCase()
+                            // pin glyph on the active tab while the drawer is pinned
+                            text: chip.modelData.name.toUpperCase() + (chip.active && UiState.drawerPinned ? "  󰐃" : "")
                             color: chip.active ? Theme.base : Theme.text
                             font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 10; font.letterSpacing: 2
                         }
                         HoverHandler { onHoveredChanged: if (hovered) UiState.drawerTab = chip.index }
-                        TapHandler { onTapped: UiState.drawerTab = chip.index }
+                        // click pins the drawer on this tab; clicking the pinned tab again unpins
+                        TapHandler {
+                            onTapped: {
+                                if (UiState.drawerPinned && chip.active) UiState.drawerPinned = false
+                                else { UiState.drawerTab = chip.index; UiState.drawerPinned = true }
+                            }
+                        }
                     }
                 }
             }
