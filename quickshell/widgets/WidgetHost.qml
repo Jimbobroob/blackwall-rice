@@ -1,12 +1,15 @@
 import QtQuick
 import Quickshell
 import Quickshell.Wayland
+import Quickshell.Services.Mpris
 import "../theme"
 import "../services"
 import "../fx"
 
 // One passive desktop widget. Anchor and margin come from settings.json:
 //   { "id": "clock", "anchor": "top-right", "margin": [horizontal, vertical] }
+// Optional "when": "playing" (Spotify is playing) or "call" (in a Discord call) shows it only then;
+// it lingers a few seconds after, so a quick pause or rejoin doesn't flicker it.
 PanelWindow {
     id: win
     required property var spec
@@ -14,6 +17,17 @@ PanelWindow {
 
     readonly property string a: spec.anchor || "top-left"
     readonly property var m: spec.margin || [48, 48]
+
+    readonly property var spotify: Mpris.players.values.find(p =>
+        (p.desktopEntry || "").toLowerCase().includes("spotify")
+        || (p.identity || "").toLowerCase().includes("spotify")) || null
+    readonly property bool cond: !spec.when
+        || (spec.when === "playing" && spotify !== null && spotify.isPlaying)
+        || (spec.when === "call" && DiscordVoice.connected)
+    property bool shown: cond
+    onCondChanged: if (cond) { hideTimer.stop(); shown = true } else hideTimer.restart()
+    Timer { id: hideTimer; interval: 8000; onTriggered: win.shown = false }
+    visible: shown
 
     anchors {
         left: a.includes("left"); right: a.includes("right")
@@ -47,6 +61,7 @@ PanelWindow {
 
     Loader {
         id: loader
+        active: win.shown
         source: (win.role === "side" ? files.sideFiles : files.mainFiles)[win.spec.id] || ""
         onLoaded: pop.play(Math.random() * 300)
     }

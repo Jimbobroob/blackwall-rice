@@ -104,6 +104,24 @@ return {
                     48,
                     48
                 }
+            },
+            {
+                ["id"] = "discord",
+                ["anchor"] = "bottom-left",
+                ["margin"] = {
+                    692,
+                    48
+                },
+                ["when"] = "call"
+            },
+            {
+                ["id"] = "spotify",
+                ["anchor"] = "bottom-left",
+                ["margin"] = {
+                    92,
+                    48
+                },
+                ["when"] = "playing"
             }
         },
         ["tabs"] = {
