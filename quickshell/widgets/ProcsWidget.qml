@@ -1,52 +1,18 @@
 import QtQuick
-import Quickshell
-import Quickshell.Io
 import "../theme"
 import "../services"
 
-// Top apps by CPU, btop-style. Processes with the same name are summed (browser tabs etc.).
-// CPU is per core like top/btop (a busy game can pass 100%). Streams `top` only while loaded,
-// i.e. while the drawer shows this tab.
+// Top apps by CPU, btop-style. Data comes from the always-running Procs service.
 Card {
     id: root
     title: "processes"
-    property int count: 8
-    property var rows: []
-    property string tasks: ""
-    property var _frame: ({})
 
     readonly property int w: 568
     readonly property int segs: 14
 
-    function flush() {
-        if (Object.keys(_frame).length === 0) return
-        const list = Object.keys(_frame).map(k => ({ name: k, cpu: _frame[k].cpu, mem: _frame[k].mem }))
-        list.sort((a, b) => b.cpu - a.cpu || b.mem - a.mem)
-        rows = list.slice(0, count)
-        _frame = ({})
-    }
     function fmtMem(pct) {
         const gb = pct / 100 * SysStats.ramTotalGb
         return gb >= 1 ? gb.toFixed(1) + " GB" : Math.round(gb * 1024) + " MB"
-    }
-
-    Process {
-        running: true
-        command: ["top", "-b", "-d", "2", "-w", "512", "-o", "%CPU"]
-        stdout: SplitParser {
-            onRead: line => {
-                if (line.startsWith("Tasks:")) { root.tasks = line.split(",")[0].replace("Tasks:", "").trim(); return }
-                const f = line.trim().split(/\s+/)
-                // the column header starts each frame: show the frame collected before it
-                if (f[0] === "PID") { root.flush(); return }
-                if (!/^\d+$/.test(f[0]) || f.length < 12) return
-                const name = f.slice(11).join(" ")
-                if (name === "top") return
-                const e = root._frame[name] || (root._frame[name] = { cpu: 0, mem: 0 })
-                e.cpu += Number(f[8]) || 0
-                e.mem += Number(f[9]) || 0
-            }
-        }
     }
 
     component Head: Text {
@@ -58,12 +24,12 @@ Card {
         spacing: 4
         Item {
             width: root.w; height: 20
-            Head { text: "NAME" + (root.tasks ? "   · " + root.tasks : "") }
+            Head { text: "NAME" + (Procs.tasks ? "   · " + Procs.tasks : "") }
             Head { x: 300; text: "CPU" }
             Head { anchors.right: parent.right; text: "MEM" }
         }
         Repeater {
-            model: root.rows.length ? root.rows : [{ name: "sampling…", cpu: 0, mem: 0 }]
+            model: Procs.rows.length ? Procs.rows : [{ name: "sampling…", cpu: 0, mem: 0 }]
             delegate: Item {
                 id: row
                 required property var modelData

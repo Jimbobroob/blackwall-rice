@@ -8,3 +8,4 @@ singleton SysStats 1.0 SysStats.qml
 singleton Updates 1.0 Updates.qml
 singleton UiState 1.0 UiState.qml
 singleton DiscordVoice 1.0 DiscordVoice.qml
+singleton Procs 1.0 Procs.qml
