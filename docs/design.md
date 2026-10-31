@@ -296,4 +296,4 @@ Each phase is started with its slash command in Claude Code: `/rice-phase-1` …
 - Pushing the repo to GitHub
 - Side bar is docked (flush to the screen edge, full height, no rounding, red_dim line on the inner edge only), not floating. Main bar unchanged. (R4)
 - Tiled windows sit flush against the docked side bar: gaps_out left = 0 (applies to both monitors). (R5)
-- Side-monitor widgets are a drawer (Caelestia-style): hidden by default, slide in from the nearest screen edge on `Super + W` or the side-bar button, drawn above windows while open. Main-monitor clock/weather stay always on. (R6)
+- Side monitor: clock and cava (audio) always on the wallpaper; everything else lives in a top drawer (Caelestia-style) that slides down when the cursor hits the top-centre of the monitor, with tabs System (sysstats, network) / Media (discord, spotify) / Date (calendar, weather); hover or click a tab to switch, `Super + W` / side-bar button pins it open. Groups come from `settings.json` -> `widgets.tabs`. Main-monitor clock/weather stay always on. (R6, R7; replaces the R6 slide-from-side version)

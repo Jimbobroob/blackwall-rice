@@ -15,7 +15,7 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 ## Windows
 | Keys | Action |
 |---|---|
-| `Super + W` | Slide the side-monitor widgets in/out (also the button under the launcher in the side bar) |
+| `Super + W` | Pin the top widget drawer open/closed (also the button under the launcher in the side bar); hovering the top-centre of the side monitor opens it too |
 | `Super + Q` | Close window (Spotify / Vesktop: quit the app, they otherwise stay in the tray) |
 | `Super + F` | Fullscreen |
 | `Super + V` | Toggle floating |

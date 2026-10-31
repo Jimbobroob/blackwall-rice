@@ -97,60 +97,38 @@
         ]
       },
       {
-        "id": "calendar",
-        "anchor": "bottom-left",
-        "margin": [
-          92,
-          48
-        ]
-      },
-      {
-        "id": "weather",
-        "anchor": "bottom-left",
-        "margin": [
-          426,
-          48
-        ]
-      },
-      {
-        "id": "network",
-        "anchor": "bottom-right",
-        "margin": [
-          16,
-          312
-        ]
-      },
-      {
-        "id": "sysstats",
-        "anchor": "bottom-right",
-        "margin": [
-          16,
-          572
-        ]
-      },
-      {
-        "id": "spotify",
-        "anchor": "top-left",
-        "margin": [
-          788,
-          48
-        ]
-      },
-      {
-        "id": "discord",
-        "anchor": "top-left",
-        "margin": [
-          420,
-          48
-        ]
-      },
-      {
         "id": "cava",
         "anchor": "bottom-right",
         "margin": [
           48,
           48
         ]
+      }
+    ],
+    "tabs": [
+      {
+        "name": "System",
+        "ids": [
+          "sysstats",
+          "network"
+        ],
+        "layout": "column"
+      },
+      {
+        "name": "Media",
+        "ids": [
+          "discord",
+          "spotify"
+        ],
+        "layout": "row"
+      },
+      {
+        "name": "Date",
+        "ids": [
+          "calendar",
+          "weather"
+        ],
+        "layout": "row"
       }
     ]
   },

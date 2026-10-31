@@ -51,8 +51,8 @@ PanelWindow {
         BarButton {
             width: parent.width
             icon: "󰕮"
-            iconColor: UiState.widgetsOpen ? Theme.red : Theme.text
-            onClicked: UiState.toggleWidgets()
+            iconColor: UiState.drawerPinned ? Theme.red : Theme.text
+            onClicked: UiState.toggleDrawer()
         }
 
         BarDivider { width: parent.width }

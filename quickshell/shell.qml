@@ -31,6 +31,7 @@ ShellRoot {
             LazyLoader { active: scope.notifHost; NotificationPopups { screen: scope.modelData } }
 
             LazyLoader { active: scope.role === "side"; SideBar { screen: scope.modelData } }
+            LazyLoader { active: scope.role === "side"; TopDrawer { screen: scope.modelData } }
             LazyLoader { active: scope.role === "side"; PowerMenu { screen: scope.modelData } }
             LazyLoader { active: scope.role === "side"; HistoryPanel { screen: scope.modelData } }
 
