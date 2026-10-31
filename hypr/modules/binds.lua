@@ -11,7 +11,14 @@ return function(rice)
     hl.bind(key("D"), function() rice.toggle_app("discord") end)
 
     -- Windows
-    hl.bind(key("Q"), hl.dsp.window.close())
+    -- Spotify and Vesktop keep running in the tray after their window closes: quit the flatpak instead.
+    local quit_apps = { spotify = "com.spotify.Client", vesktop = "dev.vencord.Vesktop", discord = "dev.vencord.Vesktop" }
+    hl.bind(key("Q"), function()
+        local win = hl.get_active_window()
+        local app = win and quit_apps[(win.class or ""):lower()]
+        if app then hl.dispatch(hl.dsp.exec_cmd("flatpak kill " .. app))
+        else hl.dispatch(hl.dsp.window.close()) end
+    end)
     hl.bind(key("F"), hl.dsp.window.fullscreen({ action = "toggle", mode = "fullscreen" }))
     hl.bind(key("V"), hl.dsp.window.float({ action = "toggle" }))
     for _, dir in ipairs({ "left", "right", "up", "down" }) do

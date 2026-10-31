@@ -87,3 +87,4 @@ _(Claude ticks steps here as they are done, e.g. `- [x] P1.2 install.sh + rollba
 - [x] P6.27 (user request) terminal_opacity 0.7 -> 0.82.
 - [x] R1 (user request) clipboard history fixed: the watcher was not running (and nothing restarted it); now supervised text+image watchers (clipwatch.sh), picker script + palette-generated rofi theme. Tested: copy -> list -> pick -> paste. Not tested: image entries, a fresh login.
 - [x] R2 (user request) side-bar tray: middle-click on the Spotify icon quits it (`flatpak kill com.spotify.Client`); its tray menu has no Quit. Reload clean; click not tested.
+- [x] R3 (user request) Super+Q quits Spotify/Vesktop outright (they hid to tray on close). Reload clean; not tested on the apps.
