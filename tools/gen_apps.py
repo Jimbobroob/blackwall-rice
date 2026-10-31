@@ -1,6 +1,6 @@
 """Phase 5 outputs: app themes + lock screen, all built from the palette.
 
-Called from generate.py. Everything lands in ~/rice/generated/ (never edit by hand).
+Called from generate.py. Everything lands in ~/Source/rices/blackwall-rice/generated/ (never edit by hand).
 """
 from generate import HEADER, OUT, hexbare, mix
 

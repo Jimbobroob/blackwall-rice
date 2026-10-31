@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build every derived config from theme/palette.json and settings.json.
 
-Outputs go to ~/rice/generated/. Never edit those by hand: change the JSON
+Outputs go to ~/Source/rices/blackwall-rice/generated/. Never edit those by hand: change the JSON
 (or a template) and re-run this, or just run install.sh which calls it.
 """
 import json

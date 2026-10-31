@@ -33,8 +33,8 @@ Hyprland pick up most changes live; run `hyprctl reload` for Hyprland-side ones)
 
 ## Install / rollback
 ```
-~/rice/install.sh        # back up current ~/.config entries to ~/rice-old-backup/<timestamp>/, then symlink (see links.txt)
-~/rice/rollback.sh       # undo every install, newest first (--last = just the latest)
+~/Source/rices/blackwall-rice/install.sh        # back up current ~/.config entries to ~/rice-old-backup/<timestamp>/, then symlink (see links.txt)
+~/Source/rices/blackwall-rice/rollback.sh       # undo every install, newest first (--last = just the latest)
 ```
 Nothing is ever deleted: old files are moved to the backup folder.
 

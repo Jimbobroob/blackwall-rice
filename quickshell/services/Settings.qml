@@ -4,7 +4,7 @@ import Quickshell
 import Quickshell.Io
 import Quickshell.Hyprland
 
-// Live view of ~/rice/settings.json (via theme/settings.json). Edits apply without a restart.
+// Live view of ~/Source/rices/blackwall-rice/settings.json (via theme/settings.json). Edits apply without a restart.
 Singleton {
     id: root
 

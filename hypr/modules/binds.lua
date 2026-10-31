@@ -1,4 +1,4 @@
--- Keybinds. Every bind here is listed in ~/rice/docs/keybinds.md: keep them in sync.
+-- Keybinds. Every bind here is listed in ~/Source/rices/blackwall-rice/docs/keybinds.md: keep them in sync.
 return function(rice)
     local mod = "SUPER"
     local function key(k) return mod .. " + " .. k end

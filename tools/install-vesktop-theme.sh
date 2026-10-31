@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Copy the generated Vencord theme into Vesktop's (Flatpak) themes folder and enable it.
-# Copy, not symlink: the Flatpak sandbox can't see ~/rice. Restart Vesktop afterwards.
+# Copy, not symlink: the Flatpak sandbox can't see ~/Source/rices/blackwall-rice. Restart Vesktop afterwards.
 set -euo pipefail
 RICE_DIR="$(cd "$(dirname "$(realpath "$0")")/.." && pwd)"
 DIR="$HOME/.var/app/dev.vencord.Vesktop/config/vesktop"

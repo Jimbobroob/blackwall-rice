@@ -1,5 +1,5 @@
 #!/bin/sh
-# Rebuild Vencord with the RiceVoice plugin (source: ~/rice/vencord/riceVoice).
+# Rebuild Vencord with the RiceVoice plugin (source: ~/Source/rices/blackwall-rice/vencord/riceVoice).
 # Vencord's path aliases only resolve inside its own tree, so the plugin is copied, not linked.
 set -e
 V=${VENCORD_SRC:-$HOME/.local/share/vencord-src}

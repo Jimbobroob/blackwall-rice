@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install the rice: back up whatever is at each target, then symlink ~/rice into place.
+# Install the rice: back up whatever is at each target, then symlink ~/Source/rices/blackwall-rice into place.
 #
 #   ./install.sh            install everything in links.txt
 #   ./install.sh hypr kitty install only these sources (first column of links.txt)

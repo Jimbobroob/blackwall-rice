@@ -1,4 +1,4 @@
-# fish: Blackwall rice. Colours come from ~/rice/generated/colors.fish (built from the palette).
+# fish: Blackwall rice. Colours come from ~/Source/rices/blackwall-rice/generated/colors.fish (built from the palette).
 
 fish_add_path -g ~/.local/bin ~/.cargo/bin
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """One line of weather for hyprlock. Prints the cached value instantly, refreshes it in the background.
 
-Location and units come from ~/rice/settings.json (weather block), same as the Quickshell widget.
+Location and units come from ~/Source/rices/blackwall-rice/settings.json (weather block), same as the Quickshell widget.
 """
 import json
 import os

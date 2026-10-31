@@ -1,6 +1,6 @@
 -- Rice: Hyprland entry point (Hyprland 0.57+ reads Lua only).
 -- Colours come from generated/palette.lua and layout facts from generated/settings.lua,
--- both built from ~/rice/theme/palette.json and ~/rice/settings.json by tools/generate.py.
+-- both built from ~/Source/rices/blackwall-rice/theme/palette.json and ~/Source/rices/blackwall-rice/settings.json by tools/generate.py.
 
 local dir = os.getenv("HOME") .. "/.config/hypr"
 

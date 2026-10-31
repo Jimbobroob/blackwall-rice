@@ -8,20 +8,20 @@ The rice is built in 6 phases. Each phase leaves the desktop **working**. Never 
 2. **Check prerequisites**: the previous phase must be ✅ in `progress.md`. If it isn't, stop and tell the user which phase to run.
 3. **Resume, don't restart**: if this phase is 🟡 in-progress, continue from the last ticked step in `progress.md`.
 4. **Ask before deviating**: if something in the design is impossible or needs a new decision, stop and ask. Record the answer in `design.md`.
-5. **Colours only from the palette file** (`~/rice/theme/palette.*`). No hardcoded hex anywhere else.
+5. **Colours only from the palette file** (`~/Source/rices/blackwall-rice/theme/palette.*`). No hardcoded hex anywhere else.
 6. **Configurable over hardcoded**: things the user may change (clock style, 12/24h, widget placement, glitch level) go in one settings file.
 7. **sudo**: Claude can't type the user's password. List the exact `sudo dnf install ...` commands and ask the user to run them with `! <command>` in Claude Code.
 8. **Keybinds**: every bind added or changed is written to `keybinds.md` (table + changelog).
-9. **Never delete** the user's existing configs. Install only via `~/rice/install.sh` (backs up to `~/rice-old-backup/`, then symlinks).
+9. **Never delete** the user's existing configs. Install only via `~/Source/rices/blackwall-rice/install.sh` (backs up to `~/rice-old-backup/`, then symlinks).
 10. **Test before finishing**: reload Hyprland/Quickshell, check `hyprctl` and logs for errors, and ask the user to confirm it looks right.
-11. **Finish**: tick steps in `progress.md`, mark the phase ✅, `git commit` in `~/rice` with a clear message, then tell the user which phase is next.
+11. **Finish**: tick steps in `progress.md`, mark the phase ✅, `git commit` in `~/Source/rices/blackwall-rice` with a clear message, then tell the user which phase is next.
 12. **Running low on context or limits**: stop at a clean step, commit, mark the phase 🟡 in `progress.md` with a note on exactly where it stopped. Re-running the same phase command resumes it.
 
 ---
 
 ## Phase 1: Foundation
 **Goal:** safe base. Hyprland configured, terminal and shell done.
-1. `git init` `~/rice`, add `.gitignore`.
+1. `git init` `~/Source/rices/blackwall-rice`, add `.gitignore`.
 2. Write **`install.sh`** (back up targets to `~/rice-old-backup/<timestamp>/`, then symlink) and **`rollback.sh`** (remove symlinks, restore the latest backup). Test rollback on a dummy target first.
 3. Palette file(s): `theme/palette.json` as the source, plus generated formats as needed (hyprland conf, kitty conf, QML, CSS).
 4. Settings file: `settings.json` (glitch level, clock style, 12/24h, widget placement).
@@ -74,4 +74,4 @@ The rice is built in 6 phases. Each phase leaves the desktop **working**. Never 
 1. Glitch effects (shaders): workspace switches, widget pop-ins, scanlines, at **medium**, switchable subtle/medium/heavy from `settings.json`.
 2. The user's wallpaper on both monitors.
 3. Full review against design.md: every item checked, gaps fixed, final commit.
-4. Write `~/rice/README.md` (what's where, how to change palette/settings, install/rollback).
+4. Write `~/Source/rices/blackwall-rice/README.md` (what's where, how to change palette/settings, install/rollback).
