@@ -46,7 +46,7 @@ Scope {
         id: win
         screen: root.screen
         anchors { top: true }
-        implicitWidth: 1000; implicitHeight: 560
+        implicitWidth: 1040; implicitHeight: 640
         visible: root.p > 0
         color: "transparent"
         exclusionMode: ExclusionMode.Ignore
@@ -58,16 +58,27 @@ Scope {
         Item {
             id: panel
             readonly property var grid: stack.children[Math.min(UiState.drawerTab, stack.children.length - 1)]
+            readonly property int pad: 14
             x: (win.width - width) / 2
-            y: 8 - (1 - root.p) * (height + 16)
+            y: -(1 - root.p) * (height + 16)
             opacity: root.p
-            width: Math.max(tabRow.width, stack.width)
-            height: tabRow.height + 12 + stack.height
+            width: Math.max(tabRow.width, stack.width) + pad * 2
+            height: pad + tabRow.height + 12 + stack.height + pad
 
             HoverHandler { id: panelHover }
 
+            // one box around tabs + widgets, hanging from the top edge (top corners/border off-screen)
+            Rectangle {
+                y: -radius
+                width: parent.width; height: parent.height + radius
+                radius: Settings.radius
+                color: Qt.rgba(Theme.base.r, Theme.base.g, Theme.base.b, Settings.panelAlpha)
+                border.width: 1; border.color: Theme.red_dim
+            }
+
             Row {
                 id: tabRow
+                y: panel.pad
                 anchors.horizontalCenter: parent.horizontalCenter
                 spacing: 6
                 Repeater {
@@ -98,7 +109,7 @@ Scope {
             // one grid per group; only the active one is visible, the stack sizes to it
             Item {
                 id: stack
-                y: tabRow.height + 12
+                y: panel.pad + tabRow.height + 12
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: panel.grid ? panel.grid.implicitWidth : 0
                 height: panel.grid ? panel.grid.implicitHeight : 0
