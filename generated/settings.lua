@@ -139,10 +139,16 @@ return {
             {
                 ["name"] = "Media",
                 ["ids"] = {
-                    "discord",
-                    "spotify"
+                    {
+                        "spotify",
+                        "mixer"
+                    },
+                    {
+                        "lyrics",
+                        "discord"
+                    }
                 },
-                ["layout"] = "row"
+                ["layout"] = "column"
             },
             {
                 ["name"] = "Date",

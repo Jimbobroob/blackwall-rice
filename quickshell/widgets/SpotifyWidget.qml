@@ -1,17 +1,15 @@
 import QtQuick
-import Quickshell.Services.Mpris
 import "../theme"
 import "../services"
 
-// Spotify now-playing card (MPRIS): art, title, artist, progress, prev / play-pause / next.
+// Now-playing card for any MPRIS player (Players service): art, title, artist, seekable progress,
+// prev / play-pause / next, volume knob; the switch button under the knob cycles players.
 Card {
     id: root
-    title: "spotify"
+    title: Players.player ? Players.nameOf(Players.player) : "media"
     interactive: true
 
-    readonly property var player: Mpris.players.values.find(p =>
-        (p.desktopEntry || "").toLowerCase().includes("spotify")
-        || (p.identity || "").toLowerCase().includes("spotify")) || null
+    readonly property var player: Players.player
     readonly property bool active: player !== null && player.trackTitle !== ""
     readonly property real frac: active && player.length > 0 ? Math.min(1, player.position / player.length) : 0
 
@@ -110,7 +108,7 @@ Card {
             Text {
                 anchors.centerIn: parent
                 visible: !root.active
-                text: "󰓇"; color: Theme.muted
+                text: "󰝚"; color: Theme.muted
                 font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 48
             }
         }
@@ -127,22 +125,46 @@ Card {
             }
             Text {
                 width: parent.width
-                text: root.active ? root.player.trackArtist : (root.player ? "paused" : "spotify not running")
+                text: root.active ? root.player.trackArtist : (root.player ? "paused" : "no player running")
                 color: Theme.muted
                 elide: Text.ElideRight
                 font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
             }
             Item { width: 1; height: 6 }
-            // progress
-            Rectangle {
-                width: parent.width; height: 4; radius: 2
-                color: Theme.overlay
-                Rectangle { width: parent.width * root.frac; height: parent.height; radius: 2; color: Theme.red }
+            // progress; click or drag to seek
+            Item {
+                id: seek
+                readonly property bool can: root.active && root.player.canSeek && root.player.length > 0
+                property real dragFrac: -1
+                width: parent.width; height: 12
+                Rectangle {
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: parent.width; height: seekMa.containsMouse ? 6 : 4; radius: 3
+                    color: Theme.overlay
+                    Rectangle {
+                        width: parent.width * (seek.dragFrac >= 0 ? seek.dragFrac : root.frac)
+                        height: parent.height; radius: 3; color: Theme.red
+                    }
+                }
+                MouseArea {
+                    id: seekMa
+                    anchors.fill: parent
+                    enabled: seek.can
+                    hoverEnabled: true
+                    cursorShape: seek.can ? Qt.PointingHandCursor : Qt.ArrowCursor
+                    function at(x) { return Math.max(0, Math.min(1, x / width)) }
+                    onPressed: m => seek.dragFrac = at(m.x)
+                    onPositionChanged: m => { if (pressed) seek.dragFrac = at(m.x) }
+                    onReleased: m => {
+                        root.player.position = at(m.x) * root.player.length
+                        seek.dragFrac = -1
+                    }
+                }
             }
             Item {
                 width: parent.width; height: 14
                 Text {
-                    text: root.active ? root.fmt(root.player.position) : "0:00"
+                    text: root.active ? root.fmt(seek.dragFrac >= 0 ? seek.dragFrac * root.player.length : root.player.position) : "0:00"
                     color: Theme.muted
                     font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 10
                 }
@@ -179,6 +201,14 @@ Card {
                 text: "VOL"
                 color: Theme.muted
                 font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 9; font.letterSpacing: 2
+            }
+            // next player (only when more than one has something loaded)
+            Ctl {
+                anchors.horizontalCenter: parent.horizontalCenter
+                visible: Players.list.length > 1
+                text: "󰒝 " + (Players.list.indexOf(root.player) + 1) + "/" + Players.list.length
+                font.pixelSize: 11
+                onClicked: Players.cycle()
             }
         }
     }

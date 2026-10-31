@@ -29,7 +29,7 @@ Scope {
     readonly property var files: ({
         calendar: "SideCalendar.qml", weather: "SideWeather.qml", spotify: "SpotifyWidget.qml",
         discord: "DiscordWidget.qml", sysstats: "SysStatsWidget.qml", network: "NetSpeed.qml",
-        procs: "ProcsWidget.qml"
+        procs: "ProcsWidget.qml", mixer: "MixerWidget.qml", lyrics: "LyricsWidget.qml"
     })
 
     // hover strip at the top edge
