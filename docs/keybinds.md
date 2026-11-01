@@ -8,7 +8,8 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 |---|---|
 | `Super + Enter` | Open terminal (kitty) |
 | `Super + B` | Open Firefox |
-| `Super + Space` | App launcher (Quickshell, centre of main monitor). Esc closes, ↑↓ + Enter. Apps with a bind above show it on the far right of their row (`appBinds` in `quickshell/launcher/Launcher.qml`: change it there too if one of these binds changes) |
+| `Super + Space` | App launcher (Quickshell, centre of main monitor). Esc closes, ↑↓ + Enter. Apps with a bind in this table show it on the far right of their row (`appBinds` in `quickshell/launcher/Launcher.qml`: change it there too if one of these binds changes) |
+| `Alt + 1…8` (launcher open) | Launch that row of the launcher; each row shows its number on the far right, and the numbers follow the current search results |
 | `Super + S` | Show/hide Spotify window (always on side monitor) |
 | `Super + D` | Show/hide Discord window (always on side monitor) |
 
@@ -74,3 +75,4 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 - 2026-10-31 (refine): added `Alt + Tab` / `Alt + Shift + Tab` window switcher (Quickshell, `quickshell/switcher`).
 - 2026-11-01: added Super audio binds for keyboards without media keys: `Super + =` / `-` (volume), `Super + M` (mic mute), `Super + Shift + M` (speaker mute), `Super + P` (play/pause), `Super + ]` / `[` (next/previous).
 - 2026-11-01 (refine): the `Super + Space` launcher shows each app's existing bind on the far right of its row (labels only, no binds changed).
+- 2026-11-01 (refine): added `Alt + 1…8` inside the launcher to launch that row.

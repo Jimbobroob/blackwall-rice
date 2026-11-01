@@ -180,7 +180,9 @@ Scope {
                                             item.height = Qt.binding(() => line.maxH())
                                             if (grp.fill.includes(modelData) && item.w !== undefined) {
                                                 const base = item.w
-                                                item.w = Qt.binding(() => Math.max(base, grp.minW - line.othersWidth(ld) - item.pad * 2))
+                                                // keep our own reference: ld.item goes null first when the tab closes
+                                                const card = item
+                                                card.w = Qt.binding(() => Math.max(base, grp.minW - line.othersWidth(ld) - card.pad * 2))
                                             }
                                         }
                                     }

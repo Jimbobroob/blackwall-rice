@@ -19,7 +19,8 @@ PanelWindow {
     WlrLayershell.keyboardFocus: LauncherState.open ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
 
     implicitWidth: Settings.data.launcher.width
-    implicitHeight: 64 + Settings.data.launcher.max_results * 40 + 16
+    // margins + search box + rows (36 tall, 8 spacing)
+    implicitHeight: 64 + Settings.data.launcher.max_results * 44
 
     HyprlandFocusGrab {
         windows: [win]
@@ -103,7 +104,7 @@ PanelWindow {
         Scanlines {}
 
         ColumnLayout {
-            anchors { fill: parent; margins: 12 }
+            anchors { left: parent.left; right: parent.right; top: parent.top; margins: 12 }
             spacing: 8
 
             Rectangle {
@@ -135,6 +136,14 @@ PanelWindow {
                         Keys.onEnterPressed: win.launch(win.results[win.index])
                         Keys.onDownPressed: win.index = Math.min(win.index + 1, win.results.length - 1)
                         Keys.onUpPressed: win.index = Math.max(win.index - 1, 0)
+                        // Alt+1..9 launches that row (not the reminder row, it has no id)
+                        Keys.onPressed: event => {
+                            if ((event.modifiers & Qt.AltModifier) && event.key >= Qt.Key_1 && event.key <= Qt.Key_9) {
+                                const entry = win.results[event.key - Qt.Key_1]
+                                if (entry && entry.id) win.launch(entry)
+                                event.accepted = true
+                            }
+                        }
                     }
                 }
             }
@@ -169,11 +178,19 @@ PanelWindow {
                             font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 14
                         }
                     }
-                    Text {
+                    Row {
                         anchors { right: parent.right; rightMargin: 12; verticalCenter: parent.verticalCenter }
-                        text: win.appBinds[row.modelData.id] || ""
-                        color: row.index === win.index ? Theme.red : Theme.muted
-                        font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
+                        spacing: 16
+                        Text {
+                            text: win.appBinds[row.modelData.id] || ""
+                            color: row.index === win.index ? Theme.red : Theme.muted
+                            font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
+                        }
+                        Text {
+                            text: row.modelData.id && row.index < 9 ? "Alt+" + (row.index + 1) : ""
+                            color: row.index === win.index ? Theme.red : Theme.muted
+                            font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
+                        }
                     }
                     MouseArea {
                         anchors.fill: parent
@@ -183,7 +200,6 @@ PanelWindow {
                     }
                 }
             }
-            Item { Layout.fillHeight: true }
         }
     }
 }
