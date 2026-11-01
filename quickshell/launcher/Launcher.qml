@@ -30,6 +30,15 @@ PanelWindow {
     property string query: ""
     property int index: 0
 
+    // Rice binds that open an app, shown on the far right of its row (desktop entry id -> label).
+    // Keep in sync with hypr/modules/binds.lua. Super+D opens Vesktop, not the Discord flatpak.
+    readonly property var appBinds: ({
+        "kitty": "Super+Enter",
+        "org.mozilla.firefox": "Super+B",
+        "com.spotify.Client": "Super+S",
+        "dev.vencord.Vesktop": "Super+D"
+    })
+
     // "remind <when> <text>" turns the launcher into the reminder prompt (services/Reminders.qml)
     readonly property var reminder: {
         const m = query.match(/^\s*remind(?:\s+me)?\s*(.*)$/i)
@@ -159,6 +168,12 @@ PanelWindow {
                             color: row.index === win.index ? Theme.text : Theme.muted
                             font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 14
                         }
+                    }
+                    Text {
+                        anchors { right: parent.right; rightMargin: 12; verticalCenter: parent.verticalCenter }
+                        text: win.appBinds[row.modelData.id] || ""
+                        color: row.index === win.index ? Theme.red : Theme.muted
+                        font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 12
                     }
                     MouseArea {
                         anchors.fill: parent
