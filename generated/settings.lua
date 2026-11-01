@@ -106,15 +106,6 @@ return {
                 }
             },
             {
-                ["id"] = "discord",
-                ["anchor"] = "bottom-left",
-                ["margin"] = {
-                    692,
-                    48
-                },
-                ["when"] = "call"
-            },
-            {
                 ["id"] = "spotify",
                 ["anchor"] = "bottom-left",
                 ["margin"] = {
