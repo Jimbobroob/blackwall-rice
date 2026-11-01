@@ -49,6 +49,15 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 | `Mic Mute` | Mute microphone |
 | `Play/Pause`, `Next`, `Prev` | Control the current player (Spotify) |
 
+## Audio (no media keys needed)
+| Keys | Action |
+|---|---|
+| `Super + =` / `Super + -` | Volume ±5% (max 100%), hold to repeat |
+| `Super + M` | Mute microphone |
+| `Super + Shift + M` | Mute speakers |
+| `Super + P` | Play/pause the current player (Spotify) |
+| `Super + ]` / `Super + [` | Next / previous track |
+
 ## Changelog
 - 2026-10-30: initial set agreed during design.
 - 2026-10-30: added `Super + S` (Spotify), `Super + D` (Discord), `Super + Tab` (window to other monitor).
@@ -63,3 +72,4 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 - 2026-10-31 (refine): added `Super + Shift + arrows` (swap window with its neighbour).
 - 2026-10-31 (refine): `Super + Shift + arrows` also flips the split (stacked <-> side by side) when there's no window that way.
 - 2026-10-31 (refine): added `Alt + Tab` / `Alt + Shift + Tab` window switcher (Quickshell, `quickshell/switcher`).
+- 2026-11-01: added Super audio binds for keyboards without media keys: `Super + =` / `-` (volume), `Super + M` (mic mute), `Super + Shift + M` (speaker mute), `Super + P` (play/pause), `Super + ]` / `[` (next/previous).
