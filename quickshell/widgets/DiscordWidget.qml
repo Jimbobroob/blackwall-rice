@@ -1,4 +1,5 @@
 import QtQuick
+import Quickshell.Widgets
 import "../theme"
 import "../services"
 
@@ -76,14 +77,13 @@ Card {
                     required property var modelData
                     width: root.cellW
                     spacing: 10
-                    Rectangle {
+                    ClippingRectangle {
                         width: 32; height: 32; radius: 16
                         color: Theme.overlay
                         border.width: 2
                         border.color: modelData.speaking ? Theme.red : "transparent"
-                        clip: true
                         Image {
-                            anchors.fill: parent; anchors.margins: 2
+                            anchors.fill: parent
                             source: modelData.avatar || ""
                             asynchronous: true
                             visible: status === Image.Ready
