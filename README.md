@@ -47,4 +47,4 @@ Nothing is ever deleted: old files are moved to the backup folder.
 ## Notes
 - Monitors are matched by description, so the KVM renaming ports is fine; widgets and workspaces follow when a screen returns.
 - Game mode (any real fullscreen window on the main monitor) turns blur, animations, borders and the bar off there; the side monitor is untouched.
-- Keybinds: see `docs/keybinds.md`. Super+Space launcher, Super+S Spotify, Super+D Discord, Super+L lock.
+- Keybinds: see `docs/keybinds.md`. Super+Enter launcher, Super+S Spotify, Super+D Discord, Super+L lock.

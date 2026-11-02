@@ -7,7 +7,7 @@ import "../theme"
 import "../services"
 import "../fx"
 
-// Search launcher, centred on the main monitor. Super+Space -> `qs ipc call launcher toggle`.
+// Search launcher, centred on the main monitor. Super+Enter -> `qs ipc call launcher toggle`.
 PanelWindow {
     id: win
 
@@ -34,7 +34,7 @@ PanelWindow {
     // Rice binds that open an app, shown on the far right of its row (desktop entry id -> label).
     // Keep in sync with hypr/modules/binds.lua. Super+D opens Vesktop, not the Discord flatpak.
     readonly property var appBinds: ({
-        "kitty": "Super+Enter",
+        "kitty": "Super+Space",
         "org.mozilla.firefox": "Super+B",
         "com.spotify.Client": "Super+S",
         "dev.vencord.Vesktop": "Super+D"

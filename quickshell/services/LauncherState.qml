@@ -9,7 +9,7 @@ Singleton {
     function toggle() { open = !open }
     function close() { open = false }
 
-    // Super+Space runs: qs ipc call launcher toggle
+    // Super+Enter runs: qs ipc call launcher toggle
     IpcHandler {
         target: "launcher"
         function toggle(): void { root.toggle() }

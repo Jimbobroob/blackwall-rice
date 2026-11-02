@@ -4,9 +4,9 @@ return function(rice)
     local function key(k) return mod .. " + " .. k end
 
     -- Apps
-    hl.bind(key("Return"), hl.dsp.exec_cmd("kitty"))
+    hl.bind(key("Space"), hl.dsp.exec_cmd("kitty"))
     hl.bind(key("B"), hl.dsp.exec_cmd("firefox"))
-    hl.bind(key("Space"), hl.dsp.exec_cmd("qs ipc call launcher toggle"))
+    hl.bind(key("Return"), hl.dsp.exec_cmd("qs ipc call launcher toggle"))
     hl.bind(key("W"), hl.dsp.exec_cmd("qs ipc call side widgets"))
     hl.bind(key("S"), function() rice.toggle_app("spotify") end)
     hl.bind(key("D"), function() rice.toggle_app("discord") end)
