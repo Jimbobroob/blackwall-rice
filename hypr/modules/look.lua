@@ -41,7 +41,7 @@ return function(rice)
         },
 
         binds = {
-            -- Special workspaces (Spotify/Discord) stay put when you switch workspaces.
+            -- Special workspaces (Discord) stay put when you switch workspaces.
             hide_special_on_workspace_change = false,
         },
     })

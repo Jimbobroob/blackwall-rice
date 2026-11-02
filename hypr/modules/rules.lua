@@ -28,7 +28,7 @@ return function(rice)
         no_shadow = true,
     })
 
-    -- Spotify and Discord always open hidden in their special workspace.
+    -- Discord always opens hidden in its special workspace.
     for name, app in pairs(rice.apps) do
         hl.window_rule({
             name  = "hide-" .. name,

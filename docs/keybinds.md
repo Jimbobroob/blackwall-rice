@@ -10,7 +10,7 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 | `Super + B` | Open Firefox |
 | `Super + Enter` | App launcher (Quickshell, centre of main monitor). Esc closes, ↑↓ + Enter. Apps with a bind in this table show it on the far right of their row (`appBinds` in `quickshell/launcher/Launcher.qml`: change it there too if one of these binds changes) |
 | `Alt + 1…8` (launcher open) | Launch that row of the launcher; each row shows its number on the far right, and the numbers follow the current search results |
-| `Super + S` | Show/hide Spotify window (always on side monitor) |
+| `Super + S` | Open Spotify, or jump to its window if it's already open |
 | `Super + D` | Show/hide Discord window (always on side monitor) |
 
 ## Windows
@@ -23,7 +23,7 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 | `Super + ← ↑ → ↓` | Move focus |
 | `Super + Shift + ← ↑ → ↓` | Move the focused window that way: swaps with the window there (they trade places and sizes). If there's none on the workspace that way, the split flips instead (e.g. two stacked + `→` = side by side, this one on the right). Alone on a workspace: swaps with the other monitor's window |
 | `Super + Tab` | Throw focused window to the other monitor |
-| `Alt + Tab` | Window switcher: live previews of every open window on both monitors (Spotify / Discord too), most recent first. Hold Alt and tap Tab to step (`Alt + Shift + Tab` goes back), let go of Alt to switch. While open: arrows / mouse move, Enter or click picks, Esc cancels |
+| `Alt + Tab` | Window switcher: live previews of every open window on both monitors (hidden Discord too), most recent first. Hold Alt and tap Tab to step (`Alt + Shift + Tab` goes back), let go of Alt to switch. While open: arrows / mouse move, Enter or click picks, Esc cancels |
 | `Super + Left-drag` | Move window |
 | `Super + Right-drag` | Resize window |
 
@@ -77,3 +77,4 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 - 2026-11-01 (refine): the `Super + Space` launcher shows each app's existing bind on the far right of its row (labels only, no binds changed).
 - 2026-11-01 (refine): added `Alt + 1…8` inside the launcher to launch that row.
 - 2026-11-02: swapped `Super + Enter` and `Super + Space`: `Super + Space` now opens the terminal (kitty), `Super + Enter` now opens the launcher.
+- 2026-11-02 (refine): `Super + S` opens Spotify or jumps to its window instead of showing/hiding a special workspace.

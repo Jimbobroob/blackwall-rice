@@ -1,9 +1,8 @@
--- Hidden Spotify / Discord windows living in special workspaces.
--- Super+S / Super+D show them on the SIDE monitor (never main), and hide them again.
+-- Hidden Discord window living in a special workspace.
+-- Super+D shows it on the SIDE monitor (never main), and hides it again.
 return function(rice)
     rice.apps = {
         -- classes: lowercase; Flatpak builds may report the app id instead of the short name.
-        spotify = { classes = { "spotify" }, cmd = "flatpak run com.spotify.Client" },
         discord = { classes = { "vesktop", "dev.vencord.vesktop" }, cmd = "flatpak run dev.vencord.Vesktop" },
     }
 
@@ -32,7 +31,7 @@ return function(rice)
         end
     end
 
-    -- The window rules in rules.lua catch most windows at open time, but Spotify sets
+    -- The window rules in rules.lua catch most windows at open time, but an app can set
     -- its class late, so also catch class changes.
     hl.on("window.class", function(window)
         if window then park(window) end
@@ -81,7 +80,7 @@ return function(rice)
     end
 
     -- Focus any window by address (the Alt+Tab switcher calls this through hyprctl eval).
-    -- A hidden Spotify / Discord window is shown on the side monitor first, the same way Super+S / D do.
+    -- A hidden Discord window is shown on the side monitor first, the same way Super+D does.
     function rice.focus_window(address)
         local want = (address or ""):gsub("^0x", "")
         for _, w in ipairs(hl.get_windows()) do

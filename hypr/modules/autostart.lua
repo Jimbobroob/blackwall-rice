@@ -1,5 +1,5 @@
 -- Autostart (login only, not on reload).
--- Apps: just Spotify and Vesktop, launched hidden (rules.lua parks them).
+-- Apps: just Vesktop, launched hidden (rules.lua parks it).
 return function(rice)
     hl.on("hyprland.start", function()
         -- Session plumbing.
