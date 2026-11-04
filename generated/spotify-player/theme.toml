@@ -40,4 +40,4 @@ selection = { fg = "#FF0033", modifiers = ["Bold"] }
 like = { fg = "#FF0033" }
 lyrics_played = { fg = "#6E6A75" }
 lyrics_playing = { fg = "#FF0033", modifiers = ["Bold"] }
-visualization = { low = "#7A0019", mid = "#FF0033", high = "#FF2AA0" }
+visualization = { low = "#520214", mid = "#FF0033", high = "#F47CBE" }

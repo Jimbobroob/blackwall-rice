@@ -202,7 +202,7 @@ selection = {st(c['red'], bold=True)}
 like = {st(c['red'])}
 lyrics_played = {st(c['muted'])}
 lyrics_playing = {st(c['red'], bold=True)}
-visualization = {{ low = "{c['red_dim']}", mid = "{c['red']}", high = "{c['magenta']}" }}
+visualization = {{ low = "{mix(c['red_dim'], c['base'], 0.35)}", mid = "{c['red']}", high = "{mix(c['magenta'], c['text'], 0.45)}" }}
 """
     write("spotify-player/theme.toml", t)
 
