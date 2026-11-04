@@ -10,7 +10,6 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 | `Super + B` | Open Firefox |
 | `Super + Enter` | App launcher (Quickshell, centre of main monitor). Esc closes, ↑↓ + Enter. Apps with a bind in this table show it on the far right of their row (`appBinds` in `quickshell/launcher/Launcher.qml`: change it there too if one of these binds changes) |
 | `Alt + 1…8` (launcher open) | Launch that row of the launcher; each row shows its number on the far right, and the numbers follow the current search results |
-| `Super + S` | Open Spotify, or jump to its window if it's already open |
 | `Super + D` | Show/hide Discord window (always on side monitor) |
 
 ## Windows
@@ -78,3 +77,5 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 - 2026-11-01 (refine): added `Alt + 1…8` inside the launcher to launch that row.
 - 2026-11-02: swapped `Super + Enter` and `Super + Space`: `Super + Space` now opens the terminal (kitty), `Super + Enter` now opens the launcher.
 - 2026-11-02 (refine): `Super + S` opens Spotify or jumps to its window instead of showing/hiding a special workspace.
+- 2026-11-02 (refine): `Super + S` only launches Spotify, it no longer looks for an open window to jump to.
+- 2026-11-04: removed `Super + S`. Spotify now runs from the terminal (`spotify_player` + Soloist); the desktop app still opens from the launcher.

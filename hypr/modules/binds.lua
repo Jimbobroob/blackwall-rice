@@ -8,16 +8,6 @@ return function(rice)
     hl.bind(key("B"), hl.dsp.exec_cmd("firefox"))
     hl.bind(key("Return"), hl.dsp.exec_cmd("qs ipc call launcher toggle"))
     hl.bind(key("W"), hl.dsp.exec_cmd("qs ipc call side widgets"))
-    -- Spotify is a normal window: jump to it, or open it if it has no window.
-    hl.bind(key("S"), function()
-        for _, w in ipairs(hl.get_windows()) do
-            if (w.class or ""):lower() == "spotify" then
-                hl.dispatch(hl.dsp.focus({ window = "address:" .. w.address }))
-                return
-            end
-        end
-        hl.exec_cmd("flatpak run com.spotify.Client")
-    end)
     hl.bind(key("D"), function() rice.toggle_app("discord") end)
 
     -- Windows

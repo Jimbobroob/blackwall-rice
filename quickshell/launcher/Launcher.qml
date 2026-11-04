@@ -36,7 +36,6 @@ PanelWindow {
     readonly property var appBinds: ({
         "kitty": "Super+Space",
         "org.mozilla.firefox": "Super+B",
-        "com.spotify.Client": "Super+S",
         "dev.vencord.Vesktop": "Super+D"
     })
 

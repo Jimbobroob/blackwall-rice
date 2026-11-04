@@ -149,6 +149,64 @@ def gen_btop(c, ansi):
     write("btop/blackwall.theme", "\n".join(t) + "\n")
 
 
+def gen_spotify_player(c, ansi):
+    """spotify_player TUI theme. No background is set, so it stays on the terminal's."""
+    def st(fg=None, bg=None, bold=False):
+        parts = []
+        if fg:
+            parts.append(f'fg = "{fg}"')
+        if bg:
+            parts.append(f'bg = "{bg}"')
+        if bold:
+            parts.append('modifiers = ["Bold"]')
+        return "{ " + ", ".join(parts) + " }"
+    t = f"""# {HEADER}
+[[themes]]
+name = "blackwall"
+
+[themes.palette]
+foreground = "{c['text']}"
+black = "{c['base']}"
+red = "{c['red']}"
+green = "{ansi['green']}"
+yellow = "{c['warning']}"
+blue = "{ansi['blue']}"
+magenta = "{c['magenta']}"
+cyan = "{ansi['cyan']}"
+white = "{c['text']}"
+bright_black = "{ansi['bright_black']}"
+bright_red = "{c['red']}"
+bright_green = "{ansi['bright_green']}"
+bright_yellow = "{ansi['bright_yellow']}"
+bright_blue = "{ansi['bright_blue']}"
+bright_magenta = "{c['magenta']}"
+bright_cyan = "{ansi['bright_cyan']}"
+bright_white = "{c['text']}"
+
+[themes.component_style]
+block_title = {st(c['red'], bold=True)}
+border = {st(c['overlay'])}
+playback_status = {st(c['red'], bold=True)}
+playback_track = {st(c['red'], bold=True)}
+playback_artists = {st(c['text'], bold=True)}
+playback_album = {st(c['magenta'])}
+playback_genres = {st(c['muted'])}
+playback_metadata = {st(c['muted'])}
+playback_progress_bar = {st(c['red'])}
+playback_progress_bar_unfilled = {st(c['overlay'])}
+current_playing = {st(c['magenta'], bold=True)}
+page_desc = {st(c['red'], bold=True)}
+playlist_desc = {st(c['muted'])}
+table_header = {st(c['muted'], bold=True)}
+selection = {st(c['red'], bold=True)}
+like = {st(c['red'])}
+lyrics_played = {st(c['muted'])}
+lyrics_playing = {st(c['red'], bold=True)}
+visualization = {{ low = "{c['red_dim']}", mid = "{c['red']}", high = "{c['magenta']}" }}
+"""
+    write("spotify-player/theme.toml", t)
+
+
 def gen_yazi(c, ansi):
     def st(fg=None, bg=None, bold=False):
         parts = []
@@ -1146,6 +1204,7 @@ def run(c, ansi, settings):
     gen_qt(c, ansi)
     gen_btop(c, ansi)
     gen_yazi(c, ansi)
+    gen_spotify_player(c, ansi)
     gen_cava(c, ansi)
     gen_fastfetch(c, ansi)
     gen_lock(c, ansi, settings)

@@ -98,14 +98,6 @@ return {
                 }
             },
             {
-                ["id"] = "cava",
-                ["anchor"] = "bottom-right",
-                ["margin"] = {
-                    48,
-                    48
-                }
-            },
-            {
                 ["id"] = "spotify",
                 ["anchor"] = "bottom-left",
                 ["margin"] = {

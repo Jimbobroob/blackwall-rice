@@ -19,6 +19,7 @@ generated/qt/blackwall.conf    .config/qt6ct/colors/blackwall.conf
 generated/qt/blackwall.conf    .config/qt5ct/colors/blackwall.conf
 btop                           .config/btop
 generated/yazi/theme.toml      .config/yazi/theme.toml
+generated/spotify-player/theme.toml  .config/spotify-player/theme.toml
 generated/cava                 .config/cava
 generated/fastfetch            .config/fastfetch
 generated/firefox/chrome       .config/mozilla/firefox/sgu7n1ns.default-release/chrome
