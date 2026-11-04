@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """One line of weather for hyprlock. Prints the cached value instantly, refreshes it in the background.
 
-Location and units come from ~/Source/rices/blackwall-rice/settings.json (weather block), same as the Quickshell widget.
+Location and units come from generated/settings.json (weather block), same as the Quickshell widget.
 """
 import json
 import os
@@ -11,7 +11,7 @@ import time
 import urllib.request
 from pathlib import Path
 
-SETTINGS = Path(__file__).resolve().parents[2] / "settings.json"
+SETTINGS = Path(__file__).resolve().parents[2] / "generated/settings.json"
 CACHE = Path(os.environ.get("XDG_RUNTIME_DIR", "/tmp")) / "rice" / "lock-weather.txt"
 MAX_AGE = 600
 

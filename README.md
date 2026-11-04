@@ -24,6 +24,8 @@ this folder and symlinked into `~/.config`. Design decisions live in `docs/desig
 Edit `theme/palette.json` or `settings.json`, then run `python3 tools/generate.py` (Quickshell and
 Hyprland pick up most changes live; run `hyprctl reload` for Hyprland-side ones).
 
+Personal values go in `~/.config/blackwall-rice/private.json`, which overrides `settings.json` and stays out of the repo, e.g. `{"weather": {"location": "...", "latitude": 0.0, "longitude": 0.0}}`.
+
 `settings.json` highlights:
 - `glitch_level`: `subtle`, `medium` or `heavy` (profiles in `glitch_levels`: pop-in length, slice strength, scanlines, workspace tear).
 - `clock`: `format` (`24h`/`12h`), `main_style`, `side_style` (`digital`/`analog`).

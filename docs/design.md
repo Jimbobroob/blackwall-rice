@@ -144,7 +144,7 @@ All components read colours from ONE palette file. Never hardcode hex values els
 - **Rajdhani**: display font for clocks, headings and big HUD text.
 
 ### Weather
-- Location: **London, England**. Units: **°C, mph**.
+- Location: set in `~/.config/blackwall-rice/private.json`, kept out of the repo (`settings.json` holds a placeholder). Units: **°C, mph**.
 
 ### Desktop widgets
 - **Side monitor (DP-2)**, the dashboard:

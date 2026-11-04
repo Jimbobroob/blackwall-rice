@@ -7,3 +7,9 @@
 *.log
 # python
 __pycache__/
+# generated with this machine's paths and private settings (install.sh rebuilds them)
+generated/settings.json
+generated/settings.lua
+generated/hyprpaper.conf
+generated/qt/qt5ct.conf
+generated/qt/qt6ct.conf

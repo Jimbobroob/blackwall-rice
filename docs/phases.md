@@ -41,7 +41,7 @@ The rice is built in 6 phases. Each phase leaves the desktop **working**. Never 
 3. Launcher on Super+Space (centre of main).
 4. Volume OSD: thin, above the bar, fast in and out, shows in game mode.
 5. Notification server (replaces dunst): side monitor top-right, always on, no sound, history kept for the bell.
-6. Main desktop widgets: digital 24h time + weather (London, °C/mph), styled differently from the side.
+6. Main desktop widgets: digital 24h time + weather (°C/mph), styled differently from the side.
 7. Disable or remove waybar/dunst/rofi autostarts.
 
 **Done when:** bar, launcher, OSD and notifications work, and game mode hides the bar.
