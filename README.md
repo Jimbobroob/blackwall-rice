@@ -1,6 +1,6 @@
 # Blackwall rice
 
-> **Disclaimer:** this rice was made entirely by [Claude](https://claude.ai), Anthropic's AI, apart from the art.
+> **Disclaimer:** this rice was made entirely by [Claude](https://claude.ai), Anthropic's AI, apart from the art. Id rather kill myself than write so much config lua and especially python 
 
 Darker-cyberpunk Hyprland rice for Fedora 44: near-black base, signature red `#FF0033`, magenta details.
 Quickshell draws the bars, widgets, launcher, notifications and power menu. Everything is built from
