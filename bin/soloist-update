@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Download the latest official Spotify Soloist build and restart the service.
+# Builds expire 90 days after their build date, so run this at least that often.
+set -euo pipefail
+
+url="https://soloist-builds.spotifycdn.com/soloist_release_x86_64.tar.gz"
+dest="$HOME/.local/bin/soloist"
+
+tmp="$(mktemp -d)"
+trap 'rm -rf "$tmp"' EXIT
+
+current="none"
+[ -x "$dest" ] && current="$("$dest" --version 2>/dev/null || echo unknown)"
+echo "Installed: $current"
+
+curl --fail --location --silent --show-error -o "$tmp/soloist.tar.gz" "$url"
+tar -xzf "$tmp/soloist.tar.gz" -C "$tmp" soloist
+
+# Only replace the working binary if the new one actually runs.
+latest="$("$tmp/soloist" --version)"
+echo "Latest:    $latest"
+
+if [ "$latest" = "$current" ]; then
+    echo "Already up to date."
+    exit 0
+fi
+
+install -m 755 "$tmp/soloist" "$dest.new"
+mv -f "$dest.new" "$dest"
+
+if systemctl --user is-enabled --quiet soloist.service; then
+    systemctl --user restart soloist.service
+    echo "Updated and restarted the service."
+else
+    echo "Updated. The service isn't enabled, so nothing was restarted."
+fi

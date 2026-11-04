@@ -3,7 +3,7 @@
 name = "blackwall"
 
 [themes.palette]
-foreground = "#E6E1E3"
+foreground = "#E9C6CE"
 black = "#07070A"
 red = "#FF0033"
 green = "#2FD08A"
@@ -23,19 +23,19 @@ bright_white = "#E6E1E3"
 
 [themes.component_style]
 block_title = { fg = "#FF0033", modifiers = ["Bold"] }
-border = { fg = "#1C1C24" }
+border = { fg = "#7A0019" }
 playback_status = { fg = "#FF0033", modifiers = ["Bold"] }
 playback_track = { fg = "#FF0033", modifiers = ["Bold"] }
-playback_artists = { fg = "#E6E1E3", modifiers = ["Bold"] }
-playback_album = { fg = "#FF2AA0" }
-playback_genres = { fg = "#6E6A75" }
-playback_metadata = { fg = "#6E6A75" }
+playback_artists = { fg = "#E9C6CE", modifiers = ["Bold"] }
+playback_album = { fg = "#F64F71" }
+playback_genres = { fg = "#724A59" }
+playback_metadata = { fg = "#724A59" }
 playback_progress_bar = { fg = "#FF0033" }
-playback_progress_bar_unfilled = { fg = "#1C1C24" }
+playback_progress_bar_unfilled = { fg = "#7A0019" }
 current_playing = { fg = "#FF2AA0", modifiers = ["Bold"] }
 page_desc = { fg = "#FF0033", modifiers = ["Bold"] }
-playlist_desc = { fg = "#6E6A75" }
-table_header = { fg = "#6E6A75", modifiers = ["Bold"] }
+playlist_desc = { fg = "#724A59" }
+table_header = { fg = "#B60025", modifiers = ["Bold"] }
 selection = { fg = "#FF0033", modifiers = ["Bold"] }
 like = { fg = "#FF0033" }
 lyrics_played = { fg = "#6E6A75" }

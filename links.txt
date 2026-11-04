@@ -20,6 +20,10 @@ generated/qt/blackwall.conf    .config/qt5ct/colors/blackwall.conf
 btop                           .config/btop
 generated/yazi/theme.toml      .config/yazi/theme.toml
 generated/spotify-player/theme.toml  .config/spotify-player/theme.toml
+spotify-player/app.toml        .config/spotify-player/app.toml
+systemd/soloist.service        .config/systemd/user/soloist.service
+systemd/soloist-sink.service   .config/systemd/user/soloist-sink.service
+bin/soloist-update             .local/bin/soloist-update
 generated/cava                 .config/cava
 generated/fastfetch            .config/fastfetch
 generated/firefox/chrome       .config/mozilla/firefox/sgu7n1ns.default-release/chrome

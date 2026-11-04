@@ -1,0 +1,13 @@
+[Unit]
+Description=Private PipeWire output for Spotify Soloist, passed on to the default speakers
+After=pipewire.service wireplumber.service pipewire-pulse.service
+Requires=pipewire.service
+
+[Service]
+# The sink lets spotify_player's bars listen to Soloist alone, through soloist_sink.monitor.
+ExecStart=/usr/bin/pw-loopback --name soloist-sink --capture-props='media.class=Audio/Sink node.name=soloist_sink node.description=Soloist priority.session=0 priority.driver=0' --playback-props='node.name=soloist_sink_output media.name=Soloist'
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,15 @@
+[Unit]
+Description=Spotify Soloist (headless Spotify Connect player)
+After=network-online.target pipewire-pulse.service soloist-sink.service
+Wants=network-online.target soloist-sink.service
+
+[Service]
+EnvironmentFile=%h/.config/soloist/env
+ExecStart=%h/.local/bin/soloist --device-name "Blackwall" --api-key ${SOLOIST_API_KEY} --ws 127.0.0.1:0 --cache-size 2000 --pipewire-device soloist_sink
+Restart=on-failure
+RestartSec=10
+# Exit code 10 means the build has expired: run soloist-update instead of retrying.
+RestartPreventExitStatus=10
+
+[Install]
+WantedBy=default.target

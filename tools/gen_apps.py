@@ -165,7 +165,7 @@ def gen_spotify_player(c, ansi):
 name = "blackwall"
 
 [themes.palette]
-foreground = "{c['text']}"
+foreground = "{mix(c['text'], c['red'], 0.12)}"
 black = "{c['base']}"
 red = "{c['red']}"
 green = "{ansi['green']}"
@@ -185,19 +185,19 @@ bright_white = "{c['text']}"
 
 [themes.component_style]
 block_title = {st(c['red'], bold=True)}
-border = {st(c['overlay'])}
+border = {st(c['red_dim'])}
 playback_status = {st(c['red'], bold=True)}
 playback_track = {st(c['red'], bold=True)}
-playback_artists = {st(c['text'], bold=True)}
-playback_album = {st(c['magenta'])}
-playback_genres = {st(c['muted'])}
-playback_metadata = {st(c['muted'])}
+playback_artists = {st(mix(c['text'], c['red'], 0.12), bold=True)}
+playback_album = {st(mix(c['red'], c['text'], 0.35))}
+playback_genres = {st(mix(c['muted'], c['red_dim'], 0.3))}
+playback_metadata = {st(mix(c['muted'], c['red_dim'], 0.3))}
 playback_progress_bar = {st(c['red'])}
-playback_progress_bar_unfilled = {st(c['overlay'])}
+playback_progress_bar_unfilled = {st(c['red_dim'])}
 current_playing = {st(c['magenta'], bold=True)}
 page_desc = {st(c['red'], bold=True)}
-playlist_desc = {st(c['muted'])}
-table_header = {st(c['muted'], bold=True)}
+playlist_desc = {st(mix(c['muted'], c['red_dim'], 0.3))}
+table_header = {st(mix(c['red_dim'], c['red'], 0.45), bold=True)}
 selection = {st(c['red'], bold=True)}
 like = {st(c['red'])}
 lyrics_played = {st(c['muted'])}
