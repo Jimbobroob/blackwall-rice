@@ -1,6 +1,7 @@
 -- Game mode: automatic while a window is fullscreen on the MAIN monitor.
 -- Blur, animations, shadows and borders go off for main-monitor windows only;
--- the side monitor is untouched. Hyprland's blur/animation switches are global,
+-- the side monitor is untouched. Focus also stops following the mouse (click to
+-- change focus) until the game leaves fullscreen. Hyprland's blur/animation switches are global,
 -- so this uses a toggled window rule scoped to main's workspaces instead.
 --
 -- State is written to $XDG_RUNTIME_DIR/rice/gamemode ("1"/"0") so the
@@ -23,6 +24,7 @@ return function(rice)
     os.execute("mkdir -p '" .. state_dir .. "'")
 
     local active
+    local normal_follow = hl.get_config("input.follow_mouse") or 1
 
     local function update()
         local mon = hl.get_monitor(main)
@@ -34,6 +36,11 @@ return function(rice)
 
         rule:set_enabled(on)
         hl.exec_scheduled_prop_refresh_immediately()
+
+        -- While a game is fullscreen, keyboard focus only moves on click (follow_mouse 2),
+        -- so the cursor slipping onto the side monitor can't steal focus mid-keypress
+        -- and leave keys "stuck" in the game.
+        hl.config({ input = { follow_mouse = on and 2 or normal_follow } })
 
         local f = io.open(state_file, "w")
         if f then

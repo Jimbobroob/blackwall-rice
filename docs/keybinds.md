@@ -26,6 +26,8 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 | `Super + Left-drag` | Move window |
 | `Super + Right-drag` | Resize window |
 
+> **Game mode** (a window fullscreen on the main monitor): focus stops following the mouse. Click a window to focus it; hovering does nothing until you leave fullscreen.
+
 ## Workspaces
 | Keys | Action |
 |---|---|
@@ -79,3 +81,4 @@ Every keybind in the rice. **Update this file whenever a bind is added, changed 
 - 2026-11-02 (refine): `Super + S` opens Spotify or jumps to its window instead of showing/hiding a special workspace.
 - 2026-11-02 (refine): `Super + S` only launches Spotify, it no longer looks for an open window to jump to.
 - 2026-11-04: removed `Super + S`. Spotify now runs from the terminal (`spotify_player` + Soloist); the desktop app still opens from the launcher.
+- 2026-11-05: in game mode (fullscreen on main) focus is click-only (`follow_mouse = 2`) so the cursor slipping onto the side monitor can't steal keys from a game. No binds changed.
