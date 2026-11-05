@@ -1,9 +1,5 @@
 theme = "blackwall"
 client_id = "9818a2559c0e4afe9ec5404dec16f01e"
-ncspot_only_get_endpoints = [
-    "me/playlists",
-    "playlists/",
-]
 client_port = 8080
 login_redirect_uri = "http://127.0.0.1:8989/login"
 playback_format = """
